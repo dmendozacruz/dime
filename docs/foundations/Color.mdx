@@ -1,0 +1,67 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { SemanticColors } from "../blocks/ColorTokens.jsx";
+
+<Meta title="Foundations/Color" />
+
+# Color
+
+La paleta de DIME es casi monocroma: negro, blanco y una escala de grises, con el amarillo como único acento de marca. Los colores de feedback (error, éxito, aviso e información) solo aparecen para comunicar un estado.
+
+Los colores se organizan en dos niveles:
+
+- **Semánticos**: dicen *para qué* sirve el color (`content/default`, `border/subtle`). Son los que se usan en los componentes y en la web.
+- **Primitivos**: la paleta base (`neutral/900`, `yellow/300`). No se usan directamente: los semánticos apuntan a ellos. Están en su propia página, [Primitivos](?path=/docs/foundations-primitivos--docs).
+
+Si un color primitivo cambia, todos los semánticos que lo usan cambian con él. Por eso en el código siempre se escribe el semántico.
+
+```css
+/* Bien: el semántico describe el uso */
+.card { color: var(--color-content-default); }
+
+/* Evítalo: el primitivo ata el componente a un valor concreto */
+.card { color: var(--color-neutral-900); }
+```
+
+El número dentro de cada muestra es el contraste del texto que mejor se lee sobre ese color: blanco (`base/white`) o el negro de DIME (`base/black`, #1a1a1a). A partir de **4.5** cumple AA para texto normal; entre **3** y 4.5, solo para texto grande y elementos de interfaz.
+
+## Tokens semánticos
+
+### Contenido
+
+Texto e iconos.
+
+<SemanticColors prefix="content/" />
+
+### Fondo
+
+<SemanticColors prefix="background/" />
+
+### Borde
+
+<SemanticColors prefix="border/" />
+
+### Foco
+
+El foco de teclado en DIME es siempre un **doble anillo**: uno oscuro pegado al elemento y uno amarillo por fuera. Así se ve tanto sobre fondos claros como oscuros.
+
+<SemanticColors prefix="focus/" />
+
+## Tokens de feedback
+
+Colores para comunicar estados. Cada estado tiene fondo, borde y contenido. Un estado nunca se comunica solo con color: va acompañado de texto o de un icono.
+
+### Error
+
+<SemanticColors prefix="feedback/error/" />
+
+### Éxito
+
+<SemanticColors prefix="feedback/success/" />
+
+### Aviso
+
+<SemanticColors prefix="feedback/warning/" />
+
+### Información
+
+<SemanticColors prefix="feedback/info/" />

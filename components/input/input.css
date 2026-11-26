@@ -1,0 +1,158 @@
+/* Input · DIME (contraseña)
+   Figma: página Inputs, set Input (232:19462) y subcomponente .Button password
+   (253:20525). La etiqueta va siempre visible encima del campo. */
+
+.dime-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1); /* 4px */
+  width: 100%;
+  font-family: var(--font-family-base);
+}
+
+.dime-input__label,
+.dime-input__field input,
+.dime-input__help,
+.dime-input__error {
+  font-size: var(--font-size-body-s); /* 14px */
+  line-height: var(--line-height-body-s); /* 20px */
+  font-weight: var(--font-weight-regular);
+}
+
+.dime-input__label {
+  color: var(--color-content-default);
+}
+
+/* Píldora de 48 px: el borde cambia con el estado. */
+.dime-input__field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2); /* 8px */
+  height: var(--size-48);
+  padding: 0 calc(var(--space-3) - 1px) 0 calc(var(--space-5) - 1px); /* 12px y 20px con el borde dentro */
+  box-sizing: border-box;
+  border: 1px solid var(--color-border-medium);
+  border-radius: 100px;
+  background: var(--color-background-default);
+}
+
+.dime-input__field input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-content-default);
+  font-family: inherit;
+  outline: none;
+}
+
+.dime-input__field input::placeholder {
+  color: var(--color-content-subtle);
+  opacity: 1;
+}
+
+/* Hover y Filled: borde oscuro. */
+.dime-input__field:hover,
+.dime-input__field:has(input:not(:placeholder-shown)) {
+  border-color: var(--color-border-default);
+}
+
+/* Focus: borde oscuro y doble anillo alrededor del campo. */
+.dime-input__field:has(input:focus-visible) {
+  border-color: var(--color-border-default);
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* Error: borde rojo (y mensaje con icono y texto debajo). */
+.dime-input__field:has(input[aria-invalid="true"]) {
+  border-color: var(--color-feedback-error-border);
+}
+
+/* Disabled */
+.dime-input__field:has(input:disabled) {
+  border-color: var(--color-border-disabled);
+}
+
+.dime-input__field input:disabled,
+.dime-input__field input:disabled::placeholder {
+  color: var(--color-content-disabled);
+}
+
+/* Ayuda (Show description) y error: alineados con el texto del campo. */
+.dime-input__help,
+.dime-input__error {
+  margin: 0;
+  padding-left: var(--space-5); /* 20px */
+}
+
+.dime-input__help {
+  color: var(--color-content-default);
+}
+
+/* El nodo del error existe siempre (vacío) para que se anuncie al rellenarlo. */
+.dime-input__error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--line-height-body-s); /* reserva su línea: el botón no salta */
+  color: var(--color-feedback-error-content);
+}
+
+.dime-input__error-icon {
+  flex-shrink: 0;
+  width: var(--size-20);
+  height: var(--size-20);
+  color: var(--color-feedback-error-border);
+}
+
+.dime-input__error:empty {
+  min-height: 0;
+}
+
+/* ---------- Botón ver contraseña (.Button password): 44 px, foco propio */
+.dime-input__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.75rem; /* 44px: área táctil */
+  height: 2.75rem;
+  padding: var(--space-1);
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 100px;
+  background: var(--color-background-default);
+  color: var(--color-content-default);
+  cursor: pointer;
+}
+
+.dime-input__toggle svg {
+  width: var(--size-24);
+  height: var(--size-24);
+}
+
+.dime-input__toggle:hover {
+  background: var(--color-background-subtle);
+}
+
+.dime-input__toggle:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-input__toggle:disabled {
+  color: var(--color-border-disabled);
+  cursor: default;
+}
+
+.dime-input__toggle:disabled:hover {
+  background: var(--color-background-default);
+}
+
+/* <dime-input>: web component en light DOM (D-017). No pinta nada: solo envuelve el HTML. */
+dime-input {
+  display: contents;
+}

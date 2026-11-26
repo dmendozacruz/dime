@@ -1,0 +1,67 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./back-to-top.stories.js";
+
+<Meta title="Componentes/Back to top/Código" />
+
+# Back to top
+
+<ComponentHeader description="Enlace con forma de botón que vuelve al principio de la página. Flotante, fijo abajo a la derecha." figmaNode="341:4214" updated="25-11-2026" />
+
+<ComponentTabs component="back to top" current="codigo" />
+
+HTML, CSS y el web component `<dime-back-to-top>` para mostrarlo al bajar. El CSS está en `components/back-to-top/back-to-top.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+## Flotante
+
+En la página lleva `.dime-back-to-top--floating`: fijo abajo a la derecha, a 24 px de los bordes. Dentro de `<dime-back-to-top threshold="400">`, que lo muestra al bajar más de 400 px (el valor por defecto de `threshold`) y lo oculta arriba con `data-hidden` (fuera de la vista, del teclado y del lector de pantalla). Al aparecer sube 12 px y crece de 0,9 a 1 en 300 ms; con «reducir movimiento» solo hay un fundido corto. En tablet y mobile (`max-width: 64rem`) solo se muestra cuando la persona sube, pasado el umbral (la dirección cambia tras 8 px de recorrido, para ignorar temblores); el atributo `scroll-up-only` lo fuerza en cualquier ancho. Al activarlo, la vista sube y el foco pasa al principio de la página, que lleva `tabindex="-1"`.
+
+```html
+<body>
+  <div id="top" tabindex="-1"></div>
+  …
+  <dime-back-to-top threshold="400">
+    <a class="dime-back-to-top dime-back-to-top--floating" href="#top" aria-label="Back to top">…</a>
+  </dime-back-to-top>
+</body>
+```
+
+```js
+import "./back-to-top.js"; // registra <dime-back-to-top>
+```
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-back-to-top</code></td><td>En el <code>&lt;a href="#top"&gt;</code>, con <code>aria-label="Back to top"</code>.</td></tr>
+    <tr><td><code>.dime-back-to-top--floating</code></td><td>Fijo abajo a la derecha, por debajo del header y del menú.</td></tr>
+    <tr><td><code>[data-hidden]</code></td><td>Oculto: lo pone y lo quita <code>&lt;dime-back-to-top&gt;</code>.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--color-background-brand</code> · <code>--color-border-default</code> · <code>--color-content-inverse</code></td><td>Círculo, borde y flecha (Default).</td></tr>
+    <tr><td><code>--color-content-default</code></td><td>Flecha en Hover, con el fondo transparente.</td></tr>
+    <tr><td><code>--size-28</code> · <code>--space-6</code></td><td>Flecha y distancia a los bordes de la pantalla (24 px).</td></tr>
+    <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+Es un **web component en light DOM** (D-017): `<dime-back-to-top>` envuelve el enlace (que funciona solo aunque el script no cargue) y se registra al cargar `components/back-to-top/back-to-top.js`. Con el atributo `threshold`, lo muestra u oculta según el scroll (y, en tablet y mobile, según la dirección) y, al activarlo, sube con scroll suave (salvo con "reducir movimiento") y mueve el foco al principio.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`341:4214`).

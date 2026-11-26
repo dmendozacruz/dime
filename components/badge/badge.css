@@ -1,0 +1,39 @@
+/* Badge · DIME
+   Etiqueta estática. Figma: página Badge, componente Badge (133:17054).
+   No es interactiva: sin hover, sin foco, sin cursor de mano. */
+
+.dime-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: calc(var(--space-1) - 1px) calc(var(--space-3) - 1px); /* 4px 12px con el borde dentro: 28px */
+  border: 1px solid var(--color-border-medium);
+  border-radius: 100px; /* píldora: único radio de DIME */
+  color: var(--color-content-default);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-label-m); /* 14px */
+  line-height: var(--line-height-label-m); /* 20px */
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Varios juntos: una lista en fila. Si no caben, bajan de línea enteros. */
+.dime-badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2); /* 8px */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Nombre completo de una sigla: solo para el lector de pantalla. */
+.dime-badge__full {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

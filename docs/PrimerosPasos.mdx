@@ -1,0 +1,75 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Primeros pasos" />
+
+# Primeros pasos
+
+Cómo usar DIME en una página y cómo ejecutarlo en local. DIME se entrega como tokens (variables de CSS) y componentes (HTML, CSS y, cuando tienen comportamiento, un web component). No depende de ningún framework: se usa en HTML puro y se puede llevar a cualquiera que acepte elementos HTML.
+
+## Usar los tokens
+
+Los tokens salen de las variables de Figma y se publican como custom properties de CSS. Se importan una vez, antes de cualquier regla que los use.
+
+```html
+<link rel="stylesheet" href="tokens/tokens.css" />
+<link rel="stylesheet" href="tokens/typography.css" />
+```
+
+Después se usan siempre por nombre, nunca por su valor:
+
+```css
+/* «mi-tarjeta» es un nombre de ejemplo: tu propia clase, escrita con tokens de DIME */
+.mi-tarjeta {
+  background: var(--color-background-default);
+  color: var(--color-content-default);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-4);
+  font-family: var(--font-family-base);
+}
+```
+
+Ese ejemplo usa cinco tokens para enseñar la idea; hay más de 140 (colores, tamaños, espaciado, tipografía, elevación…). Los componentes de DIME (`.dime-button`, `.dime-badge`…) son clases hechas igual, con los tokens que cada uno necesita.
+
+`tokens/typography.css` añade una clase por cada estilo de texto de Figma (`.text-body-l-regular`) y `tokens/tokens.json` trae los mismos tokens en formato W3C Design Tokens. Ninguno se edita a mano: se cambia Figma y se regeneran.
+
+## Usar un componente
+
+Los estilos de todos los componentes están en un solo archivo. Los que tienen comportamiento (Tabs, Accordion, Input, Tooltip, Alert, Back to top, Process list y Nav Header) lo cargan con un script; los demás son una clase `dime-` sobre el elemento nativo y no necesitan nada más.
+
+```html
+<link rel="stylesheet" href="components/index.css" />
+<script type="module" src="components/index.js"></script>
+```
+
+```html
+<!-- Con comportamiento: un web component que envuelve el HTML nativo -->
+<dime-tabs>…</dime-tabs>
+
+<!-- Sin comportamiento: una clase sobre el elemento nativo -->
+<a class="dime-link" href="/contacto">Contacto</a>
+```
+
+Cada componente tiene su propia página con el HTML completo, qué tokens usa y qué garantiza en accesibilidad.
+
+### Por qué web components
+
+Los componentes con comportamiento son web components, un estándar del navegador. Se escriben una vez y se usan igual en HTML puro, en Astro (con el que está hecha dianamendozacruz.com) y en React, y se pueden llevar a cualquier otro framework que admita elementos personalizados, como Angular: basta con la etiqueta y el script. Van en light DOM (sin Shadow DOM), así que conservan los estilos globales, el contenido llega completo aunque el script tarde y las referencias de accesibilidad (`aria-labelledby`, `aria-controls`) siguen funcionando.
+
+## La tipografía
+
+La fuente es ABC Monument Grotesk, pedida por su nombre en `--font-family-base`. Si la página la sirve, se usa; si no, el navegador usa Helvetica Neue o Arial con los mismos tamaños, pesos e interlineado. Más en [Tipografía](?path=/docs/foundations-tipografía--docs).
+
+## Ejecutarlo en local
+
+```bash
+npm install
+npm run storybook
+```
+
+| Comando | Qué hace |
+|---|---|
+| `npm run tokens` | Regenera los tokens desde el volcado de Figma. |
+| `npm run storybook` | Storybook en `http://localhost:6006`. |
+| `npm run build-storybook` | Construye el sitio estático en `storybook-static/`. |
+| `npm run test` | Ejecuta cada story como una prueba: teclado, foco, roles y axe. |
+| `npm run gate` | La comprobación completa. Ver [El gate](?path=/docs/gobernanza-el-gate--docs). |

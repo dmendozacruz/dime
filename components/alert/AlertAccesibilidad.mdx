@@ -1,0 +1,40 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./alert.stories.js";
+
+<Meta title="Componentes/Alert/Accesibilidad" />
+
+# Alert
+
+<ComponentHeader description="Aviso de información, éxito, advertencia o error. Dice qué ha pasado y, si hace falta, qué hacer." figmaNode="443:9196" updated="25-11-2026" />
+
+<ComponentTabs component="alert" current="accesibilidad" />
+
+Un aviso no es interactivo: no tiene teclado propio. Lo importante es que se anuncie cuando aparece, sin mover el foco. Referencia: [Alert del APG](https://www.w3.org/WAI/ARIA/apg/patterns/alert/).
+
+## Roles y anuncios
+
+- **Rol según lo urgente:** `role="alert"` si hay que dejar lo que se está haciendo para leerlo; `role="status"` si puede esperar. Un aviso que está desde que carga la página no lleva rol.
+- **La región existe vacía** desde que carga la página; al ocurrir algo se escribe el texto y se anuncia. Si la región se crea a la vez que el texto, algunos lectores de pantalla no lo anuncian.
+- **No roba el foco:** quien usa teclado sigue donde estaba.
+- **El icono es decorativo** (`aria-hidden`): el tipo lo dice el título, no el dibujo.
+
+<Canvas of={Stories.Live} />
+
+## Contraste
+
+- El tipo no va solo por el color: cada uno tiene su icono y el título dice qué ha pasado.
+- Contraste AA en los cuatro tipos; warning es el más justo (4,67:1), así que el texto no baja de Body / Medium.
+- En modo de alto contraste, el aviso lleva un borde del sistema para no perder su forma.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Aviso que aparece*: la región empieza vacía, se rellena al pulsar y el foco se queda en el botón.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): que anuncie el aviso al aparecer, también si se repite el mismo texto.

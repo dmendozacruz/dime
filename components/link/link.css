@@ -1,0 +1,119 @@
+/* Link · DIME
+   Enlace de texto con icono. Figma: página Links, set Link (102:7604).
+   Es siempre un <a href>: lleva a otra página, a un externo o a un mailto:.
+   Sin JavaScript. */
+
+.dime-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1); /* 4px */
+  padding: var(--space-2); /* 8px: 40px de alto en small, 48px en large */
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  font-family: var(--font-family-base);
+  font-size: var(--interaction-size-medium); /* 16px */
+  line-height: var(--interaction-line-height-medium); /* 24px */
+  font-weight: var(--interaction-font-weight-regular);
+  color: var(--color-content-default);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dime-link__label {
+  position: relative;
+}
+
+/* Subrayado: solo en Hover, Active y Focus; crece desde la izquierda. */
+.dime-link__label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--color-border-default);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+
+.dime-link__icon {
+  flex-shrink: 0;
+  width: var(--size-20);
+  height: var(--size-20);
+  fill: currentColor;
+}
+
+/* Hover, Active y Focus: subrayado. Active y Focus, además, en Medium
+   (sin fondo ni borde, es lo que marca el estado; decisión de Diana 19-11-2026). */
+.dime-link:hover .dime-link__label::after,
+.dime-link:active .dime-link__label::after,
+.dime-link:focus-visible .dime-link__label::after {
+  transform: scaleX(1);
+}
+
+.dime-link:active,
+.dime-link:focus-visible {
+  font-weight: var(--interaction-font-weight-medium);
+}
+
+/* Doble anillo de foco de DIME: oscuro dentro, amarillo fuera. */
+.dime-link:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* ---------- Size: large (48px) */
+.dime-link--large {
+  font-size: var(--interaction-size-extra-large); /* 24px */
+  line-height: var(--interaction-line-height-extra-large); /* 32px */
+}
+
+.dime-link--large .dime-link__icon {
+  width: var(--size-28);
+  height: var(--size-28);
+}
+
+/* ---------- Inverted: sobre fondos oscuros (footer) */
+.dime-link--inverted {
+  --dime-focus-gap: var(--color-background-brand); /* el hueco del anillo de foco toma el fondo oscuro */
+  color: var(--color-content-inverse);
+}
+
+.dime-link--inverted .dime-link__label::after {
+  background-color: var(--color-border-inverse);
+}
+
+/* ---------- Disabled: sin href, con aria-disabled="true". Sigue recibiendo el
+   foco para que el motivo, escrito cerca, se pueda descubrir. */
+.dime-link[aria-disabled="true"] {
+  color: var(--color-content-disabled);
+  cursor: default;
+}
+
+.dime-link[aria-disabled="true"] .dime-link__icon {
+  fill: var(--color-border-disabled);
+}
+
+.dime-link[aria-disabled="true"]:hover .dime-link__label::after,
+.dime-link[aria-disabled="true"]:active .dime-link__label::after {
+  transform: scaleX(0);
+}
+
+.dime-link[aria-disabled="true"]:active {
+  font-weight: var(--interaction-font-weight-regular);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dime-link__label::after {
+    transition: none;
+  }
+}
+
+/* Modo de alto contraste: el subrayado se dibuja con el color del sistema. */
+@media (forced-colors: active) {
+  .dime-link__label::after {
+    background-color: LinkText;
+  }
+}

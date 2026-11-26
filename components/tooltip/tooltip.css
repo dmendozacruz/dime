@@ -1,0 +1,91 @@
+/* Tooltip · DIME
+   Pista breve junto a un elemento. Figma: página Tooltips (102:11509).
+   Solo es un apoyo: la información también está en el nombre accesible o en el
+   texto unido con aria-describedby. */
+
+/* La caja. Suelta (fuera de .dime-tooltip-host) se ve siempre: así se documenta. */
+.dime-tooltip {
+  position: relative;
+  display: inline-block;
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-s); /* 14px */
+  line-height: var(--line-height-body-s); /* 20px */
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+}
+
+/* Flecha de 6 × 3 px que apunta al elemento. */
+.dime-tooltip::after {
+  content: "";
+  position: absolute;
+  border: 3px solid transparent;
+}
+
+.dime-tooltip--top::after { top: 100%; left: 50%; transform: translateX(-50%); border-top-color: var(--color-background-brand); border-bottom: 0; }
+.dime-tooltip--bottom::after { bottom: 100%; left: 50%; transform: translateX(-50%); border-bottom-color: var(--color-background-brand); border-top: 0; }
+.dime-tooltip--left::after { left: 100%; top: 50%; transform: translateY(-50%); border-left-color: var(--color-background-brand); border-right: 0; }
+.dime-tooltip--right::after { right: 100%; top: 50%; transform: translateY(-50%); border-right-color: var(--color-background-brand); border-left: 0; }
+
+/* Dentro de su elemento: oculto hasta hover o foco. */
+.dime-tooltip-host {
+  position: relative;
+  display: inline-flex;
+}
+
+.dime-tooltip-host .dime-tooltip {
+  position: absolute;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 150ms ease, visibility 0s linear 150ms;
+}
+
+.dime-tooltip-host .dime-tooltip--top { bottom: calc(100% + var(--space-2)); left: 50%; transform: translateX(-50%); }
+.dime-tooltip-host .dime-tooltip--bottom { top: calc(100% + var(--space-2)); left: 50%; transform: translateX(-50%); }
+.dime-tooltip-host .dime-tooltip--left { right: calc(100% + var(--space-2)); top: 50%; transform: translateY(-50%); }
+.dime-tooltip-host .dime-tooltip--right { left: calc(100% + var(--space-2)); top: 50%; transform: translateY(-50%); }
+
+/* Puente invisible sobre el hueco de 8 px entre el elemento y la caja: el puntero puede
+   pasar al tooltip sin que desaparezca (WCAG 1.4.13, que se pueda mantener). */
+.dime-tooltip-host .dime-tooltip::before {
+  content: "";
+  position: absolute;
+}
+
+.dime-tooltip-host .dime-tooltip--top::before { top: 100%; left: 0; right: 0; height: var(--space-2); }
+.dime-tooltip-host .dime-tooltip--bottom::before { bottom: 100%; left: 0; right: 0; height: var(--space-2); }
+.dime-tooltip-host .dime-tooltip--left::before { left: 100%; top: 0; bottom: 0; width: var(--space-2); }
+.dime-tooltip-host .dime-tooltip--right::before { right: 100%; top: 0; bottom: 0; width: var(--space-2); }
+
+/* Aparece con 400 ms de retraso; desaparece al momento. Visible, recibe el puntero. */
+.dime-tooltip-host:hover .dime-tooltip,
+.dime-tooltip-host:focus-within .dime-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 150ms ease 400ms, visibility 0s linear 400ms;
+}
+
+/* Escape lo cierra sin mover el ratón ni el foco (WCAG 1.4.13). */
+.dime-tooltip-host[data-dismissed] .dime-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dime-tooltip-host .dime-tooltip,
+  .dime-tooltip-host:hover .dime-tooltip,
+  .dime-tooltip-host:focus-within .dime-tooltip {
+    transition: none;
+  }
+}
+
+/* <dime-tooltip>: web component en light DOM (D-017). No pinta nada: solo envuelve el HTML. */
+dime-tooltip {
+  display: contents;
+}

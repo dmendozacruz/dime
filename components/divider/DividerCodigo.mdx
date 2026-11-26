@@ -1,0 +1,63 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./divider.stories.js";
+
+<Meta title="Componentes/Divider/Código" />
+
+# Divider
+
+<ComponentHeader
+  description="Línea de 1 px que separa dos bloques distintos. Ocupa el ancho de su contenedor."
+  figmaNode="114:13404"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="divider" current="codigo" />
+
+HTML y CSS, sin JavaScript. El CSS está en `components/divider/divider.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Inverted
+
+<Canvas of={Stories.Inverted} sourceState="shown" />
+
+### Decorativo
+
+Si solo decora, `aria-hidden="true"`: el lector de pantalla no lo lee.
+
+<Canvas of={Stories.Decorative} sourceState="shown" />
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-divider</code></td><td>En un <code>&lt;hr&gt;</code>.</td></tr>
+    <tr><td><code>.dime-divider--inverted</code></td><td>Sobre fondos oscuros.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--color-border-default</code> · <code>--color-border-inverse</code></td><td>Color de la línea.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+No necesita.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`114:13404`).

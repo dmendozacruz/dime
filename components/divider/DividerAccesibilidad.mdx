@@ -1,0 +1,39 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./divider.stories.js";
+
+<Meta title="Componentes/Divider/Accesibilidad" />
+
+# Divider
+
+<ComponentHeader
+  description="Línea de 1 px que separa dos bloques distintos. Ocupa el ancho de su contenedor."
+  figmaNode="114:13404"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="divider" current="accesibilidad" />
+
+Es un `<hr>`: el navegador lo expone como separador. No es interactivo.
+
+## Roles, nombres y estados
+
+- **Separador:** si separa temas distintos, `<hr>`, que el lector de pantalla anuncia como separador.
+- **Decoración:** si solo decora, `aria-hidden="true"`, para que no se lea.
+- **No es interactivo:** no recibe el foco ni tiene estados.
+- **Nunca es la única pista** de que cambia el tema: lo dice también el título de la sección.
+
+## Contraste
+
+Las dos versiones tienen contraste de sobra (17,4:1). Como es un borde, en modo de alto contraste toma el color del sistema y se sigue viendo.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): que el separador se anuncie y que el decorativo no.

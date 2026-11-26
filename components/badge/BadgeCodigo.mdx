@@ -1,0 +1,75 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./badge.stories.js";
+
+<Meta title="Componentes/Badge/Código" />
+
+# Badge
+
+<ComponentHeader
+  description="Etiqueta estática que clasifica un contenido con una o dos palabras. No es interactiva."
+  figmaNode="133:17054"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="badge" current="codigo" />
+
+HTML y CSS, sin JavaScript. El CSS está en `components/badge/badge.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Sigla
+
+El texto visible queda oculto al lector de pantalla y el nombre completo va en un texto solo para él (`.dime-badge__full`).
+
+<Canvas of={Stories.Acronym} sourceState="shown" />
+
+### Grupo de badges
+
+Una lista (`ul.badge-list`, un `li` por badge), separados 8 px.
+
+<Canvas of={Stories.Group} sourceState="shown" />
+
+### Contenedor estrecho
+
+Si no caben, bajan de línea enteros.
+
+<Canvas of={Stories.Wrap} sourceState="shown" />
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-badge</code></td><td>En un <code>&lt;span&gt;</code>. Nunca en un <code>&lt;button&gt;</code> ni en un <code>&lt;a&gt;</code>.</td></tr>
+    <tr><td><code>.dime-badge__full</code></td><td>Nombre completo de una sigla, solo para el lector de pantalla.</td></tr>
+    <tr><td><code>.dime-badge-list</code></td><td>En el <code>&lt;ul&gt;</code> que agrupa varios.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--space-1</code> · <code>--space-3</code></td><td>Relleno (4 y 12 px). El borde va por dentro: 28 px de alto.</td></tr>
+    <tr><td><code>--space-2</code></td><td>Separación entre badges (8 px).</td></tr>
+    <tr><td><code>--font-size-label-m</code> · <code>--line-height-label-m</code> · <code>--font-weight-medium</code></td><td>Texto: Label / Medium / medium, 14/20, en mayúsculas.</td></tr>
+    <tr><td><code>--color-content-default</code> · <code>--color-border-medium</code></td><td>Texto y borde.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+No necesita.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`133:17054`).

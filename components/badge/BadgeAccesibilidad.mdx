@@ -1,0 +1,41 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./badge.stories.js";
+
+<Meta title="Componentes/Badge/Accesibilidad" />
+
+# Badge
+
+<ComponentHeader
+  description="Etiqueta estática que clasifica un contenido con una o dos palabras. No es interactiva."
+  figmaNode="133:17054"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="badge" current="accesibilidad" />
+
+Es texto: un `<span>`. No es interactivo, así que no tiene rol de control ni teclado.
+
+## Roles, nombres y estados
+
+- **Estático:** no recibe el foco, no tiene estados y no lleva nada que lo haga parecer clicable: ni hover, ni subrayado, ni cursor de mano.
+- **En código** es un `<span>`, nunca un `<button>` ni un `<a>`.
+- **Varios juntos** van en una lista (`<ul>`, un `<li>` por badge), para que el lector de pantalla diga cuántos hay.
+- **Siglas:** el nombre completo tiene que llegar al lector de pantalla: B2B → Business to Business. El texto visible se oculta con `aria-hidden` y el nombre completo va en `.dime-badge__full`.
+
+<Canvas of={Stories.Acronym} />
+
+## Contraste
+
+El texto tiene contraste de sobra (17,4:1). El borde es decorativo: el texto se entiende sin él.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): que una lista de tres badges anuncie "lista, 3 elementos" y que una sigla se lea con su nombre completo.

@@ -1,0 +1,60 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { accordionHTML as a } from "./accordion.html.js";
+import "./accordion.css";
+
+<Meta title="Componentes/Accordion/Uso" />
+
+# Accordion
+
+<ComponentHeader description="Lista de secciones que se abren y cierran por separado. Reduce el scroll y deja el detalle a mano." figmaNode="99:3471" updated="25-11-2026" />
+
+<ComponentTabs component="accordion" current="uso" />
+
+## Overview
+
+Una lista con la primera sección abierta.
+
+<div className="dime-overview dime-overview--stack sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: `<div style="width: 100%; max-width: 588px; margin: 0 auto;">${a({ open: [0] }).replace(/<button /g, '<button tabindex="-1" ')}</div>` }} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Cabecera</strong></td><td>Botón que abre y cierra el panel. Ocupa todo el ancho y mide 80 px de alto, por encima del mínimo táctil de 44 px.</td><td>Alto 80 px · padding <code>space/3</code> × <code>space/1</code></td></tr>
+    <tr><td>2</td><td><strong>Título</strong></td><td>Número y nombre de la sección. Es el nombre accesible del botón, así que debe entenderse solo.</td><td>Body / Extra large / bold · <code>content/default</code></td></tr>
+    <tr><td>3</td><td><strong>Icono + / −</strong></td><td>Muestra + cuando está cerrado y − cuando está abierto. Es decorativo: el estado lo anuncia el botón.</td><td>Icons · 20 px</td></tr>
+    <tr><td>4</td><td><strong>Contenido</strong></td><td>Texto que aparece al abrir y, si se activa Show slot, contenido libre debajo. Cerrado no se ve ni recibe el foco.</td><td>Body / Medium / regular · <code>content/default</code></td></tr>
+    <tr><td>5</td><td><strong>Divisor</strong></td><td>Línea que separa cada elemento de la lista.</td><td>Divider · <code>border/default</code></td></tr>
+  </tbody>
+</table>
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- El contenido es largo y se puede escanear por títulos.
+- La información es de detalle o secundaria: no todo el mundo necesita leerla.
+- Quieres reducir el scroll, sobre todo en mobile.
+
+**No lo uses cuando**
+
+- La información es crítica o todo el mundo debe verla: escondida, se pasa por alto.
+- El contenido cabe en una o dos líneas: muéstralo directamente.
+- Lleva a otra página: usa un Link.
+
+## Recomendaciones de uso
+
+- Títulos cortos que resuman el contenido, en una sola línea.
+- Numera los títulos (01., 02.…) solo cuando el orden ayuda a leer.
+- Todos los paneles cerrados al cargar la página.
+- Cada panel se abre por separado: abrir uno no cierra los demás.
+- Agrupa entre 3 y 7 elementos. Con más, divide en grupos o replantea la estructura.
+- No anides un acordeón dentro de otro.
+- Dentro del panel, solo texto o listas sencillas. Evita formularios y acciones principales.
+
+## Responsive
+
+No cambia entre breakpoints: misma altura de cabecera (80 px), tipografía e icono. Ocupa el ancho de su contenedor.

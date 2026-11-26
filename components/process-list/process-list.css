@@ -1,0 +1,156 @@
+/* Process list · DIME
+   Recorrido de pasos con punto y línea. Figma: página Process List, sets Process
+   list item (401:1410) y Process list step (401:1379).
+   Es una lista ordenada: el orden cuenta. */
+
+.dime-process-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-family-base);
+  color: var(--color-content-default);
+}
+
+/* Cada paso: punto y línea a un lado, texto al otro. */
+.dime-process-list__item {
+  display: grid;
+  grid-template-columns: 0.625rem /* 10px: el punto */ minmax(0, 1fr);
+  column-gap: var(--space-8); /* 40px */
+}
+
+/* Punto (10px) y línea (1px) hasta el paso siguiente. */
+.dime-process-list__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* El punto queda a la altura del centro de la primera línea del título, no de su
+   borde de arriba: así el texto y el punto se leen alineados. */
+.dime-process-list__step::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.625rem; /* 10px */
+  height: 0.625rem;
+  margin-top: calc((var(--line-height-subheading) - 0.625rem) / 2); /* 11px */
+  border-radius: 50%;
+  background: var(--color-border-subtle);
+  transition: background-color 200ms ease;
+}
+
+/* La línea se rellena de arriba abajo según --dime-fill (0 a 1), que pone
+   <dime-process-list> al hacer scroll. Sin él, no hay relleno.
+   El margen negativo la alarga hasta el punto del paso siguiente: ese punto queda
+   más abajo por el aire que lo alinea con el título, y sin esto habría un hueco
+   entre un tramo y otro. */
+.dime-process-list__step::after {
+  content: "";
+  flex: 1;
+  width: 1px;
+  margin-bottom: calc((var(--line-height-subheading) - 0.625rem) / -2); /* -11px */
+  background: linear-gradient(
+    to bottom,
+    var(--color-border-default) calc(var(--dime-fill, 0) * 100%),
+    var(--color-border-subtle) calc(var(--dime-fill, 0) * 100%)
+  );
+}
+
+/* Punto alcanzado al hacer scroll. */
+.dime-process-list__item[data-reached] .dime-process-list__step::before {
+  background: var(--color-background-brand);
+}
+
+.dime-process-list__item:last-child .dime-process-list__step::after {
+  display: none;
+}
+
+/* Paso activo (State = Active). */
+.dime-process-list__item--active .dime-process-list__step::before {
+  background: var(--color-background-brand);
+}
+
+.dime-process-list__item--active .dime-process-list__step::after {
+  background: var(--color-border-default);
+}
+
+.dime-process-list__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3); /* 12px */
+  padding-bottom: var(--space-7); /* 32px: aire entre pasos */
+}
+
+.dime-process-list__title {
+  margin: 0;
+  font-size: var(--font-size-subheading);
+  line-height: var(--line-height-subheading);
+  font-weight: var(--font-weight-bold);
+}
+
+.dime-process-list__description {
+  margin: 0;
+  font-size: var(--font-size-body-xl); /* 20px */
+  line-height: var(--line-height-body-xl); /* 28px */
+  font-weight: var(--font-weight-regular);
+}
+
+/* Zigzag (desktop): la línea en el centro; los pasos alternan derecha e izquierda,
+   empezando por la derecha. */
+.dime-process-list--zigzag .dime-process-list__item {
+  grid-template-columns: minmax(0, 1fr) 0.625rem /* 10px: el punto */ minmax(0, 1fr);
+}
+
+.dime-process-list--zigzag .dime-process-list__step {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.dime-process-list--zigzag .dime-process-list__item:nth-child(odd) .dime-process-list__text {
+  grid-column: 3;
+}
+
+.dime-process-list--zigzag .dime-process-list__item:nth-child(even) .dime-process-list__text {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: right;
+}
+
+/* Mobile: sin zigzag, todo a la izquierda. */
+@media (max-width: 48rem) {
+  .dime-process-list--zigzag .dime-process-list__item {
+    grid-template-columns: 0.625rem /* 10px: el punto */ minmax(0, 1fr);
+  }
+
+  .dime-process-list--zigzag .dime-process-list__step {
+    grid-column: 1;
+  }
+
+  .dime-process-list--zigzag .dime-process-list__item:nth-child(odd) .dime-process-list__text,
+  .dime-process-list--zigzag .dime-process-list__item:nth-child(even) .dime-process-list__text {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dime-process-list__step::before {
+    transition: none;
+  }
+}
+
+/* Modo de alto contraste: el punto y la línea se dibujan con colores del sistema. */
+@media (forced-colors: active) {
+  .dime-process-list__step::before,
+  .dime-process-list__step::after {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+}
+
+/* <dime-process-list>: web component en light DOM (D-017). No pinta nada: solo envuelve el HTML. */
+dime-process-list {
+  display: contents;
+}

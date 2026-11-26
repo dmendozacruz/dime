@@ -1,0 +1,52 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./tooltip.stories.js";
+
+<Meta title="Componentes/Tooltip/Accesibilidad" />
+
+# Tooltip
+
+<ComponentHeader description="Pista breve, de dos o tres palabras, junto a un elemento. Aparece con el ratón o con el foco del teclado." figmaNode="102:11509" updated="25-11-2026" />
+
+<ComponentTabs component="tooltip" current="accesibilidad" />
+
+El tooltip no es interactivo y no recibe el foco: lo recibe el elemento al que acompaña. Referencia: [Tooltip del APG](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/).
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd></td><td>Al llegar al elemento, aparece el tooltip.</td></tr>
+    <tr><td><kbd>Escape</kbd></td><td>Lo cierra sin mover el foco.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.OnElement} />
+
+## Roles, nombres y estados
+
+- **Aparece con el ratón y con el teclado**, al llegar al elemento.
+- **Sin hover en tablet y mobile:** al tocar, el tooltip no se ve. Por eso su texto se une al elemento con `aria-describedby` (el tooltip lleva `role="tooltip"`), para que el lector de pantalla lo lea igual en cualquier dispositivo.
+- **Es un apoyo:** la información importante también está en el nombre accesible del elemento o en texto visible.
+- **No tiene contenido interactivo** y no tapa el elemento que lo muestra.
+- **Se puede cerrar con Escape** sin mover el ratón ni el foco (WCAG 1.4.13).
+- **Se puede mantener:** el puntero pasa del elemento a la caja sin que desaparezca, porque un puente invisible cubre el hueco entre los dos (WCAG 1.4.13).
+
+## Contraste
+
+Texto blanco sobre negro (17,4:1).
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *En su elemento*: el elemento tiene la descripción del tooltip, recibe el foco con Tab y Escape lo cierra sin moverlo.
+
+**Manuales, pendientes de verificar**
+
+- TalkBack en Android: que al tocar el elemento lea también la descripción.
+- VoiceOver en macOS: que lea la descripción al llegar al elemento.
+- Zoom al 200 %: que el tooltip no se corte contra el borde.

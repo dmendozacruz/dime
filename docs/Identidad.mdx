@@ -1,0 +1,45 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Identidad" />
+
+# Identidad
+
+Un conjunto pequeño de decisiones fijas. Todo lo demás en DIME sale de ellas.
+
+## La marca
+
+La marca es el nombre de Diana Mendoza como logotipo y un asterisco como símbolo, que también es el favicon de este sitio.
+
+### Por qué un asterisco
+
+El asterisco (\*) se usa para señalar que hay algo más: un detalle extra que no cabía en el texto principal y que vale la pena leer. Esa es la razón de haberlo elegido como marca.
+
+La trayectoria de Diana Mendoza en producto se ha ido construyendo por capas (diseño, estrategia, UX, accesibilidad y, ahora, IA y desarrollo), y cada una parecía un añadido. Con el tiempo, ese «extra» resultó ser lo que la define.
+
+[dianamendozacruz.com](https://dianamendozacruz.com) es un proyecto vivo, no es solo un portfolio. Es un proyecto personal real donde cada capa nueva que se aprende se suma, en una web que se usa de verdad. DIME es esa idea hecha sistema, donde la accesibilidad, la documentación y el código forman parte del diseño desde el principio.
+
+### Cómo se usa
+
+Los logos se usan tal cual, sin redibujar ni recolorear. Los archivos, y los logos de los clientes, están en [Logos](?path=/docs/foundations-logos--docs).
+
+## Una familia, cuatro pesos
+
+DIME usa **ABC Monument Grotesk** y nada más, en Light, Regular, Medium y Bold. La jerarquía sale del tamaño y del peso, nunca de cambiar de fuente. Los tamaños están en `rem`, así que el texto crece con la preferencia de la persona. Ver [Tipografía](?path=/docs/foundations-tipografía--docs).
+
+## Negro, blanco y un acento
+
+La interfaz es en blanco y negro: el negro de marca (`--color-background-brand`) para lo principal, el blanco de fondo y los grises para lo secundario. El **acento** es el amarillo (`--color-base-accent`) y se usa de forma puntual, para destacar: el subrayado de los títulos de sección, el icono interactivo, los marcadores y otros detalles. No se usa para texto sobre blanco, porque no tiene contraste.
+
+El foco lleva el mismo amarillo en un doble anillo, con un interior negro (`--color-focus-ring-inner` y `--color-focus-ring`), para que se vea sobre cualquier fondo. Los colores de estado (error, aviso, correcto, información) existen para los avisos, no para decorar. Ver [Color](?path=/docs/foundations-color--docs).
+
+## Un solo radio
+
+El único radio es la píldora de 100 px, en botones y etiquetas. El resto de elementos va con esquinas rectas. No hay un token para él: un token para un único valor no aporta nada, y si aparece un segundo radio se crea la escala.
+
+## Siempre tokens
+
+Ningún valor de color, tipografía ni espaciado se escribe a mano: sale del token. Los tokens llevan el nombre que tienen en Figma (`content/default` es `--color-content-default`), para que diseño y código hablen igual.
+
+## Accesible desde el principio
+
+El listón es WCAG 2.2 AA. Cada componente tiene su página de accesibilidad y una prueba que se ejecuta de verdad. El foco siempre es visible, las áreas táctiles superan los 24 px que pide el criterio, y el movimiento respeta «reducir movimiento».

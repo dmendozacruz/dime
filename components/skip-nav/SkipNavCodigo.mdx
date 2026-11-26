@@ -1,0 +1,76 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./skip-nav.stories.js";
+
+<Meta title="Componentes/Skip nav/Código" />
+
+# Skip nav
+
+<ComponentHeader description="Primer enlace de la página: salta la navegación y lleva al contenido principal. Solo se ve con el teclado." figmaNode="472:2207" updated="25-11-2026" />
+
+<ComponentTabs component="skip nav" current="codigo" />
+
+HTML y CSS, sin JavaScript. El CSS está en `components/skip-nav/skip-nav.css` y solo usa tokens de DIME.
+
+## Variantes
+
+En la página solo se ve con el foco; aquí se muestra a la fuerza para ver su aspecto.
+
+### Size small
+
+<Canvas of={Stories.Small} />
+
+### Size large
+
+<Canvas of={Stories.Large} />
+
+## En la página
+
+Pulsa Tab dentro del ejemplo: aparece el enlace; con Enter, el foco pasa al contenido principal.
+
+<Canvas of={Stories.Keyboard} sourceState="shown" />
+
+```html
+<body>
+  <a class="dime-skip-nav" href="#main-content">Skip to main content</a>
+  <header>…</header>
+  <main id="main-content" tabindex="-1">…</main>
+</body>
+```
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-skip-nav</code></td><td>Size small (desktop)</td><td>En el <code>&lt;a&gt;</code>, primer elemento del <code>&lt;body&gt;</code>. Pasa a large solo por debajo de 1024 px.</td></tr>
+    <tr><td><code>.dime-skip-nav--large</code></td><td>Size large</td><td>Para forzar el tamaño large en cualquier ancho.</td></tr>
+  </tbody>
+</table>
+
+## Responsive
+
+- **Tablet y mobile (hasta 1024 px, `@media (max-width: 64rem)`):** pasa a Size large (48 px, texto de 18 px).
+- **Desktop:** Size small (40 px).
+- `.dime-skip-nav--large` fuerza large en cualquier ancho. La posición y el texto no cambian.
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--color-background-brand</code> · <code>--color-border-default</code> · <code>--color-content-inverse</code></td><td>Píldora, borde y texto.</td></tr>
+    <tr><td><code>--space-2</code> · <code>--space-3</code> · <code>--space-4</code></td><td>Relleno (8 o 12 px × 16 px) y posición desde la esquina (16 px).</td></tr>
+    <tr><td><code>--interaction-size-medium</code> · <code>--interaction-size-large</code></td><td>Texto: 16 px en small y 18 px en large.</td></tr>
+    <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+No necesita. El destino lleva `tabindex="-1"` para que el navegador le pase el foco al seguir el enlace.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`472:2207`).

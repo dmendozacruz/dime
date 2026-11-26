@@ -1,0 +1,98 @@
+/* Accordion · DIME
+   Figma: página Accordion (99:3471). Cada panel se abre por separado.
+   La cabecera es un botón dentro de un encabezado. */
+
+.dime-accordion {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-family-base);
+  color: var(--color-content-default);
+}
+
+.dime-accordion__item {
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.dime-accordion__heading {
+  margin: 0;
+}
+
+/* Cabecera: 80px de alto, ocupa todo el ancho. */
+.dime-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4); /* 16px */
+  width: 100%;
+  min-height: var(--size-80);
+  padding: var(--space-3) var(--space-1); /* 12px 4px */
+  box-sizing: border-box;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--font-size-body-xl); /* 20px */
+  line-height: var(--line-height-body-xl); /* 28px */
+  font-weight: var(--font-weight-bold);
+  text-align: left;
+  cursor: pointer;
+}
+
+.dime-accordion__trigger:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-accordion__icon {
+  flex-shrink: 0;
+  width: var(--size-20);
+  height: var(--size-20);
+}
+
+/* + cerrado, − abierto (decorativos: el estado lo dice aria-expanded). */
+.dime-accordion__icon--open { display: none; }
+.dime-accordion__trigger[aria-expanded="true"] .dime-accordion__icon--open { display: block; }
+.dime-accordion__trigger[aria-expanded="true"] .dime-accordion__icon--closed { display: none; }
+
+/* Panel: se pliega con grid-template-rows (0fr → 1fr). */
+.dime-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 250ms ease, opacity 250ms ease;
+}
+
+.dime-accordion__trigger[aria-expanded="true"] + .dime-accordion__panel,
+.dime-accordion__heading:has([aria-expanded="true"]) + .dime-accordion__panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.dime-accordion__panel-inner {
+  overflow: hidden;
+}
+
+.dime-accordion__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4); /* 16px */
+  padding: var(--space-2) var(--space-1) var(--space-6); /* 8px 4px 24px */
+  font-size: var(--font-size-body-m); /* 16px */
+  line-height: var(--line-height-body-m); /* 24px */
+}
+
+.dime-accordion__content > * {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dime-accordion__panel {
+    transition: none;
+  }
+}
+
+/* <dime-accordion>: web component en light DOM (D-017). No pinta nada: solo envuelve el HTML. */
+dime-accordion {
+  display: contents;
+}

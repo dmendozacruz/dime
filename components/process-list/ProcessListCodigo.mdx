@@ -1,0 +1,82 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./process-list.stories.js";
+
+<Meta title="Componentes/Process list/Código" />
+
+# Process list
+
+<ComponentHeader description="Recorrido de pasos en orden, unidos por una línea. En desktop puede alternar los pasos a derecha e izquierda." figmaNode="401:1410" updated="25-11-2026" />
+
+<ComponentTabs component="process list" current="codigo" />
+
+Web component en light DOM (D-017): `<dime-process-list>` envuelve la lista ordenada y rellena la línea y los puntos al hacer scroll. El CSS está en `components/process-list/process-list.css`, el JavaScript en `components/process-list/process-list.js`, y solo usan tokens de DIME. Sin el componente, la lista se ve igual y sin relleno.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Paso activo
+
+<Canvas of={Stories.Active} sourceState="shown" />
+
+### Zigzag
+
+<Canvas of={Stories.Zigzag} sourceState="shown" />
+
+### Texto largo
+
+<Canvas of={Stories.LongText} sourceState="shown" />
+
+### Relleno al hacer scroll
+
+Baja por la página para ver cómo se rellenan la línea y los puntos. Los pasos con más texto no desalinean el resto: cada punto se rellena cuando el relleno llega a su título.
+
+<Canvas of={Stories.Scroll} sourceState="shown" />
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-process-list</code> · <code>--zigzag</code></td><td>Lista ordenada (<code>&lt;ol&gt;</code>). Zigzag: línea en el centro en desktop.</td></tr>
+    <tr><td><code>.dime-process-list__item</code> · <code>--active</code></td><td>Cada paso (<code>&lt;li&gt;</code>). El activo lleva <code>aria-current="step"</code>.</td></tr>
+    <tr><td><code>.dime-process-list__step</code></td><td>Punto y línea (<code>aria-hidden</code>). El último paso va sin línea. El punto queda a la altura del centro de la primera línea del título.</td></tr>
+    <tr><td><code>&lt;dime-process-list&gt;</code></td><td>Envuelve la <code>&lt;ol&gt;</code>. Pone <code>data-reached</code> en cada paso alcanzado y <code>--dime-fill</code> (0 a 1) con lo que lleva relleno su tramo de línea.</td></tr>
+    <tr><td><code>.dime-process-list__title</code> · <code>__description</code></td><td>Título (encabezado) y descripción.</td></tr>
+  </tbody>
+</table>
+
+## Responsive
+
+- **Tablet (769 – 1024 px):** igual que desktop.
+- **Mobile (hasta 768 px, `@media (max-width: 48rem)`):** el zigzag desaparece. Cada paso pasa a dos columnas, el punto de 10 px y el texto, siempre a la derecha de la línea y alineado a la izquierda. Sin cambios de HTML. El relleno al hacer scroll funciona igual en todos los anchos.
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--space-8</code> · <code>--space-3</code> · <code>--space-7</code></td><td>Línea → texto (40 px), título → descripción (12 px) y aire bajo cada paso (32 px).</td></tr>
+    <tr><td><code>--color-border-subtle</code> · <code>--color-border-default</code> · <code>--color-background-brand</code></td><td>Punto y línea en Default y Active.</td></tr>
+    <tr><td><code>--font-size-subheading</code> · <code>--line-height-subheading</code> · <code>--font-size-body-xl</code></td><td>Título 24/32 bold, descripción 20/28 y, con el alto de línea del título, el aire sobre el punto para alinearlo con el texto (11 px).</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+`<dime-process-list>` (`components/process-list/process-list.js`, registrado en `components/index.js`):
+
+- Mide el centro del título de cada paso y calcula el progreso con la posición de la lista en la ventana, con `requestAnimationFrame` y un solo listener pasivo de scroll.
+- Recalcula al cambiar el tamaño de la ventana y cuando termina de cargar la fuente, que mueve los títulos.
+- Con `prefers-reduced-motion: reduce` no escucha el scroll: pone todos los pasos como alcanzados y las líneas llenas.
+- No cambia el HTML ni el orden: solo atributos y una variable CSS.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir de Process list item (`401:1410`) y Process list step (`401:1379`).

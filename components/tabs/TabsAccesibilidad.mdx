@@ -1,0 +1,57 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./tabs.stories.js";
+
+<Meta title="Componentes/Tabs/Accesibilidad" />
+
+# Tabs
+
+<ComponentHeader description="Vistas alternativas del mismo nivel: solo se ve una a la vez y se cambia sin salir de la página." figmaNode="467:1951" updated="25-11-2026" />
+
+<ComponentTabs component="tabs" current="accesibilidad" />
+
+Patrón [Tabs del APG](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) con activación manual. React Aria `useTabList` como referencia de comportamiento.
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd></td><td>Entra en la pestaña seleccionada; el siguiente Tab salta al panel.</td></tr>
+    <tr><td><kbd>→</kbd> · <kbd>←</kbd></td><td>Mueven el foco a la pestaña siguiente o anterior, sin cambiar de panel.</td></tr>
+    <tr><td><kbd>Inicio</kbd> · <kbd>Fin</kbd></td><td>Llevan el foco a la primera o a la última.</td></tr>
+    <tr><td><kbd>Enter</kbd> · <kbd>Espacio</kbd></td><td>Seleccionan la pestaña que tiene el foco y muestran su panel.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- Cada pestaña es un botón con `role="tab"` dentro de un `tablist` etiquetado.
+- Solo una pestaña seleccionada (`aria-selected`); el panel se vincula con `aria-controls` y `aria-labelledby`.
+- Solo la seleccionada está en el orden de tabulación (`tabindex="0"`); las demás, `tabindex="-1"`.
+- Foco visible con doble anillo: amarillo por fuera y negro por dentro.
+- La seleccionada no se comunica solo con color: cambia el fondo (`background/brand`) y el texto (`content/inverse`).
+
+## Área táctil
+
+Size large (48 px) en tablet y mobile; small (40 px) solo en desktop, con ratón.
+
+## Responsive
+
+- La navegación con teclado es la misma en todos los anchos: flechas, Inicio, Fin, Enter y Espacio. En tablet y mobile sirve también con un teclado externo.
+- En tablet y mobile la pestaña mide 48 px de alto (Size large) para tocarla con el dedo. Con 3 pestañas en 360 px no hace falta desplazar la barra en horizontal.
+- El orden de lectura no cambia.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado*: Tab entra en la seleccionada, la flecha mueve el foco sin seleccionar, Enter selecciona y el siguiente Tab llega al panel.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): "pestaña, 1 de 3, seleccionada" y el nombre del panel.

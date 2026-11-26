@@ -1,0 +1,185 @@
+/* Card · DIME
+   Tarjeta de un caso: nombre, áreas, categoría y enlace. Toda la tarjeta lleva al
+   destino con un solo enlace. Figma: página Cards, set Card (102:7204). */
+
+.dime-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 18.75rem; /* 300px */
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 0.5px solid var(--color-border-default);
+  background: var(--color-background-default);
+  font-family: var(--font-family-base);
+  color: var(--color-content-default);
+}
+
+/* Imagen del caso: se descubre de abajo arriba en Hover y Focus (opcional).
+   Va detrás del contenido (z-index -1 dentro de la tarjeta, que es su propio
+   contexto de apilado) para que el pie y el enlace estirado sigan encima. */
+.dime-card {
+  isolation: isolate;
+}
+
+.dime-card__image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  clip-path: inset(100% 0 0 0); /* cerrada */
+  transition: clip-path 550ms ease-in-out;
+}
+
+/* En Hover y Focus la imagen sustituye al título, las áreas y las etiquetas;
+   el candado y el pie se quedan. El texto sigue en el árbol de accesibilidad. */
+.dime-card__body > :not(.dime-card__lock) {
+  transition: opacity 250ms ease;
+}
+
+.dime-card:has(.dime-card__image):hover .dime-card__body > :not(.dime-card__lock),
+.dime-card:has(.dime-card__image):focus-within .dime-card__body > :not(.dime-card__lock) {
+  opacity: 0;
+}
+
+.dime-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4); /* 16px */
+  padding: var(--space-7) var(--space-6); /* 32px 24px */
+}
+
+.dime-card__lock {
+  display: flex;
+  justify-content: flex-end;
+  height: var(--size-20);
+}
+
+.dime-card__lock svg {
+  width: var(--size-20);
+  height: var(--size-20);
+}
+
+/* Con imagen, en Hover y Focus el candado pasa a blanco para verse sobre ella y
+   aparece el tooltip "Password protected" a su izquierda (variante Left del Tooltip:
+   a la derecha no hay sitio y arriba el borde de la tarjeta lo recortaría). */
+.dime-card:has(.dime-card__image):hover .dime-card__lock,
+.dime-card:has(.dime-card__image):focus-within .dime-card__lock {
+  color: var(--color-content-inverse);
+}
+
+.dime-card:hover .dime-card__lock .dime-tooltip,
+.dime-card:focus-within .dime-card__lock .dime-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 150ms ease 400ms, visibility 0s linear 400ms; /* entra tras 400 ms */
+}
+
+/* Escape lo cierra sin mover el ratón ni el foco (WCAG 1.4.13). */
+.dime-card .dime-tooltip-host[data-dismissed] .dime-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+}
+
+.dime-card__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* 8px */
+}
+
+.dime-card__title {
+  margin: 0;
+  font-size: var(--font-size-heading-s); /* 32px */
+  line-height: var(--line-height-heading-s); /* 40px */
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+}
+
+.dime-card__subtitle {
+  margin: 0;
+  color: var(--color-content-subtle);
+  font-size: var(--font-size-label-s); /* 12px */
+  line-height: var(--line-height-label-s); /* 16px */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dime-card__footer {
+  position: static; /* el área del enlace se mide desde la tarjeta */
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); /* 8 8 8 16 */
+  transition: background-color 250ms ease;
+}
+
+/* El enlace cubre toda la tarjeta: un solo destino, un solo Tab. */
+.dime-card__footer .dime-link::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* toda la tarjeta */
+}
+
+/* Hover y Focus: se ve la imagen y el pie se oscurece. */
+.dime-card:hover .dime-card__image,
+.dime-card:focus-within .dime-card__image {
+  clip-path: inset(0 0 0 0); /* abierta */
+}
+
+/* Placeholder estándar de la imagen: gris con un icono de imagen. Para una imagen propia, un <img>
+   con la clase .dime-card__image en su lugar. */
+.dime-card__image--placeholder {
+  display: grid;
+  place-items: center;
+  background-color: var(--color-background-subtle);
+}
+
+.dime-card__image--placeholder::before {
+  content: "";
+  width: var(--size-48);
+  height: var(--size-48);
+  background-color: var(--color-content-subtle);
+  -webkit-mask: url("./image-placeholder.svg") center / contain no-repeat;
+  mask: url("./image-placeholder.svg") center / contain no-repeat;
+}
+
+.dime-card:hover .dime-card__footer,
+.dime-card:focus-within .dime-card__footer {
+  background: var(--color-background-brand);
+}
+
+.dime-card:hover .dime-card__footer .dime-link,
+.dime-card:focus-within .dime-card__footer .dime-link {
+  color: var(--color-content-inverse);
+}
+
+.dime-card:hover .dime-card__footer .dime-link__label::after,
+.dime-card:focus-within .dime-card__footer .dime-link__label::after {
+  background-color: var(--color-border-inverse);
+}
+
+/* Foco: el doble anillo rodea la tarjeta entera, no solo el texto del enlace. */
+.dime-card__footer .dime-link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.dime-card:has(.dime-link:focus-visible) {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dime-card__image,
+  .dime-card__body > :not(.dime-card__lock),
+  .dime-card__footer,
+  .dime-card:hover .dime-card__lock .dime-tooltip,
+  .dime-card:focus-within .dime-card__lock .dime-tooltip {
+    transition: none;
+  }
+}

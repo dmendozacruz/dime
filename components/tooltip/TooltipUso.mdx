@@ -1,0 +1,58 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { Overview } from "../shared/Demo.jsx";
+import { tooltipHTML as t } from "./tooltip.stories.js";
+
+<Meta title="Componentes/Tooltip/Uso" />
+
+# Tooltip
+
+<ComponentHeader description="Pista breve, de dos o tres palabras, junto a un elemento. Aparece con el ratón o con el foco del teclado." figmaNode="102:11509" updated="25-11-2026" />
+
+<ComponentTabs component="tooltip" current="uso" />
+
+## Overview
+
+Las cuatro posiciones de la propiedad Position.
+
+<Overview light={["top", "bottom", "left", "right"].map((position) => t({ position }))} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Caja</strong></td><td>Fondo oscuro, sin radio.</td><td><code>background/brand</code> · padding <code>space/3</code> × <code>space/2</code></td></tr>
+    <tr><td>2</td><td><strong>Texto</strong></td><td>Dos o tres palabras, en una línea.</td><td>Body / Small / regular · <code>content/inverse</code></td></tr>
+    <tr><td>3</td><td><strong>Flecha</strong></td><td>Apunta al elemento. Cambia de lado con Position.</td><td><code>background/brand</code> · 6 × 3 px</td></tr>
+  </tbody>
+</table>
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Añades una pista breve a un icono, como "Password protected" junto a un candado.
+- La misma información ya está en el nombre accesible del elemento interactivo.
+
+**No lo uses cuando**
+
+- La información es imprescindible: ponla en texto visible.
+- Tiene enlaces o botones: el tooltip no puede tener contenido interactivo.
+- Es la única forma de verla en móvil: con el dedo no hay hover.
+
+## Recomendaciones de uso
+
+- Dos o tres palabras, en una línea.
+- Elige la posición según el espacio libre alrededor del elemento, para que no se corte contra un borde.
+- Aparece con un pequeño retraso (400 ms) y desaparece al momento.
+- No tapes el elemento que lo muestra.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: t({ text: "Password protected" }), text: "Dos palabras que completan el icono." },
+  { type: "dont", html: t({ text: "This content is protected because of a confidentiality agreement" }), text: "Un texto largo no se lee en un tooltip: ponlo en la página." },
+]} />

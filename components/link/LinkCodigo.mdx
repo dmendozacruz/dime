@@ -1,0 +1,92 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import * as Stories from "./link.stories.js";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+
+<Meta title="Componentes/Link/Código" />
+
+# Link
+
+<ComponentHeader
+  description="Enlace de texto con icono. Lleva a otra página, a un perfil externo o al correo. Es siempre un enlace (<a href>), aunque esté fuera de un párrafo."
+  figmaNode="102:7604"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="link" current="codigo" />
+
+HTML y CSS, sin JavaScript. El CSS está en `components/link/link.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+Cambia las propiedades en la tabla de abajo para ver cada combinación.
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Size large
+
+<Canvas of={Stories.Large} sourceState="shown" />
+
+### Inverted
+
+Sobre fondo oscuro. El fondo lo pone el contenedor, no el enlace.
+
+<Canvas of={Stories.Inverted} sourceState="shown" />
+
+### Icono a la izquierda
+
+<Canvas of={Stories.IconLeft} sourceState="shown" />
+
+### Disabled
+
+Destino no disponible. **No lleva `href`**: lleva `role="link"`, `aria-disabled="true"` y `tabindex="0"`, para que siga recibiendo el foco, se anuncie como no disponible y se pueda descubrir el motivo, escrito al lado.
+
+<Canvas of={Stories.Disabled} sourceState="shown" />
+
+### Texto largo
+
+En un contenedor estrecho, el texto baja de línea sin cortarse.
+
+<Canvas of={Stories.LongText} sourceState="shown" />
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-link</code></td><td>Size small, Inverted false</td><td>El enlace. Va en el <code>&lt;a&gt;</code>.</td></tr>
+    <tr><td><code>.dime-link--large</code></td><td>Size large</td><td>48 px de alto, texto de 24 px e icono de 28 px.</td></tr>
+    <tr><td><code>.dime-link--inverted</code></td><td>Inverted true</td><td>Sobre fondos oscuros.</td></tr>
+    <tr><td><code>.dime-link__label</code></td><td>Text</td><td>El texto. Lleva el subrayado. Va siempre: el Link no se usa solo con el icono (<code>Show text</code> existe en Figma, pero no se usa).</td></tr>
+    <tr><td><code>.dime-link__icon</code></td><td>Show icon left / right</td><td>SVG en línea con <code>aria-hidden="true"</code>; toma el color del texto. Antes del texto si va a la izquierda, después si va a la derecha.</td></tr>
+    <tr><td><code>[aria-disabled="true"]</code></td><td>State Disabled</td><td>Sin <code>href</code>. Los estados Hover, Active y Focus los pone el navegador (<code>:hover</code>, <code>:active</code>, <code>:focus-visible</code>).</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--space-1</code> · <code>--space-2</code></td><td>Separación entre texto e icono (4 px) y relleno (8 px).</td></tr>
+    <tr><td><code>--interaction-size-medium</code> · <code>--interaction-line-height-medium</code></td><td>Texto de small: 16/24.</td></tr>
+    <tr><td><code>--interaction-size-extra-large</code> · <code>--interaction-line-height-extra-large</code></td><td>Texto de large: 24/32.</td></tr>
+    <tr><td><code>--interaction-font-weight-regular</code> · <code>--interaction-font-weight-medium</code></td><td>Regular en Default y Hover; medium en Active y Focus.</td></tr>
+    <tr><td><code>--size-20</code> · <code>--size-28</code></td><td>Icono en small y en large.</td></tr>
+    <tr><td><code>--color-content-default</code> · <code>--color-content-inverse</code> · <code>--color-content-disabled</code></td><td>Texto e icono.</td></tr>
+    <tr><td><code>--color-border-default</code> · <code>--color-border-inverse</code> · <code>--color-border-disabled</code></td><td>Subrayado e icono de Disabled.</td></tr>
+    <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+No necesita. El enlace, el teclado y los estados son del navegador. El subrayado se anima con CSS (250 ms) y se queda quieto con "reducir movimiento".
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`102:7604`).

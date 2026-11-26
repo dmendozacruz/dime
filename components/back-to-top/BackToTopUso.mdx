@@ -1,0 +1,63 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { Overview, States } from "../shared/Demo.jsx";
+import { backToTopHTML } from "./back-to-top.stories.js";
+
+export const b = () => backToTopHTML();
+
+<Meta title="Componentes/Back to top/Uso" />
+
+# Back to top
+
+<ComponentHeader description="Enlace con forma de botón que vuelve al principio de la página. Flotante, fijo abajo a la derecha." figmaNode="341:4214" updated="25-11-2026" />
+
+<ComponentTabs component="back to top" current="uso" />
+
+## Overview
+
+<Overview light={[b()]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Círculo</strong></td><td>Fondo oscuro de 44 × 44 px con borde de 1 px.</td><td><code>background/brand</code> · <code>border/default</code> · radio 100 · padding <code>space/2</code></td></tr>
+    <tr><td>2</td><td><strong>Flecha</strong></td><td>Flecha hacia arriba. Es decorativa: el nombre lo da el enlace.</td><td>Icons · arrow up · 28 px · <code>content/inverse</code> (<code>content/default</code> en Hover)</td></tr>
+    <tr><td>3</td><td><strong>Anillo de foco</strong></td><td>Doble anillo al llegar con el teclado.</td><td><code>focus/ring-inner</code> · <code>focus/ring</code></td></tr>
+  </tbody>
+</table>
+
+## Estados
+
+Default, Hover (se invierte), Active (igual que Default) y Focus.
+
+<States plain items={[
+  { label: "Default", html: b() },
+  { label: "Hover", html: b() },
+  { label: "Active", html: b(), demo: "none" },
+  { label: "Focus", html: b() },
+]} />
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- La página es larga y volver arriba con el scroll cuesta.
+- Quieres dar un atajo fijo que no dependa del menú.
+
+**No lo uses cuando**
+
+- La página es corta y cabe en dos o tres pantallas.
+- Para volver a la página anterior: usa el Button back.
+- Para ir a una sección concreta: eso es un índice de la página.
+
+## Recomendaciones de uso
+
+- Flotante: fijo abajo a la derecha de la pantalla, siempre en el mismo sitio, mientras se hace scroll.
+- Aparece al bajar y se oculta arriba; cuando está oculto, sale también del teclado y del lector de pantalla.
+- En tablet y mobile (hasta 1024 px) solo aparece cuando la persona **sube**: así no tapa el texto mientras lee hacia abajo.
+- No tapa los botones del pie de página al llegar al final.
+- Scroll suave solo si la persona no ha pedido reducir el movimiento.
+

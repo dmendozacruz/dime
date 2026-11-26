@@ -1,0 +1,54 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./skip-nav.stories.js";
+
+<Meta title="Componentes/Skip nav/Accesibilidad" />
+
+# Skip nav
+
+<ComponentHeader description="Primer enlace de la página: salta la navegación y lleva al contenido principal. Solo se ve con el teclado." figmaNode="472:2207" updated="25-11-2026" />
+
+<ComponentTabs component="skip nav" current="accesibilidad" />
+
+Es un enlace a una zona de la misma página (WCAG 2.4.1). Referencia: [técnica G1 de WCAG](https://www.w3.org/WAI/WCAG22/Techniques/general/G1).
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd> (primera vez)</td><td>Llega al enlace, que aparece arriba a la izquierda.</td></tr>
+    <tr><td><kbd>Enter</kbd></td><td>Salta al contenido principal, que recibe el foco.</td></tr>
+    <tr><td><kbd>Tab</kbd> (después)</td><td>Sigue desde el contenido principal, no desde el header.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- **Es un enlace** (`<a href="#main-content">`) y el primer elemento enfocable de la página.
+- **Oculto sin salir del orden de tabulación:** mientras no tiene el foco, está fuera de la vista, no con `display: none`.
+- **El destino recibe el foco** (`tabindex="-1"` en el `<main>`), para que el siguiente Tab siga desde ahí.
+- **No queda tapado por el header** (WCAG 2.4.11).
+
+## Contraste
+
+Texto blanco sobre negro (17,4:1) y doble anillo de foco siempre visible.
+
+## Responsive
+
+- Sigue apareciendo solo con el foco del teclado, también en tablet y mobile con un teclado externo.
+- En tablet y mobile mide 48 px de alto (Size large). La posición y el texto no cambian.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado*: el primer Tab da el foco al enlace y Enter lleva el foco al contenido principal.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver y Safari: que el primer Tab llegue al enlace (Safari necesita tener activada la opción de navegar por enlaces con Tab).

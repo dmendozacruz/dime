@@ -1,0 +1,93 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { LinkStates, LinkOverview, html } from "./LinkDemo.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+
+<Meta title="Componentes/Link/Uso" />
+
+# Link
+
+<ComponentHeader
+  description="Enlace de texto con icono. Lleva a otra página, a un perfil externo o al correo. Es siempre un enlace (<a href>), aunque esté fuera de un párrafo."
+  figmaNode="102:7604"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="link" current="uso" />
+
+## Overview
+
+Las combinaciones de las propiedades de Figma: Size small y large, flecha a la derecha o a la izquierda e Inverted sobre fondo oscuro. El texto va siempre: el enlace nunca se usa solo con el icono.
+
+<LinkOverview />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Texto</strong></td><td>Adónde lleva el enlace, en pocas palabras. Es el inicio del nombre accesible: el <code>aria-label</code> puede ampliarlo, pero empieza siempre por este texto.</td><td>Interaction / Medium (small) · Interaction / Extra large (large) · <code>content/default</code></td></tr>
+    <tr><td>2</td><td><strong>Icono</strong></td><td>Flecha ↗ a la derecha (<code>link right</code>) o a la izquierda (<code>link left</code>). Acompaña siempre al texto, nunca va sola. Es decorativa: no forma parte del nombre accesible.</td><td>Icons · 20 px (small) · 28 px (large)</td></tr>
+    <tr><td>3</td><td><strong>Subrayado</strong></td><td>Línea de 1 px bajo el texto. Aparece en Hover, Active y Focus; en Default no se ve.</td><td><code>border/default</code> (<code>border/inverse</code> en inverted)</td></tr>
+    <tr><td>4</td><td><strong>Anillo de foco</strong></td><td>Doble anillo que aparece al navegar con teclado. No se quita nunca.</td><td><code>focus/ring</code> + <code>focus/ring-inner</code></td></tr>
+  </tbody>
+</table>
+
+## Estados
+
+Size small · Default, Hover, Active, Focus y Disabled. Hover, Active y Focus muestran el subrayado; Active y Focus, además, el texto en medium.
+
+<LinkStates />
+
+### Inverted
+
+Sobre fondo oscuro.
+
+<LinkStates inverted />
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Lleva a otra página, como "Open case study".
+- Lleva a un perfil externo, como "LinkedIn".
+- Abre el correo (`mailto:`), como "Send email".
+
+**No lo uses cuando**
+
+- Ejecuta una acción en la propia página (enviar, abrir, cerrar): usa un Button.
+- Es la acción principal de la zona: usa un Button, que pesa más.
+- Vuelve atrás o baja a la siguiente sección: usa Button back o icon button.
+
+## Recomendaciones de uso
+
+- Texto corto que diga adónde lleva: "Open case study", "LinkedIn". Nunca "Click here" ni "Más".
+- Si hay varios enlaces con el mismo texto, el nombre accesible empieza por ese texto y añade el destino: "Open case study: Shori".
+- Si abre en pestaña nueva, dilo en el nombre accesible: "LinkedIn (opens in a new tab)".
+- La flecha ↗ es el icono de los enlaces a otra página, interna o externa. Las flechas ←, → y ↓ son de los botones de navegación.
+- Usa Inverted sobre fondos oscuros, nunca sobre fondo claro.
+- Disabled solo si el destino no está disponible (un enlace roto), con el motivo visible cerca.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: html({}), text: "El texto dice adónde lleva." },
+  { type: "dont", html: html({ text: "Click here" }), text: "Un texto genérico no dice adónde lleva: en la lista de enlaces del lector de pantalla todos se llamarían igual." },
+  { type: "do", html: `<span class="dime-dark">${html({ text: "LinkedIn", inverted: true })}</span>`, text: "Inverted sobre fondo oscuro." },
+  { type: "dont", html: html({ text: "LinkedIn", inverted: true }), text: "Inverted sobre fondo claro: el texto blanco no se ve." },
+]} />
+
+## Link o Button
+
+Se parecen, pero no hacen lo mismo. **Decide por lo que hace, no por cómo se ve**: si al pulsarlo cambia la URL, se descarga algo o se abre el correo, es un enlace aunque tenga forma de botón.
+
+<table>
+  <thead><tr><th></th><th>Button</th><th>Link</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Qué hace</strong></td><td>Ejecuta una acción en la página: enviar, abrir, cerrar.</td><td>Lleva a otro sitio: otra página, una sección, un archivo o el correo.</td></tr>
+    <tr><td><strong>En código</strong></td><td><code>&lt;button&gt;</code></td><td><code>&lt;a href&gt;</code></td></tr>
+    <tr><td><strong>Teclado</strong></td><td>Enter y Espacio</td><td>Enter</td></tr>
+    <tr><td><strong>Lector de pantalla</strong></td><td>Lo anuncia como botón.</td><td>Lo anuncia como enlace y aparece en la lista de enlaces.</td></tr>
+  </tbody>
+</table>

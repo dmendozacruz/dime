@@ -1,0 +1,67 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { processListHTML as p } from "./process-list.stories.js";
+import "./process-list.css";
+
+<Meta title="Componentes/Process list/Uso" />
+
+# Process list
+
+<ComponentHeader description="Recorrido de pasos en orden, unidos por una línea. En desktop puede alternar los pasos a derecha e izquierda." figmaNode="401:1410" updated="25-11-2026" />
+
+<ComponentTabs component="process list" current="uso" />
+
+## Overview
+
+Pasos con la línea a la izquierda, y en zigzag (desktop).
+
+<div className="dime-overview dime-overview--stack sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: p({ scroll: false }) + p({ zigzag: true, scroll: false }) }} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Punto</strong></td><td>Marca cada paso y queda a la altura del centro de la primera línea del título. Se rellena al hacer scroll hasta él, o en Active (el paso actual).</td><td>10 px · <code>border/subtle</code> (Default) · <code>background/brand</code> (alcanzado y Active)</td></tr>
+    <tr><td>2</td><td><strong>Línea</strong></td><td>Une los pasos. El último va sin línea. Se rellena de arriba abajo al hacer scroll.</td><td>1 px · <code>border/subtle</code> (<code>border/default</code> al rellenarse y en Active)</td></tr>
+    <tr><td>3</td><td><strong>Título</strong></td><td>El nombre del paso, numerado si el orden importa.</td><td>Subheading / bold · <code>content/default</code></td></tr>
+    <tr><td>4</td><td><strong>Descripción</strong></td><td>Qué pasa en ese paso.</td><td>Body / Extra large / regular · <code>content/default</code></td></tr>
+  </tbody>
+</table>
+
+## Relleno al hacer scroll
+
+Al bajar por la página, la línea y los puntos se van rellenando de negro hasta el paso por el que vas. El relleno empieza cuando la lista asoma por la parte de abajo de la ventana y termina cuando su último paso llega hacia la mitad. Cada punto se rellena cuando el relleno llega a él, aunque los pasos tengan textos de distinta longitud. Sirve de orientación visual: no cambia ni mueve el contenido.
+
+Con «reducir movimiento» activado, la línea y los puntos aparecen ya rellenos y no se animan.
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Cuentas un proceso o una metodología en orden.
+- Presentas perfiles o etapas que se recorren de arriba abajo.
+
+**No lo uses cuando**
+
+- Son pocos pasos cortos que se leen en horizontal: usa flechas entre ellos.
+
+## Recomendaciones de uso
+
+- Título corto y numerado si el orden importa: "01. …".
+- El último paso va sin línea.
+- En desktop el texto puede alternar a derecha e izquierda (zigzag), empezando por la derecha; en móvil va siempre a la derecha de la línea, alineado a la izquierda.
+- La línea y los puntos acompañan: el orden lo dicen los títulos.
+- Si la lista es larga, deja que se rellene al hacer scroll: ayuda a ver cuánto queda.
+
+## Responsive
+
+<table>
+  <thead><tr><th>Breakpoint</th><th>Ancho</th><th>Comportamiento</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Desktop</strong></td><td>&gt; 1024 px</td><td>La línea en el centro y el texto en zigzag: el primer paso a la derecha, el siguiente a la izquierda.</td></tr>
+    <tr><td><strong>Tablet</strong></td><td>769 – 1024 px</td><td>Igual que desktop.</td></tr>
+    <tr><td><strong>Mobile</strong></td><td>≤ 768 px</td><td>Sin zigzag: la línea a la izquierda y el texto alineado a la izquierda.</td></tr>
+  </tbody>
+</table>

@@ -1,0 +1,58 @@
+/* Blockquote · DIME
+   Cita con comillas grandes y autor opcional. Figma: página Blockquote (404:1620). */
+
+.dime-blockquote {
+  display: flex;
+  gap: var(--space-6); /* 24px */
+  margin: 0;
+  font-family: var(--font-family-base);
+  color: var(--color-content-default);
+}
+
+/* Comillas decorativas: el .icon Quote de Figma (404:1611), 80px. Es una máscara
+   para que el color lo ponga el token, no el SVG. */
+.dime-blockquote::before {
+  content: "";
+  flex-shrink: 0;
+  width: var(--size-80);
+  height: var(--size-80);
+  background-color: var(--color-background-brand);
+  -webkit-mask: url("./quote.svg") center / contain no-repeat;
+  mask: url("./quote.svg") center / contain no-repeat;
+}
+
+.dime-blockquote__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4); /* 16px: cita → autor */
+  padding-block: var(--space-7); /* 32px */
+  min-width: 0;
+}
+
+.dime-blockquote__quote {
+  margin: 0;
+}
+
+.dime-blockquote__quote p {
+  margin: 0;
+  font-size: var(--font-size-heading-s); /* 32px */
+  line-height: var(--line-height-heading-s); /* 40px */
+  font-weight: var(--font-weight-light);
+}
+
+.dime-blockquote__author {
+  font-size: var(--font-size-body-xl); /* 20px */
+  line-height: var(--line-height-body-xl); /* 28px */
+  font-weight: var(--font-weight-bold);
+}
+
+.dime-blockquote__author cite {
+  font-style: normal;
+}
+
+@media (max-width: 48rem) {
+  .dime-blockquote {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -1,0 +1,25 @@
+# La comprobación que decide si algo se puede subir: `npm run gate`.
+# Tokens iguales a Figma, estructura de los componentes, pruebas de las stories
+# (teclado, foco, roles y axe) y build de Storybook.
+name: Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run gate

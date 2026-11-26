@@ -1,0 +1,46 @@
+/* Skip nav · DIME
+   Primer enlace de la página: salta al contenido principal. Figma: página Skip Nav
+   (472:2207). Solo se ve con el foco: no tiene Default ni Hover. */
+
+/* Oculto sin salir del orden de tabulación. */
+.dime-skip-nav {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  padding: calc(var(--space-2) - 1px) calc(var(--space-4) - 1px); /* 8px 16px con el borde dentro: 40px */
+  border: 1px solid var(--color-border-default);
+  border-radius: 100px; /* píldora */
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+  font-family: var(--font-family-base);
+  font-size: var(--interaction-size-medium); /* 16px */
+  line-height: var(--interaction-line-height-medium); /* 24px */
+  text-decoration: none;
+  white-space: nowrap;
+  transform: translateY(calc(-100% - var(--space-9)));
+}
+
+/* Al recibir el foco aparece, con el doble anillo siempre visible. */
+.dime-skip-nav:focus {
+  transform: none;
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* Size large (48 px) en tablet y móvil, para el dedo. */
+@media (max-width: 64rem) {
+  .dime-skip-nav {
+    padding: calc(var(--space-3) - 1px) calc(var(--space-4) - 1px); /* 12px 16px: 48px */
+    font-size: var(--interaction-size-large); /* 18px */
+    line-height: var(--interaction-line-height-large); /* 24px */
+  }
+}
+
+.dime-skip-nav--large {
+  padding: calc(var(--space-3) - 1px) calc(var(--space-4) - 1px);
+  font-size: var(--interaction-size-large);
+  line-height: var(--interaction-line-height-large);
+}

@@ -1,0 +1,50 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./accordion.stories.js";
+
+<Meta title="Componentes/Accordion/Accesibilidad" />
+
+# Accordion
+
+<ComponentHeader description="Lista de secciones que se abren y cierran por separado. Reduce el scroll y deja el detalle a mano." figmaNode="99:3471" updated="25-11-2026" />
+
+<ComponentTabs component="accordion" current="accesibilidad" />
+
+Patrón [Accordion del APG](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/). React Aria `useDisclosure` como referencia de comportamiento.
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd></td><td>Llega a cada cabecera y, si su panel está abierto, a lo que haya dentro.</td></tr>
+    <tr><td><kbd>Enter</kbd> · <kbd>Espacio</kbd></td><td>Abren y cierran el panel.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- La cabecera es un botón dentro de un encabezado: dice si está abierto o cerrado (`aria-expanded`) y qué panel controla (`aria-controls`).
+- El panel es una región vinculada a su cabecera (`aria-labelledby`), así el lector de pantalla la nombra.
+- Cerrado, el contenido no recibe el foco ni lo lee el lector de pantalla (`inert`).
+- El icono + / − es decorativo: el estado lo anuncia el botón, no el icono.
+- Foco visible con doble anillo: amarillo por fuera y negro por dentro.
+
+## Área táctil y movimiento
+
+- Toda la cabecera es clicable y mide 80 px de alto, por encima del mínimo de 44 px.
+- Con movimiento reducido activado, se abre sin animación.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado*: el contenido cerrado no recibe el foco; Enter abre, el enlace de dentro recibe el foco y Espacio cierra.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): "botón, contraído / expandido" y el nombre de la región al entrar.

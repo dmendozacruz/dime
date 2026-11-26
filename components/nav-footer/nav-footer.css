@@ -1,0 +1,200 @@
+/* Nav Footer · DIME
+   Cierre de página con contacto. Figma: página Footer, set Footer (490:2692).
+   Reúne otros componentes: se compone de Link large inverted, Button inverted y Divider
+   inverted. Sin JavaScript.
+   Responde al ancho de SU contenedor (container queries), no al de la ventana: así
+   se ven los tres anchos uno junto a otro en la documentación y se comporta igual a
+   pantalla completa. Desktop > 1024 px · tablet 769 – 1024 px · mobile ≤ 768 px. */
+
+.dime-nav-footer {
+  container-type: inline-size;
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+  font-family: var(--font-family-base);
+}
+
+/* ---------- Desktop · Type home (630 px) */
+.dime-nav-footer__inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 39.375rem; /* 630px: alto fijo de Figma; el contenido va alineado abajo */
+  padding: var(--space-15) var(--space-13) 0; /* 160px 120px */
+}
+
+.dime-nav-footer__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* 8px */
+  flex: 1;
+}
+
+.dime-nav-footer__title {
+  margin: 0;
+  font-size: var(--font-size-display); /* 64px */
+  line-height: var(--line-height-display); /* 68px */
+  font-weight: var(--font-weight-bold);
+}
+
+.dime-nav-footer__lead {
+  margin: 0;
+  max-width: 44.1875rem; /* 707px */
+  font-size: var(--font-size-heading-s); /* 32px */
+  line-height: var(--line-height-heading-s); /* 40px */
+  font-weight: var(--font-weight-light);
+}
+
+.dime-nav-footer__actions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: var(--space-6); /* 24px */
+}
+
+.dime-nav-footer__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6); /* 24px */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dime-nav-footer__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.dime-nav-footer__copy {
+  margin: 0;
+  padding: var(--space-7) 0 var(--space-9); /* 32px 0 48px */
+  text-align: right;
+  font-size: var(--font-size-body-m); /* 16px */
+  line-height: var(--line-height-body-m); /* 24px */
+}
+
+.dime-nav-footer__copy strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---------- Type page (compacto) · desktop: enlaces · título · botón en una fila */
+.dime-nav-footer--page .dime-nav-footer__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 300px cada una en Figma */
+  grid-template-areas:
+    "links title cta"
+    "rule rule rule"
+    "copy copy copy";
+  align-items: start;
+  min-height: 0;
+  padding: var(--space-8) var(--space-13) 0; /* 40px 120px */
+}
+
+.dime-nav-footer--page .dime-nav-footer__top { display: contents; }
+.dime-nav-footer--page .dime-nav-footer__actions { display: contents; }
+
+.dime-nav-footer--page .dime-nav-footer__title {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--size-52); /* la fila mide lo que el título con su aire */
+  text-align: center;
+  font-size: var(--font-size-heading-s); /* 32px */
+  line-height: var(--line-height-heading-s); /* 40px */
+}
+
+.dime-nav-footer--page .dime-nav-footer__links { grid-area: links; }
+.dime-nav-footer--page .dime-nav-footer__cta { grid-area: cta; align-items: flex-end; }
+.dime-nav-footer--page .dime-divider { grid-area: rule; margin-top: var(--space-6); } /* 24px */
+.dime-nav-footer--page .dime-nav-footer__copy { grid-area: copy; }
+
+/* ---------- Tablet (769 – 1024 px) */
+@container (max-width: 64rem) {
+  .dime-nav-footer__inner {
+    padding: var(--space-14) var(--space-6) 0; /* 128px 24px */
+  }
+
+  .dime-nav-footer__title {
+    font-size: var(--font-size-heading-l); /* 48px */
+    line-height: var(--line-height-heading-l); /* 52px */
+  }
+
+  .dime-nav-footer__lead {
+    max-width: 31.875rem; /* 510px */
+    font-size: var(--font-size-subheading); /* 24px */
+    line-height: var(--line-height-subheading); /* 32px */
+    font-weight: var(--font-weight-regular);
+  }
+
+  .dime-nav-footer--page .dime-nav-footer__inner {
+    display: flex;
+    align-items: stretch;
+    min-height: 0;
+    padding: var(--space-10) var(--space-6) 0; /* 64px 24px */
+  }
+
+  .dime-nav-footer--page .dime-nav-footer__top { display: flex; flex: 0 0 auto; padding-bottom: var(--space-6); }
+  .dime-nav-footer--page .dime-nav-footer__actions { display: flex; }
+  .dime-nav-footer--page .dime-divider { margin-top: 0; }
+
+  .dime-nav-footer--page .dime-nav-footer__title {
+    min-height: 0;
+    text-align: center;
+    font-size: var(--font-size-heading-m); /* 40px */
+    line-height: var(--line-height-heading-m); /* 48px */
+  }
+}
+
+/* ---------- Mobile (≤ 768 px) */
+@container (max-width: 48rem) {
+  .dime-nav-footer__inner {
+    min-height: 40.5rem; /* 648px */
+  }
+
+  .dime-nav-footer__lead {
+    max-width: none;
+  }
+
+  .dime-nav-footer__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-6); /* 24px */
+  }
+
+  .dime-nav-footer__cta {
+    align-items: stretch;
+  }
+
+  .dime-nav-footer__copy {
+    text-align: center;
+  }
+
+  .dime-nav-footer--page .dime-nav-footer__inner {
+    min-height: 0;
+  }
+}
+
+/* ---------- El Button del footer: small en desktop, large en tablet y mobile,
+   y a todo el ancho en mobile (Width large). Se ajusta con el mismo HTML. */
+@container (max-width: 64rem) {
+  .dime-nav-footer .dime-button {
+    padding: calc(var(--space-3) - 1px) calc(var(--space-4) - 1px); /* 12px 16px: 48px */
+    font-size: var(--interaction-size-large); /* 18px */
+    line-height: var(--interaction-line-height-large); /* 24px */
+  }
+
+  .dime-nav-footer .dime-button .dime-button__icon {
+    width: var(--size-24);
+    height: var(--size-24);
+  }
+}
+
+@container (max-width: 48rem) {
+  .dime-nav-footer .dime-button {
+    display: flex;
+    width: 100%;
+  }
+}

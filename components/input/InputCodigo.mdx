@@ -1,0 +1,107 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./input.stories.js";
+
+<Meta title="Componentes/Input/Código" />
+
+# Input
+
+<ComponentHeader description="Campo para escribir una contraseña. Lleva etiqueta visible, botón para ver lo escrito, ayuda opcional y mensaje de error." figmaNode="232:19462" updated="25-11-2026" />
+
+<ComponentTabs component="input" current="codigo" />
+
+HTML, CSS y el web component `<dime-input>` para el botón de ver la contraseña y el mensaje de error. El CSS está en `components/input/input.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Filled
+
+<Canvas of={Stories.Filled} sourceState="shown" />
+
+### Error
+
+<Canvas of={Stories.ErrorState} sourceState="shown" />
+
+### Masked false
+
+<Canvas of={Stories.Visible} sourceState="shown" />
+
+### Con ayuda
+
+<Canvas of={Stories.WithHelp} sourceState="shown" />
+
+### Disabled
+
+<Canvas of={Stories.Disabled} sourceState="shown" />
+
+## Ver la contraseña
+
+<Canvas of={Stories.Toggle} />
+
+## Enviar con error
+
+El error aparece al enviar. `setError(mensaje)` marca el campo con `aria-invalid` y escribe el mensaje en `.dime-input__error`, que existe siempre (vacío) con `role="alert"`. El foco se queda en el campo. Pulsa Access con el campo vacío.
+
+<Canvas of={Stories.Submit} />
+
+```html
+<dime-input>
+  <div class="dime-input">…</div>
+</dime-input>
+```
+
+```js
+import "./input.js"; // registra <dime-input>
+
+const field = document.querySelector("dime-input");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  field.setError(input.value ? "Incorrect password." : "Please enter a password.");
+});
+```
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-input</code></td><td>Input</td><td>Contenedor: etiqueta, campo, ayuda y error.</td></tr>
+    <tr><td><code>.dime-input__label</code></td><td>.Label</td><td><code>&lt;label for&gt;</code> unido al campo.</td></tr>
+    <tr><td><code>.dime-input__field</code></td><td>Input field</td><td>La píldora. Su borde sigue al estado del <code>&lt;input&gt;</code> (<code>:hover</code>, <code>:focus-visible</code>, <code>aria-invalid</code>, <code>disabled</code>).</td></tr>
+    <tr><td><code>.dime-input__toggle</code></td><td>.Button password</td><td><code>&lt;button type="button"&gt;</code> con <code>aria-label</code> "Show password" / "Hide password".</td></tr>
+    <tr><td><code>.dime-input__help</code></td><td>Show description</td><td>Ayuda, unida con <code>aria-describedby</code>.</td></tr>
+    <tr><td><code>.dime-input__error</code></td><td>.Error help</td><td>Siempre en la página, vacío, con <code>role="alert"</code>. Unido con <code>aria-describedby</code>.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--size-48</code> · <code>--space-5</code> · <code>--space-3</code> · <code>--space-2</code> · <code>--space-1</code></td><td>Alto del campo, rellenos (20 y 12 px) y separaciones.</td></tr>
+    <tr><td><code>--color-border-medium</code> · <code>--color-border-default</code> · <code>--color-feedback-error-border</code> · <code>--color-border-disabled</code></td><td>Borde según el estado.</td></tr>
+    <tr><td><code>--color-content-default</code> · <code>--color-content-subtle</code> · <code>--color-content-disabled</code></td><td>Texto, placeholder y Disabled.</td></tr>
+    <tr><td><code>--color-feedback-error-content</code></td><td>Mensaje de error.</td></tr>
+    <tr><td><code>--color-background-subtle</code></td><td>Hover del botón ver contraseña.</td></tr>
+    <tr><td><code>--font-size-body-s</code> · <code>--line-height-body-s</code></td><td>Todo el texto: 14/20.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+Es un **web component en light DOM** (D-017): `<dime-input>` envuelve el campo, que ya está en el HTML, y se registra al cargar `components/input/input.js`.
+
+- Botón ver / ocultar: el botón cambia el campo entre `password` y `text`, su nombre entre "Show password" y "Hide password" y su icono.
+- `setError(mensaje)`: marca o desmarca `aria-invalid` y escribe el mensaje 100 ms después de vaciar el nodo, para que se anuncie también si se repite.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir de Input (`232:19462`) y .Button password (`253:20525`).

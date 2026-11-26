@@ -1,0 +1,60 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./nav-footer.stories.js";
+
+<Meta title="Componentes/Nav Footer/Accesibilidad" />
+
+# Nav Footer
+
+<ComponentHeader description="Cierre de la página con el contacto. Une un título, dos enlaces, un botón y el copyright, y se adapta al ancho." figmaNode="490:2692" updated="25-11-2026" />
+
+<ComponentTabs component="nav footer" current="accesibilidad" />
+
+Landmark de pie de página (`<footer>`, rol `contentinfo`) con un título, una lista de enlaces y un enlace con aspecto de botón. No tiene un patrón propio en el APG: se apoya en los de sus componentes.
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd></td><td>Recorre los enlaces de contacto y después el botón, en el orden de la pantalla.</td></tr>
+    <tr><td><kbd>Enter</kbd></td><td>Abre el enlace o escribe el correo.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- **Landmark:** `<footer>` con `aria-label="Contact"`. El nombre es el mismo en todas las páginas y en inglés, como el resto del contenido.
+- **El título es un encabezado de nivel 2** (`<h2>`), también en el compacto: sirve para saltar a la zona.
+- **Los enlaces de contacto van en una lista** (`<ul>`): el lector anuncia «lista, 2 elementos».
+- **Los enlaces que se abren en una pestaña nueva lo dicen en su nombre:** «LinkedIn (opens in a new tab)».
+- **El botón es un enlace** (`<a href="mailto:…">`) con aspecto de botón: abre el correo, no ejecuta una acción en la página. Su nombre es el texto visible.
+- **La línea es decorativa** (`aria-hidden`): no se anuncia.
+- **Orden de lectura:** el código va en el orden título, frase, enlaces, botón y copyright. En el compacto de desktop el título se coloca visualmente entre los enlaces y el botón, pero se lee primero.
+- Mismos enlaces, con los mismos nombres y en el mismo orden, en todas las páginas (3.2.4).
+
+## Contraste
+
+- Blanco sobre `background/brand`: 17,4:1 (AA y AAA).
+- El estado de los enlaces y del botón no depende solo del color: el Link subraya y el Button se vacía. El doble anillo de foco ya está en esos componentes.
+
+## Responsive
+
+- El orden de tabulación es el mismo en desktop, tablet y mobile.
+- Los objetivos táctiles miden 48 px de alto (Link large y Button large) en tablet y mobile.
+- Con zoom del 400 % no hay scroll horizontal: en mobile todo va apilado (1.4.10).
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado*: el título es un encabezado, el footer es un `contentinfo` con nombre, y Tab recorre LinkedIn, Github y el botón.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver en Safari (macOS) y TalkBack en Chrome (Android): «pie de página Contact», el título, la lista de enlaces y los avisos de pestaña nueva.
+- Dispositivo real: el botón a todo el ancho en mobile.

@@ -1,0 +1,67 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./accordion.stories.js";
+
+<Meta title="Componentes/Accordion/Código" />
+
+# Accordion
+
+<ComponentHeader description="Lista de secciones que se abren y cierran por separado. Reduce el scroll y deja el detalle a mano." figmaNode="99:3471" updated="25-11-2026" />
+
+<ComponentTabs component="accordion" current="codigo" />
+
+HTML, CSS y el web component `<dime-accordion>` para abrir y cerrar. El CSS está en `components/accordion/accordion.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+## Variantes
+
+### Abierto
+
+<Canvas of={Stories.Open} sourceState="shown" />
+
+### Abierto con slot
+
+Contenido libre debajo del texto (Show slot), como una lista sencilla.
+
+<Canvas of={Stories.WithSlot} sourceState="shown" />
+
+### Título largo
+
+<Canvas of={Stories.LongTitle} sourceState="shown" />
+
+## Clases y atributos
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-accordion</code> · <code>.dime-accordion__item</code></td><td>Accordion</td><td>Lista (<code>&lt;ul&gt;</code>) y cada elemento, con el divisor debajo.</td></tr>
+    <tr><td><code>.dime-accordion__heading</code></td><td>—</td><td>Encabezado (<code>&lt;h3&gt;</code> o el nivel que toque) que contiene el botón.</td></tr>
+    <tr><td><code>.dime-accordion__trigger</code></td><td>Cabecera · State</td><td><code>&lt;button&gt;</code> con <code>aria-expanded</code> y <code>aria-controls</code>.</td></tr>
+    <tr><td><code>.dime-accordion__icon--closed</code> · <code>--open</code></td><td>Icons add / subtract</td><td>+ y −, decorativos.</td></tr>
+    <tr><td><code>.dime-accordion__panel</code></td><td>Content · Slot</td><td><code>role="region"</code> con <code>aria-labelledby</code>; <code>inert</code> mientras está cerrado.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--size-80</code></td><td>Alto mínimo de la cabecera.</td></tr>
+    <tr><td><code>--space-1</code> · <code>--space-2</code> · <code>--space-3</code> · <code>--space-4</code> · <code>--space-6</code></td><td>Rellenos de cabecera y panel, y separación título → icono.</td></tr>
+    <tr><td><code>--font-size-body-xl</code> · <code>--font-size-body-m</code> y sus interlineados</td><td>Título 20/28 bold y contenido 16/24.</td></tr>
+    <tr><td><code>--color-content-default</code> · <code>--color-border-default</code></td><td>Texto, iconos y divisor.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+Es un **web component en light DOM** (D-017): `<dime-accordion>` envuelve la lista y se activa solo al cargar `components/accordion/accordion.js`. Cambia `aria-expanded` al pulsar y pone `inert` al panel cerrado. La apertura se anima con CSS (250 ms) y se queda quieta con "reducir movimiento".
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`99:3471`).

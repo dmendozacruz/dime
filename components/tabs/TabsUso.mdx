@@ -1,0 +1,85 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { Overview, States } from "../shared/Demo.jsx";
+import "./tabs.css";
+
+export const bar = (large, items = ["Item", "Item", "Item"]) => `<div class="dime-tabs${large ? " dime-tabs--large" : ""}"><div class="dime-tabs__list">${items.map((t, i) => `<button class="dime-tabs__tab" type="button" aria-selected="${i === 0}">${t}</button>`).join("")}</div></div>`;
+export const item = (selected) => `<div class="dime-tabs"><div class="dime-tabs__list" style="border: 0; padding: 0;"><button class="dime-tabs__tab" type="button" aria-selected="${selected}">Item</button></div></div>`;
+
+<Meta title="Componentes/Tabs/Uso" />
+
+# Tabs
+
+<ComponentHeader description="Vistas alternativas del mismo nivel: solo se ve una a la vez y se cambia sin salir de la página." figmaNode="467:1951" updated="25-11-2026" />
+
+<ComponentTabs component="tabs" current="uso" />
+
+## Overview
+
+Size small y large, con tres pestañas y la primera seleccionada.
+
+<Overview light={[bar(false), bar(true)]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Contenedor</strong></td><td>Píldora que agrupa las pestañas.</td><td><code>background/default</code> · <code>border/default</code> · <code>space/2</code></td></tr>
+    <tr><td>2</td><td><strong>Pestaña</strong></td><td>Cada una de las vistas. Estados Default, Hover, Active y Focus; tamaños small (40 px) y large (48 px).</td><td>Padding <code>space/2</code> × <code>space/4</code> (small) o <code>space/3</code> × <code>space/4</code> (large)</td></tr>
+    <tr><td>3</td><td><strong>Etiqueta</strong></td><td>Texto de la pestaña. Es su nombre accesible.</td><td>Interaction / Medium (small) · Interaction / Large (large) · <code>content/default</code> (o <code>content/inverse</code> en Active)</td></tr>
+    <tr><td>4</td><td><strong>Anillo de foco</strong></td><td>Doble anillo al navegar con teclado.</td><td><code>focus/ring-inner</code> · <code>focus/ring</code></td></tr>
+  </tbody>
+</table>
+
+## Estados
+
+<States plain items={[
+  { label: "Default", html: item(false) },
+  { label: "Hover", html: item(false) },
+  { label: "Active", html: item(true), demo: "none" },
+  { label: "Focus", html: item(true) },
+]} />
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Hay varias vistas del mismo nivel y solo debe verse una.
+- La persona necesita saltar entre ellas sin hacer scroll.
+- El contenido de cada vista ya está en la página y se muestra al instante.
+
+**No lo uses cuando**
+
+- El destino es otra página o un ancla: usa un Link o la navegación.
+- Hay una sola vista: no hace falta el patrón.
+
+## Recomendaciones de uso
+
+- Etiquetas cortas y distintas entre sí.
+- Una sola pestaña seleccionada a la vez.
+- El panel es contenido de la página: el componente es solo la barra y las pestañas.
+- En mobile, centra la barra si encaja; si las pestañas no caben en una fila, replantea la estructura del contenido.
+- No uses Tabs para pasos de un proceso ordenado si el avance es secuencial obligatorio.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: bar(false, ["About me", "Skills"]), text: "Etiquetas claras." },
+  { type: "dont", html: bar(false, ["Tab 1", "Tab 2"]), text: "Etiquetas genéricas: no se sabe qué hay detrás." },
+  { type: "do", html: bar(false, ["Item", "Item"]), text: "Pocas pestañas del mismo nivel." },
+  { type: "dont", html: bar(false, ["Item", "Item", "Item", "Item", "Item"]), text: "Demasiadas pestañas, o destinos que deberían ser Links." },
+]} />
+
+## Responsive
+
+<table>
+  <thead><tr><th>Breakpoint</th><th>Ancho</th><th>Comportamiento</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Desktop</strong></td><td>&gt; 1024 px</td><td>Size small (40 px, Interaction / Medium).</td></tr>
+    <tr><td><strong>Tablet</strong></td><td>769 – 1024 px</td><td>Size large (48 px, Interaction / Large): sin ratón, el objetivo táctil es más cómodo.</td></tr>
+    <tr><td><strong>Mobile</strong></td><td>≤ 768 px</td><td>Size large, con la barra centrada encima de los paneles.</td></tr>
+  </tbody>
+</table>

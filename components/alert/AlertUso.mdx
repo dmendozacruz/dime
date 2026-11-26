@@ -1,0 +1,67 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { alertHTML as a } from "./alert.html.js";
+
+<Meta title="Componentes/Alert/Uso" />
+
+# Alert
+
+<ComponentHeader description="Aviso de información, éxito, advertencia o error. Dice qué ha pasado y, si hace falta, qué hacer." figmaNode="443:9196" updated="25-11-2026" />
+
+<ComponentTabs component="alert" current="uso" />
+
+## Overview
+
+Los cuatro tipos de la propiedad Type: info, success, warning y error.
+
+<div className="dime-overview dime-overview--stack sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: ["info", "success", "warning", "error"].map((type) => a({ type })).join("") }} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Fondo y borde</strong></td><td>Fondo suave del color del tipo y borde de 4 px a la izquierda.</td><td><code>feedback/&lt;tipo&gt;/background</code> · <code>feedback/&lt;tipo&gt;/border</code> · padding <code>space/5</code> · sin radio</td></tr>
+    <tr><td>2</td><td><strong>Icono</strong></td><td>Uno distinto por tipo: information, check circle, warning, danger.</td><td>Icons · 28 px</td></tr>
+    <tr><td>3</td><td><strong>Título</strong></td><td>Qué ha pasado, en pocas palabras.</td><td>Body / Large / bold · <code>feedback/&lt;tipo&gt;/content</code></td></tr>
+    <tr><td>4</td><td><strong>Contenido (opcional)</strong></td><td>Qué hacer o más detalle. Se activa con Show content.</td><td>Body / Medium / regular · <code>feedback/&lt;tipo&gt;/content</code></td></tr>
+  </tbody>
+</table>
+
+### Sin contenido
+
+Show content: false · solo el título.
+
+<div className="dime-overview dime-overview--stack sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: a({ type: "info", title: "Title", showContent: false }) }} />
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Confirmas algo que acaba de pasar tras una acción, como empezar una descarga.
+- Avisas de un error que impide seguir.
+- Das un aviso que afecta a toda la página o a una zona.
+
+**No lo uses cuando**
+
+- El fallo es de un campo: el mensaje va en el propio campo (Input).
+- La página no existe (404): eso es una página propia.
+- El estado ya se ve en el control: basta con anunciarlo al lector de pantalla.
+
+## Recomendaciones de uso
+
+- Título corto que diga qué ha pasado; el contenido, qué hacer.
+- Elige el tipo por lo que significa, no por el color.
+- Aparece cerca de lo que lo provocó, ocupa el ancho de su contenedor y no roba el foco.
+- No lo quites solo si tiene algo que hay que leer.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: a({ type: "success", title: "Download started", content: "Your resume is downloading." }), text: "Dice lo que acaba de pasar." },
+  { type: "dont", html: a({ type: "success", title: "Success" }), text: "Un título genérico no dice qué ha pasado." },
+  { type: "do", html: a({ type: "error", title: "The file couldn’t be downloaded", content: "Check your connection and try again." }), text: "Dice qué pasa y qué hacer." },
+  { type: "dont", html: a({ type: "error", title: "Error", content: "Something went wrong." }), text: "No ayuda a resolverlo." },
+]} />

@@ -1,0 +1,46 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./process-list.stories.js";
+
+<Meta title="Componentes/Process list/Accesibilidad" />
+
+# Process list
+
+<ComponentHeader description="Recorrido de pasos en orden, unidos por una línea. En desktop puede alternar los pasos a derecha e izquierda." figmaNode="401:1410" updated="25-11-2026" />
+
+<ComponentTabs component="process list" current="accesibilidad" />
+
+Una lista ordenada (`<ol>`): el orden de los pasos llega al lector de pantalla.
+
+## Roles, nombres y estados
+
+- **La línea y los puntos son decorativos** (`aria-hidden`): el lector de pantalla no los lee.
+- **Cada paso lleva su título como encabezado**, para poder saltar de uno a otro.
+- **Active no se comunica solo con el color:** el paso activo lleva `aria-current="step"` y el orden lo dan los títulos numerados.
+- **El orden del código es el de lectura**, también en zigzag: el CSS solo cambia el lado.
+- **El relleno al hacer scroll es solo visual:** no añade atributos ni anuncios, y no es el paso actual (`aria-current`).
+
+<Canvas of={Stories.Active} />
+
+## Movimiento
+
+- La línea y los puntos se rellenan según el scroll de la persona, nunca por su cuenta: no hay animación que no controle. Es lo que pide el criterio 2.2.2 para el movimiento: no empieza solo.
+- Con «reducir movimiento» activado, todo aparece relleno y no se anima.
+- El relleno no cambia el contenido ni su posición, y no es el único modo de saber el orden: lo dicen los títulos numerados.
+- En modo de alto contraste la línea y los puntos se dibujan con el color del texto del sistema, sin relleno gradual.
+
+## Responsive
+
+- El zigzag es solo visual: el orden del código es el mismo en todos los anchos, así que el orden de lectura no cambia entre desktop y mobile.
+- La semántica de lista ordenada y el paso actual (`aria-current="step"`) son iguales en todos los anchos.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): "lista, 3 elementos", el encabezado de cada paso y "paso actual" en el activo.

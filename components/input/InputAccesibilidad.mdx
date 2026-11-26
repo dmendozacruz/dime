@@ -1,0 +1,57 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./input.stories.js";
+
+<Meta title="Componentes/Input/Accesibilidad" />
+
+# Input
+
+<ComponentHeader description="Campo para escribir una contraseña. Lleva etiqueta visible, botón para ver lo escrito, ayuda opcional y mensaje de error." figmaNode="232:19462" updated="25-11-2026" />
+
+<ComponentTabs component="input" current="accesibilidad" />
+
+Elementos nativos: `<label>`, `<input type="password">` y `<button>`. Referencia: [formularios del W3C](https://www.w3.org/WAI/tutorials/forms/).
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd></td><td>Llega al campo y, después, al botón ver contraseña, que tiene su propio foco.</td></tr>
+    <tr><td><kbd>Enter</kbd> en el campo</td><td>Envía el formulario.</td></tr>
+    <tr><td><kbd>Enter</kbd> o <kbd>Espacio</kbd> en el botón</td><td>Muestra u oculta la contraseña.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Toggle} />
+
+## Roles, nombres y estados
+
+- **Etiqueta visible y unida al campo** (`<label for>`); el placeholder nunca la sustituye.
+- **Botón ver contraseña:** es un `<button>` aparte del campo: recibe el foco con Tab justo después del campo, lleva su propio doble anillo y su nombre cambia: "Show password" / "Hide password".
+- **Ayuda y error unidos al campo** con `aria-describedby`, así el lector de pantalla los lee al llegar a él.
+- **Error:** el campo lleva `aria-invalid="true"`. El mensaje está en un nodo que existe siempre, vacío, con `role="alert"`, y se anuncia en cada intento. Además del rojo lleva icono y texto.
+- **El error aparece al enviar**, no mientras se escribe, y el foco se queda en el campo.
+- **No bloquees** pegar ni los gestores de contraseñas (`autocomplete="current-password"`).
+
+<Canvas of={Stories.Submit} />
+
+## Contraste y medidas
+
+- Borde con contraste suficiente (3,36:1) y doble anillo de foco.
+- Campo de 48 px de alto y botón de 44 px.
+- Disabled tiene contraste bajo, como permite WCAG en lo que no se puede usar.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Ver contraseña*: el campo cambia de tipo y el botón de nombre.
+- Story *Enviar con error*: el error se escribe, el campo queda inválido y descrito por el mensaje, y el foco sigue en él.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): que anuncie el error en cada intento, también si se repite.
+- Gestor de contraseñas: que rellene el campo.

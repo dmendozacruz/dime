@@ -1,0 +1,98 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./alert.stories.js";
+
+<Meta title="Componentes/Alert/Código" />
+
+# Alert
+
+<ComponentHeader description="Aviso de información, éxito, advertencia o error. Dice qué ha pasado y, si hace falta, qué hacer." figmaNode="443:9196" updated="25-11-2026" />
+
+<ComponentTabs component="alert" current="codigo" />
+
+HTML y CSS. Los avisos que aparecen usan el web component `<dime-alert-region>`. El CSS está en `components/alert/alert.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.ErrorType} sourceState="shown" />
+
+<Controls of={Stories.ErrorType} />
+
+## Variantes
+
+### Info
+
+<Canvas of={Stories.Info} sourceState="shown" />
+
+### Success
+
+<Canvas of={Stories.Success} sourceState="shown" />
+
+### Warning
+
+<Canvas of={Stories.Warning} sourceState="shown" />
+
+### Sin contenido
+
+<Canvas of={Stories.NoContent} sourceState="shown" />
+
+### Texto largo
+
+<Canvas of={Stories.Long} sourceState="shown" />
+
+## Aviso que aparece
+
+La región del mensaje (`.dime-alert-region`) está en la página desde que carga, **vacía**, con su rol: `role="alert"` si hay que dejar lo que se está haciendo para leerlo, `role="status"` si puede esperar. Va dentro de `<dime-alert-region>`. Al ocurrir algo, su método `show(opciones)` escribe el aviso dentro y el lector de pantalla lo anuncia. El foco no se mueve.
+
+<Canvas of={Stories.Live} />
+
+```html
+<dime-alert-region>
+  <div class="dime-alert-region" role="status"></div>
+</dime-alert-region>
+```
+
+```js
+import "./alert.js"; // registra <dime-alert-region>
+
+document.querySelector("dime-alert-region").show({
+  type: "success",
+  title: "Done",
+  content: "The action finished correctly.",
+});
+```
+
+Un aviso que está desde que carga la página no lleva rol: se escribe directamente en el HTML.
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-alert</code> + <code>.dime-alert--info</code> · <code>--success</code> · <code>--warning</code> · <code>--error</code></td><td>Type</td><td>El aviso. El tipo fija tres variables locales: fondo, borde y texto.</td></tr>
+    <tr><td><code>.dime-alert__icon</code></td><td>Icono</td><td>SVG decorativo (<code>aria-hidden</code>).</td></tr>
+    <tr><td><code>.dime-alert__title</code> · <code>.dime-alert__text</code></td><td>Title · Content</td><td>Título y contenido (opcional).</td></tr>
+    <tr><td><code>.dime-alert-region</code></td><td>—</td><td>Contenedor vacío con <code>role="status"</code> o <code>role="alert"</code>.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--color-feedback-&lt;tipo&gt;-background</code> · <code>-border</code> · <code>-content</code></td><td>Fondo, borde izquierdo e icono, y texto de cada tipo.</td></tr>
+    <tr><td><code>--space-5</code> · <code>--space-3</code> · <code>--space-1</code></td><td>Relleno (20 px), icono → texto (12 px) y título → contenido (4 px).</td></tr>
+    <tr><td><code>--size-28</code></td><td>Icono.</td></tr>
+    <tr><td><code>--font-size-body-l</code> · <code>--font-size-body-m</code> y sus interlineados</td><td>Título 18/28 bold y contenido 16/24.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+Es un **web component en light DOM** (D-017): `<dime-alert-region>` se registra al cargar `components/alert/alert.js` y tiene `show({ type, title, content, showContent })` y `clear()`. `show` vacía la región y escribe el aviso 100 ms después, para que se anuncie aunque el texto sea el mismo que la vez anterior.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`443:9196`).

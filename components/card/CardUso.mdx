@@ -1,0 +1,88 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { Overview, States } from "../shared/Demo.jsx";
+import { cardHTML } from "./card.stories.js";
+
+export const c = (a) => cardHTML(a);
+
+<Meta title="Componentes/Card/Uso" />
+
+# Card
+
+<ComponentHeader description="Tarjeta de un caso: nombre, áreas, categoría y enlace. Toda la tarjeta lleva al destino con un solo enlace." figmaNode="102:7204" updated="25-11-2026" />
+
+<ComponentTabs component="card" current="uso" />
+
+## Overview
+
+Default y con candado (Show lock).
+
+<Overview light={[c({}), c({ showLock: true })]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Imagen</strong></td><td>La imagen de la tarjeta; por defecto, un placeholder con un icono de imagen. Se descubre en Hover y en Focus. Es decorativa.</td><td>Placeholder o una imagen propia</td></tr>
+    <tr><td>2</td><td><strong>Nombre</strong></td><td>Nombre del caso. En código es un encabezado.</td><td>Heading / Small / light · <code>content/default</code></td></tr>
+    <tr><td>3</td><td><strong>Áreas</strong></td><td>Disciplinas del caso, separadas por puntos.</td><td>Label / Small / regular · <code>content/subtle</code></td></tr>
+    <tr><td>4</td><td><strong>Categoría</strong></td><td>La categoría del caso, en una o dos palabras.</td><td>Badge</td></tr>
+    <tr><td>5</td><td><strong>Candado (opcional)</strong></td><td>Avisa de que el contenido está protegido. En Hover y Focus pasa a blanco para verse sobre la imagen y muestra a su izquierda un Tooltip «Password protected», que entra con 400 ms de retraso.</td><td>Icons · lock · 20 px · Show lock</td></tr>
+    <tr><td>6</td><td><strong>Enlace</strong></td><td>“Open case study”. Es el único enlace y su zona ocupa toda la tarjeta. El pie se oscurece en Hover y Focus.</td><td>Link small (inverted en Hover y Focus)</td></tr>
+  </tbody>
+</table>
+
+## Estados
+
+Default, Hover y Focus. En Hover y Focus la imagen se descubre de abajo arriba y sustituye al texto, el pie se oscurece y el candado se queda (en blanco, con su Tooltip); en Focus, además, el doble anillo rodea la tarjeta.
+
+<States plain items={[
+  { label: "Default", html: c({}) },
+  { label: "Hover", html: c({}) },
+  { label: "Focus", html: c({}) },
+]} />
+
+### Show lock
+
+Con candado, en Hover y Focus el candado se vuelve blanco y aparece el Tooltip a su izquierda. A la derecha no hay sitio y arriba el borde de la tarjeta lo recortaría, por eso es la variante Left del Tooltip.
+
+<States plain items={[
+  { label: "Default", html: c({ showLock: true }) },
+  { label: "Hover", html: c({ showLock: true }) },
+  { label: "Focus", html: c({ showLock: true }) },
+]} />
+
+### Image
+
+La tarjeta estándar lleva un placeholder: un fondo gris con un icono de imagen. Para una imagen propia, de 300 × 300 px, se sustituye el placeholder por la imagen. Aquí, el placeholder en Hover.
+
+<States plain items={[
+  { label: "Placeholder", html: c({}), demo: "hover" },
+]} />
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Presentas un caso de estudio en una rejilla de casos.
+
+**No lo uses cuando**
+
+- Para contenido que no lleva a ninguna página.
+
+## Recomendaciones de uso
+
+- Una tarjeta por caso, con su imagen. Si no hay imagen, el placeholder estándar.
+- Nombre del caso y sus áreas en pocas palabras, y una categoría (Badge).
+- Si el caso está protegido, activa Show lock; el enlace también lo dice en su nombre accesible.
+- Las tarjetas van pegadas en la rejilla: por eso el borde es de 0,5 px.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: c({ showLock: true }), text: "El candado avisa de que el contenido está protegido." },
+  { type: "dont", html: c({}), text: "Sin candado, nadie sabe que hará falta contraseña hasta entrar." },
+]} />

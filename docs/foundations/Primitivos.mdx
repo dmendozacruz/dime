@@ -1,0 +1,42 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { PrimitiveColors } from "../blocks/ColorTokens.jsx";
+
+<Meta title="Foundations/Primitivos" />
+
+# Primitivos
+
+La paleta base de DIME: los valores en bruto de los que salen los tokens semánticos. En Figma están en la colección *Globals*.
+
+**No los uses directamente en componentes ni en la web.** Usa el token semántico que describe el uso (por ejemplo, `--color-content-default` en lugar de `--color-neutral-900`). Así, si un primitivo cambia, todo lo que depende de él cambia a la vez. Consulta esta página para entender de dónde sale cada token, no para elegir un color.
+
+## Color: base
+
+<PrimitiveColors prefix="base/" />
+
+## Color: neutral
+
+La escala de grises, de 50 (casi blanco) a 900 (el negro de DIME, #1a1a1a).
+
+<PrimitiveColors prefix="neutral/" />
+
+## Color: amarillo
+
+El acento de marca. `yellow/300` es el amarillo del anillo de foco y de los subrayados.
+
+<PrimitiveColors prefix="yellow/" />
+
+## Color: rojo
+
+<PrimitiveColors prefix="red/" />
+
+## Color: naranja
+
+<PrimitiveColors prefix="orange/" />
+
+## Color: verde
+
+<PrimitiveColors prefix="green/" />
+
+## Color: azul
+
+<PrimitiveColors prefix="blue/" />

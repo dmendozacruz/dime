@@ -1,0 +1,83 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { SpaceScale, SizeScale, Elevation, Blur } from "../blocks/SpaceTokens.jsx";
+
+<Meta title="Foundations/Espacio y layout" />
+
+# Espacio y layout
+
+Tokens de espaciado, tamaño, radio y sombra que mantienen el ritmo y la profundidad de la interfaz. Todos los valores están en `rem` (con su equivalente en px) para que crezcan si la persona aumenta el tamaño de letra del navegador.
+
+## Espaciado
+
+Una escala de 16 pasos, de 4 a 192 px, para márgenes, rellenos y separaciones (`margin`, `padding`, `gap`). Todo espacio que sea múltiplo de 4 sale de esta escala.
+
+```css
+/* «mi-tarjeta» es un nombre de ejemplo: tu propia clase, escrita con tokens de DIME */
+.mi-tarjeta {
+  padding: var(--space-4) var(--space-6); /* 16px 24px */
+  gap: var(--space-3); /* 12px */
+}
+```
+
+El número del token es su **posición en la escala, no su tamaño**: `--space-5` son 20 px y `--space-6`, 24 px. Al pasar un valor en px a token, busca el px, no el número.
+
+<SpaceScale />
+
+## Tamaños
+
+La escala base de medidas fijas. De ella salen los tamaños de texto, los interlineados y los tokens de componente: por ejemplo, `--font-size-display` apunta a `--size-64`.
+
+No se usa para separar elementos: para eso está el espaciado. Úsala para medidas como el alto de un control o el tamaño de un icono.
+
+<SizeScale />
+
+## Radios
+
+DIME usa **un único radio: 100 px**, que convierte en píldora los botones y las etiquetas (labels). El resto de elementos no lleva esquinas redondeadas: las imágenes y capturas de producto tampoco.
+
+No hay token de radio: con un solo valor, un token no aporta nada. Se escribe directamente en el CSS del componente, comentado:
+
+```css
+.button {
+  border-radius: 100px; /* píldora: único radio de DIME */
+}
+```
+
+Si algún día aparece un segundo radio en Figma, se crea la escala de tokens y este valor pasa a ser uno de ellos.
+
+## Elevación
+
+Sombras que separan un elemento del fondo. Cuanto más alto el nivel, más flota el elemento.
+
+```css
+.captura-destacada {
+  box-shadow: var(--elevation-m);
+}
+```
+
+Una sombra nunca es el único indicador de que algo es interactivo o está seleccionado: en modo de alto contraste las sombras desaparecen.
+
+<Elevation />
+
+## Desenfoque
+
+Desenfoque del fondo del header: deja ver, borroso, el contenido que pasa por debajo. Siempre va con un fondo semitransparente (`background/default` al 85 %); el desenfoque solo no basta.
+
+```css
+.site-header {
+  background: color-mix(in srgb, var(--color-background-default) 85%, transparent);
+  backdrop-filter: var(--blur-header);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header {
+    background: var(--color-background-default);
+    backdrop-filter: none;
+  }
+}
+```
+
+El texto que va encima tiene que leerse igual sin el desenfoque: si el navegador no lo soporta o la persona pide menos transparencia, el fondo queda sólido.
+
+<Blur />
+

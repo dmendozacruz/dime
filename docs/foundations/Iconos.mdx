@@ -1,0 +1,56 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { IconGrid, IconSizes, IconColors } from "../blocks/IconTokens.jsx";
+
+<Meta title="Foundations/Iconos" />
+
+# Iconos
+
+Iconos de contorno, de un solo color, para acompañar al texto y a los controles: flechas, estados, acciones y el asterisco de marca. Son 22, del set `Icons` de Figma.
+
+Un icono ayuda a reconocer una acción más rápido, pero **nunca la sustituye**: el significado tiene que estar también en el texto o en el nombre accesible del control.
+
+## Catálogo
+
+Los 22 iconos con su nombre de Figma. **Pulsa una tarjeta para copiar el código de su SVG.** El archivo está en `public/icons/<tipo>.svg`: el nombre es el del tipo, en minúsculas y con guiones.
+
+<IconGrid />
+
+## Tamaños
+
+Hay tres tamaños: 20, 24 y 28 px. El de 20 px es el de los botones. En Figma se cambia con la propiedad `Size`, nunca escalando la instancia. En código es el mismo dibujo escalado, así que el trazo crece en proporción (1 → 1,2 → 1,4 px). Solo existe un SVG, el de 20 px: se escala con CSS usando el token de tamaño.
+
+```css
+.icon {
+  width: var(--size-24);
+  height: var(--size-24);
+}
+```
+
+<IconSizes />
+
+## Color
+
+Los iconos van en el color del texto que acompañan: `content/default` sobre fondo claro y `content/inverse` sobre fondo oscuro. Siempre con un token, nunca con un hex.
+
+Los SVG llevan `content/default` (#1a1a1a) dentro del archivo, y una imagen `<img>` no hereda `currentColor`. Si el icono tiene que cambiar de color, se pinta con una máscara:
+
+```css
+.icon {
+  width: var(--size-24);
+  height: var(--size-24);
+  background-color: var(--color-content-default);
+  mask: url("/icons/download.svg") no-repeat center / contain;
+}
+
+.icon--inverse {
+  background-color: var(--color-content-inverse); /* sobre fondo oscuro */
+}
+```
+
+<IconColors />
+
+## Accesibilidad
+
+- **Icono decorativo.** Si el icono acompaña a un texto que ya dice lo mismo, se oculta al lector de pantalla: `alt=""` y `aria-hidden="true"`, como la flecha de Download resume.
+- **Botón solo con icono (4.1.2).** Si el icono va solo, el botón lleva un nombre accesible en texto que dice lo que hace, no lo que se ve: "Close menu", no "X" ni "close".
+- **Iconos con significado (1.4.1 y 1.4.11).** Un icono que transmite información (aviso, error, correcto) va siempre con su palabra, nunca solo con color, y tiene un contraste de 3:1 con el fondo.

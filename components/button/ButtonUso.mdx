@@ -1,0 +1,170 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { Overview, States } from "../shared/Demo.jsx";
+import { buttonHTML as b, iconButtonHTML as ib, backHTML as bk } from "./button.stories.js";
+
+<Meta title="Componentes/Button/Uso" />
+
+# Button
+
+<ComponentHeader
+  description="Destaca la acción o el destino principal de una zona. La familia incluye el icon button, que solo lleva icono, y el Button back, para volver atrás."
+  figmaNode="48:2481"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="button" current="uso" />
+
+## Overview
+
+Las combinaciones de las propiedades de Figma, un panel por tipo de botón.
+
+### Button
+
+Size small y large, con y sin icono, e Inverted sobre fondo oscuro.
+
+<Overview
+  light={[b({}), b({ size: "large" }), b({ showIcon: false })]}
+  dark={[b({ inverted: true })]}
+/>
+
+### icon button
+
+Medium y large. Sobre fondo blanco, para que se vea el gris del Hover, e Inverted sobre fondo oscuro.
+
+<Overview
+  white={[ib({}), ib({ size: "large" })]}
+  dark={[ib({ inverted: true }), ib({ size: "large", inverted: true })]}
+/>
+
+### Button back
+
+<Overview light={[bk({})]} dark={[bk({ inverted: true })]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Contenedor</strong></td><td>Píldora con fondo y borde. Alto 40 px (Size small) o 48 px (large). Se ajusta al texto (Width default) u ocupa todo el ancho (Width large).</td><td>Radio 100 px · <code>background/brand</code> · <code>border/default</code></td></tr>
+    <tr><td>2</td><td><strong>Texto</strong></td><td>Qué pasa al pulsar, en pocas palabras. Es el nombre accesible, así que debe entenderse solo.</td><td>Interaction / Medium (small) · Interaction / Large (large) · <code>content/inverse</code></td></tr>
+    <tr><td>3</td><td><strong>Icono</strong></td><td>Flecha que refuerza la dirección. Es decorativa: no forma parte del nombre accesible. Se oculta con Show icon.</td><td>Icons · 20 px (small) · 24 px (large)</td></tr>
+    <tr><td>4</td><td><strong>Anillo de foco</strong></td><td>Doble anillo que aparece al navegar con teclado. No se quita nunca.</td><td><code>focus/ring</code> + <code>focus/ring-inner</code></td></tr>
+  </tbody>
+</table>
+
+## Estados
+
+### Button
+
+Size small · Default, Hover, Active, Focus y Disabled. En Hover el botón se vacía: fondo transparente y texto oscuro.
+
+<States items={[
+  { label: "Default", html: b({}) },
+  { label: "Hover", html: b({}) },
+  { label: "Active", html: b({}) },
+  { label: "Focus", html: b({}) },
+  { label: "Disabled", html: b({ disabled: true }), demo: "none" },
+]} />
+
+### Button inverted
+
+<States inverted items={[
+  { label: "Default", html: b({ inverted: true }) },
+  { label: "Hover", html: b({ inverted: true }) },
+  { label: "Active", html: b({ inverted: true }) },
+  { label: "Focus", html: b({ inverted: true }) },
+  { label: "Disabled", html: b({ inverted: true, disabled: true }), demo: "none" },
+]} />
+
+### icon button
+
+Solo icono. Medium (44 px) y large (52 px). En Hover aparece un fondo gris.
+
+<States items={[
+  { label: "Default", html: ib({}) },
+  { label: "Hover", html: ib({}), card: true },
+  { label: "Active", html: ib({}) },
+  { label: "Focus", html: ib({}) },
+  { label: "Large", html: ib({ size: "large" }), demo: "none" },
+]} />
+
+<States inverted items={[
+  { label: "Default", html: ib({ inverted: true }) },
+  { label: "Hover", html: ib({ inverted: true }) },
+  { label: "Active", html: ib({ inverted: true }) },
+  { label: "Focus", html: ib({ inverted: true }) },
+]} />
+
+### Button back
+
+Círculo de 44 px con la flecha. En Hover y Active muestra el texto junto a la flecha; en Focus se queda como círculo.
+
+<States items={[
+  { label: "Default", html: bk({}) },
+  { label: "Hover", html: bk({}) },
+  { label: "Active", html: bk({}) },
+  { label: "Focus", html: bk({}) },
+]} />
+
+<States inverted items={[
+  { label: "Default", html: bk({ inverted: true }) },
+  { label: "Hover", html: bk({ inverted: true }) },
+  { label: "Focus", html: bk({ inverted: true }) },
+]} />
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Hay una acción o un destino principal que debe destacar, como descargar un documento o escribir para contactar.
+- Hace falta volver a la página anterior: Button back.
+- Invitas a bajar a la siguiente sección: icon button.
+
+**No lo uses cuando**
+
+- El destino está dentro de un texto corrido: usa un Link.
+- Hay varias acciones del mismo peso juntas: destaca solo una y deja el resto como Link.
+- La acción no está disponible y nunca lo estará: no muestres el botón.
+
+## Recomendaciones de uso
+
+- Texto corto que diga qué pasa al pulsar: "Download resume", "Let’s talk". Siempre en una sola línea: si baja a dos, hay que acortarlo.
+- Un solo botón principal por zona de la página.
+- Usa Inverted sobre fondos oscuros, nunca sobre fondo claro.
+- Width large solo cuando el botón deba ocupar todo el ancho, por ejemplo en pantallas estrechas.
+- La flecha acompaña el texto; no la uses para decir algo distinto.
+- Disabled solo cuando la acción o el destino no estén disponibles, con el motivo visible cerca.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: b({ text: "Download resume" }), text: "El texto dice qué pasa al pulsar." },
+  { type: "dont", html: b({ text: "Click here" }), text: "Un texto genérico no dice qué pasa ni se entiende fuera de contexto." },
+  { type: "do", html: b({ text: "Let’s talk" }), text: "Un solo botón principal por zona." },
+  { type: "dont", html: b({ text: "Download" }) + b({ text: "Contact" }) + b({ text: "More" }), text: "Varios botones del mismo peso compiten entre sí: destaca uno y deja el resto como Link." },
+  { type: "do", html: `<span class="dime-dark">${b({ inverted: true })}</span>`, text: "Inverted sobre fondo oscuro." },
+  { type: "dont", html: b({ inverted: true }), text: "Inverted sobre fondo claro pierde el contorno y el contraste." },
+  { type: "do", html: b({ text: "Download resume" }), text: "Texto corto, en una sola línea." },
+  { type: "dont", html: `<div style="width: 220px;">${b({ text: "Download my resume and cover letter" })}</div>`, text: "Un texto largo hace que el botón baje a dos líneas. Acórtalo." },
+]} />
+
+## Button o Link
+
+Se parecen, pero no hacen lo mismo. **Decide por lo que hace, no por cómo se ve**: si al pulsarlo cambia la URL, se descarga algo o se abre el correo, es un enlace aunque tenga forma de botón. El Button back, por ejemplo, es un enlace.
+
+<table>
+  <thead><tr><th></th><th>Button</th><th>Link</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Qué hace</strong></td><td>Ejecuta una acción en la página: enviar, abrir, cerrar.</td><td>Lleva a otro sitio: otra página, una sección, un archivo o el correo.</td></tr>
+    <tr><td><strong>En código</strong></td><td><code>&lt;button&gt;</code></td><td><code>&lt;a href&gt;</code></td></tr>
+    <tr><td><strong>Teclado</strong></td><td>Enter y Espacio</td><td>Enter</td></tr>
+    <tr><td><strong>Lector de pantalla</strong></td><td>Lo anuncia como botón.</td><td>Lo anuncia como enlace y aparece en la lista de enlaces.</td></tr>
+  </tbody>
+</table>
+
+## Responsive
+
+El botón no cambia de tamaño entre breakpoints. Lo que cambia es su ancho: en pantallas estrechas, el botón principal de una zona puede ocupar todo el ancho (Width large).

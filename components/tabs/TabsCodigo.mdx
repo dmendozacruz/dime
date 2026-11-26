@@ -1,0 +1,73 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./tabs.stories.js";
+
+<Meta title="Componentes/Tabs/Código" />
+
+# Tabs
+
+<ComponentHeader description="Vistas alternativas del mismo nivel: solo se ve una a la vez y se cambia sin salir de la página." figmaNode="467:1951" updated="25-11-2026" />
+
+<ComponentTabs component="tabs" current="codigo" />
+
+HTML, CSS y el web component `<dime-tabs>` para el teclado. El CSS está en `components/tabs/tabs.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Size large
+
+Por debajo de 1024 px se aplica solo; `.dime-tabs--large` lo fuerza en cualquier ancho.
+
+<Canvas of={Stories.Large} sourceState="shown" />
+
+### Cuatro pestañas
+
+<Canvas of={Stories.Four} sourceState="shown" />
+
+## Clases y atributos
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-tabs</code> · <code>.dime-tabs--large</code></td><td>Tabs · Size</td><td>Contenedor de la barra y los paneles.</td></tr>
+    <tr><td><code>.dime-tabs__list</code></td><td>Contenedor</td><td><code>role="tablist"</code> con <code>aria-label</code>.</td></tr>
+    <tr><td><code>.dime-tabs__tab</code></td><td>Tabs Items</td><td><code>&lt;button role="tab"&gt;</code> con <code>aria-selected</code>, <code>aria-controls</code> y <code>tabindex</code> 0 (seleccionada) o −1.</td></tr>
+    <tr><td><code>.dime-tabs__panel</code></td><td>—</td><td><code>role="tabpanel"</code> con <code>aria-labelledby</code>, <code>tabindex="0"</code> y <code>hidden</code> si no está seleccionado.</td></tr>
+  </tbody>
+</table>
+
+## Responsive
+
+El mismo HTML en todos los anchos; solo cambia el CSS.
+
+- **Tablet y mobile (hasta 1024 px, `@media (max-width: 64rem)`):** la pestaña pasa a Size large (48 px de alto: relleno de 12 × 16 px y texto de 18 px) y la barra se centra sobre los paneles.
+- **Desktop:** Size small (40 px).
+- `.dime-tabs--large` fuerza el tamaño large en cualquier ancho.
+- No hay JavaScript distinto por tamaño.
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--space-2</code> · <code>--space-3</code> · <code>--space-4</code></td><td>Relleno de la barra (8 px) y de las pestañas (8 o 12 × 16 px), y separación entre ellas.</td></tr>
+    <tr><td><code>--interaction-size-medium</code> · <code>--interaction-size-large</code></td><td>Texto: 16 px (small) y 18 px (large).</td></tr>
+    <tr><td><code>--color-background-default</code> · <code>--color-background-hover</code> · <code>--color-background-brand</code></td><td>Default, Hover y Active.</td></tr>
+    <tr><td><code>--color-content-default</code> · <code>--color-content-inverse</code> · <code>--color-border-default</code></td><td>Texto y borde de la barra.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+Es un **web component en light DOM** (D-017): `<dime-tabs>` envuelve la barra y los paneles, que ya están en el HTML, y se activa solo al cargar `components/tabs/tabs.js` (registrado con `customElements.define`, sin Shadow DOM). Sin el script, todo el contenido sigue en la página. Activación manual: las flechas, Inicio y Fin mueven el foco; Enter o Espacio seleccionan la pestaña que tiene el foco, muestran su panel y ocultan los demás.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir de Tabs (`467:1951`) y Tabs Items (`102:7799`).

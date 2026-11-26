@@ -1,0 +1,112 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { TextStyles, FontSizes, LineHeights, FontWeights, FontFamily, InteractionTokens } from "../blocks/TypeTokens.jsx";
+
+<Meta title="Foundations/Tipografía" />
+
+# Tipografía
+
+DIME usa una sola familia, **ABC Monument Grotesk**, en cuatro pesos: Light, Regular, Medium y Bold. La jerarquía sale del tamaño y del peso, nunca de cambiar de fuente.
+
+Los tokens piden la fuente por su nombre y, si no está disponible, usan **Helvetica Neue** o **Arial** (`--font-family-base`). Esta documentación se muestra con esa fuente de respaldo: los tamaños, los pesos y el interlineado son los mismos, y solo cambia la forma de las letras.
+
+La tipografía se organiza en dos niveles:
+
+- **Estilos de texto**: combinan tamaño, interlineado y peso (`Body/Large/regular`). Son lo que se usa en los componentes y en la web, igual que en Figma.
+- **Tokens**: las piezas de cada estilo (`--font-size-body-l`, `--line-height-body-l`). Úsalos solo cuando un estilo completo no encaje.
+
+```html
+<!-- Bien: el estilo de texto completo -->
+<p class="text-body-l-regular">Texto corrido de un caso de estudio.</p>
+```
+
+```css
+/* Si necesitas las piezas, usa siempre los tokens («mi-tarjeta» es un nombre de ejemplo) */
+.mi-tarjeta {
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  font-weight: var(--font-weight-regular);
+}
+```
+
+Los tamaños están en `rem`. Si la persona aumenta el tamaño de letra del navegador, el texto crece con él.
+
+## Familia
+
+<FontFamily />
+
+### Pesos
+
+<FontWeights />
+
+## Estilos de texto
+
+Una clase por cada estilo de texto de Figma. El nombre sigue el patrón `.text-[nivel]-[peso]`.
+
+### Display
+
+El título principal de la home y de cada caso de estudio.
+
+<TextStyles prefix="Display" />
+
+### Heading
+
+Títulos de sección.
+
+<TextStyles prefix="Heading" />
+
+### Subheading
+
+Subtítulos, nombres de perfil y títulos numerados de subsección.
+
+<TextStyles prefix="Subheading" />
+
+### Body
+
+Texto corrido. **Body XL** para entradillas y títulos de acordeón. **Body L** para el texto de los casos de estudio. **Body M** es el tamaño base de la web.
+
+<TextStyles prefix="Body" />
+
+### Label
+
+Etiquetas cortas en mayúsculas, con un 4% de espaciado entre letras.
+
+<TextStyles prefix="Label" />
+
+### Interaction
+
+Texto de los elementos interactivos: botones, enlaces, pestañas y navegación. Los comparten el Button y el Link.
+
+<TextStyles prefix="Interaction" />
+
+## Tamaño de fuente
+
+<FontSizes />
+
+## Interlineado
+
+<LineHeights />
+
+## Interacción
+
+Tokens propios de los componentes interactivos: botones y enlaces.
+
+<InteractionTokens />
+
+## Instalar la fuente
+
+ABC Monument Grotesk es una fuente con licencia. Se declara una vez con `@font-face`, un bloque por peso:
+
+```css
+@font-face {
+  font-family: "ABC Monument Grotesk";
+  src: url("/fonts/ABCMonumentGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* Repetir con Light (300), Medium (500) y Bold (700). */
+```
+
+`font-display: swap` muestra el texto con la fuente de respaldo mientras ABC Monument carga, en vez de dejarlo invisible.
+
+Los archivos de la fuente no están en este repositorio: la licencia no permite redistribuirlos.

@@ -1,0 +1,84 @@
+/* Alert · DIME
+   Aviso de información, éxito, advertencia o error. Figma: página Alert (443:9196). */
+
+.dime-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3); /* 12px */
+  padding: var(--space-5); /* 20px */
+  box-sizing: border-box;
+  width: 100%;
+  border-left: 4px solid var(--alert-border);
+  background: var(--alert-background);
+  color: var(--alert-content);
+  font-family: var(--font-family-base);
+}
+
+.dime-alert--info {
+  --alert-background: var(--color-feedback-info-background);
+  --alert-border: var(--color-feedback-info-border);
+  --alert-content: var(--color-feedback-info-content);
+}
+
+.dime-alert--success {
+  --alert-background: var(--color-feedback-success-background);
+  --alert-border: var(--color-feedback-success-border);
+  --alert-content: var(--color-feedback-success-content);
+}
+
+.dime-alert--warning {
+  --alert-background: var(--color-feedback-warning-background);
+  --alert-border: var(--color-feedback-warning-border);
+  --alert-content: var(--color-feedback-warning-content);
+}
+
+.dime-alert--error {
+  --alert-background: var(--color-feedback-error-background);
+  --alert-border: var(--color-feedback-error-border);
+  --alert-content: var(--color-feedback-error-content);
+}
+
+.dime-alert__icon {
+  flex-shrink: 0;
+  width: var(--size-28);
+  height: var(--size-28);
+  color: var(--alert-border);
+}
+
+.dime-alert__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1); /* 4px */
+  min-width: 0;
+}
+
+.dime-alert__title {
+  margin: 0;
+  font-size: var(--font-size-body-l); /* 18px */
+  line-height: var(--line-height-body-l); /* 28px */
+  font-weight: var(--font-weight-bold);
+}
+
+.dime-alert__text {
+  margin: 0;
+  font-size: var(--font-size-body-m); /* 16px */
+  line-height: var(--line-height-body-m); /* 24px */
+  font-weight: var(--font-weight-regular);
+}
+
+/* Región que anuncia los avisos: existe vacía desde que carga la página. */
+.dime-alert-region:empty {
+  display: contents;
+}
+
+@media (forced-colors: active) {
+  .dime-alert {
+    border: 1px solid CanvasText;
+    border-left-width: 4px;
+  }
+}
+
+/* <dime-alert-region>: web component en light DOM (D-017). No pinta nada: solo envuelve el HTML. */
+dime-alert-region {
+  display: contents;
+}

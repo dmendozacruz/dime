@@ -1,0 +1,127 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { States } from "../shared/Demo.jsx";
+import { headerHTML as h, frame } from "./nav-header.stories.js";
+
+export const Frame = ({ html, width }) => (
+  <div className="dime-pattern-frame sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: frame(html, width).replace(/<(a|button)\s/g, '<$1 tabindex="-1" ') }} />
+);
+export const item = (state) => `<a class="dime-nav-header__item" href="#"${state === "active" ? ' aria-current="page"' : ""}><span class="dime-nav-header__item-label">Item</span></a>`;
+export const menuItem = () => `<div style="background: var(--color-background-brand); padding: var(--space-6); color: var(--color-content-inverse);"><a class="dime-nav-header__menu-item" href="#">Item</a></div>`;
+
+<Meta title="Componentes/Nav Header/Uso" />
+
+# Nav Header
+
+<ComponentHeader description="Cabecera de la página: logo, navegación y contacto. En tablet y mobile la navegación pasa a un menú que se abre sobre la página." figmaNode="102:7511" updated="25-11-2026" />
+
+<ComponentTabs component="nav header" current="uso" />
+
+Es un componente que reúne otros: Link, Button e icon button, más dos piezas propias, el `Item` de navegación y el `Menu` abierto. En Figma son los sets `Header`, `Item`, `Nav item`, `Menu` y `Menu item`.
+
+## Overview
+
+<Frame html={h({ id: "menu-o" })} width={769} />
+
+## Composición
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Componente y configuración</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Logo</strong></td><td>El nombre en vector (<code>Name Diana</code>, 142 × 38 px), enlace a la página de inicio. Siempre a la izquierda.</td><td>Foundations · Logos · <code>name-diana</code></td></tr>
+    <tr><td>2</td><td><strong>Navegación</strong></td><td>Los enlaces a las secciones, centrados. Solo en desktop. El de la página actual va subrayado y en peso medium.</td><td><code>Nav item</code> con <code>Item</code> · Interaction / Medium</td></tr>
+    <tr><td>3</td><td><strong>Botón de contacto</strong></td><td>Una acción principal, a la derecha. Solo en desktop.</td><td><a href="/?path=/docs/componentes-button-uso--docs" target="_top">Button</a> · small · con icono</td></tr>
+    <tr><td>4</td><td><strong>Botón del menú</strong></td><td>Abre el menú. Solo en tablet y mobile.</td><td><a href="/?path=/docs/componentes-button-uso--docs" target="_top">icon button</a> · icono de menú</td></tr>
+    <tr><td>5</td><td><strong>Menú abierto</strong></td><td>Ventana que cubre la página con los enlaces en grande y un botón para cerrar.</td><td><code>Menu</code> con <code>Menu item</code> · Heading / Large / bold · <code>content/inverse</code> sobre <code>background/brand</code></td></tr>
+  </tbody>
+</table>
+
+El fondo es `background/default` al 85 % con el efecto `Blur / Header` (desenfoque de 4,15 px en CSS): el contenido que pasa por debajo se intuye sin quitar legibilidad. Con «reducir transparencia» activado, el fondo es sólido.
+
+## Variantes
+
+### Desktop
+
+<div className="dime-pattern-scroll"><Frame html={h({ id: "menu-d" })} width={1440} /></div>
+
+### Tablet y mobile
+
+<Frame html={h({ id: "menu-t" })} width={769} />
+
+<Frame html={h({ id: "menu-m" })} width={390} />
+
+### Menú abierto
+
+El mismo menú en tablet y en mobile; solo cambia el margen lateral de la barra. La X queda exactamente donde estaba el botón del menú.
+
+<Frame html={h({ id: "menu-ot", menuOpen: true, menuOnly: true })} width={769} />
+
+<Frame html={h({ id: "menu-om", menuOpen: true, menuOnly: true })} width={390} />
+
+## Estados
+
+### Item
+
+<States plain items={[
+  { label: "Default", html: item("default") },
+  { label: "Hover", html: item("default") },
+  { label: "Active", html: item("active"), demo: "none" },
+  { label: "Focus", html: item("default") },
+]} />
+
+Active es la página actual: peso medium y subrayado. Hover subraya; Focus añade el doble anillo.
+
+### Menu item
+
+<States items={[
+  { label: "Default", html: menuItem(), demo: "none" },
+  { label: "Focus", html: menuItem(), demo: "focus" },
+]} />
+
+El menú solo tiene Default y Focus: en una pantalla táctil no hay hover y pulsar se ve igual que Default.
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Tienes varias secciones o páginas a las que llegar desde cualquier punto.
+- Quieres que el contacto principal esté siempre a mano.
+
+**No lo uses cuando**
+
+- Cambias entre paneles de un mismo contenido: usa Tabs.
+- Hay una sola página sin secciones: no hace falta navegación.
+
+## Recomendaciones de uso
+
+- Los enlaces de navegación son pocos y cortos (cuatro caben bien).
+- El logo lleva siempre al inicio.
+- La página actual se marca con el subrayado y el peso, y también en el código (`aria-current`).
+- Antes de la cabecera va el Skip nav, para saltarla con el teclado.
+- Si la cabecera es fija, deja espacio arriba en el contenido (`scroll-padding-top`) para que no tape lo enfocado.
+
+## Comportamiento
+
+<table>
+  <thead><tr><th>Qué</th><th>Desktop</th><th>Tablet y mobile</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Navegación</strong></td><td>Enlaces visibles en la barra.</td><td>Dentro del menú, que se abre con el botón.</td></tr>
+    <tr><td><strong>Contacto</strong></td><td>Button en la barra.</td><td>Fuera de la barra.</td></tr>
+    <tr><td><strong>Abrir el menú</strong></td><td colSpan="2">El foco entra en el botón de cerrar, el resto de la página queda inactiva y no se puede hacer scroll. Escape o el botón de cerrar lo cierran y el foco vuelve al botón del menú.</td></tr>
+    <tr><td><strong>Animación</strong></td><td colSpan="2">El menú se abre como un círculo que nace en el botón y crece hasta cubrir la pantalla (650 ms); los enlaces entran en cascada cuando el círculo les llega (de 250 a 430 ms, con 8 px de desplazamiento). Al cerrar, el círculo se encoge (400 ms). Con «reducir movimiento» no hay animación.</td></tr>
+  </tbody>
+</table>
+
+## Responsive
+
+El componente responde al ancho de su contenedor.
+
+<table>
+  <thead><tr><th>Breakpoint</th><th>Ancho</th><th>Comportamiento</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Desktop</strong></td><td>&gt; 1024 px</td><td>72 px de alto, márgenes de 64 px, navegación y Button.</td></tr>
+    <tr><td><strong>Tablet</strong></td><td>769 – 1024 px</td><td>60 px de alto, márgenes de 32 px, logo y botón de menú.</td></tr>
+    <tr><td><strong>Mobile</strong></td><td>≤ 768 px</td><td>60 px de alto, márgenes de 24 px.</td></tr>
+  </tbody>
+</table>

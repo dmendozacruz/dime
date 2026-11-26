@@ -1,0 +1,29 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { BrandLogos, ClientLogos } from "../blocks/LogoTokens.jsx";
+
+<Meta title="Foundations/Logos" />
+
+# Logos
+
+Las piezas de la marca de Diana y los logos de los clientes con los que ha trabajado. Cada uno es un SVG en `public/logos/`, exportado de Figma. **Pulsa una tarjeta para copiar el código de su SVG.**
+
+Los logos no se redibujan ni se recolorean: se usan tal cual están en el archivo.
+
+## Marca personal
+
+El nombre es el logo de la cabecera, el asterisco es el símbolo de la marca y el icono interactivo es el Let’s talk, que lleva al contacto.
+
+<BrandLogos />
+
+## Logos de clientes
+
+Los 6 logos del set `Logo`, todos a **60 px de alto** para que pesen igual en el banner de logos. En Figma se cambia de cliente con la propiedad `Type`.
+
+<ClientLogos />
+
+## Accesibilidad
+
+- **Logo de la cabecera.** Es un enlace a la página de inicio con el texto "Diana Mendoza", así que el lector de pantalla lee el nombre y no hace falta texto alternativo aparte.
+- **Logos de clientes (1.1.1).** Cada logo lleva como texto alternativo el nombre de la empresa ("Inditex", "Comunidad de Madrid"). La copia que el banner duplica para el desplazamiento infinito va oculta (`aria-hidden` y `alt` vacío), para que no se lea dos veces.
+- **Movimiento (2.2.2).** El banner de logos se mueve solo. Con "reducir movimiento" activado en el sistema, se detiene.
+- **Asterisco y Let’s talk.** El asterisco es decoración y va oculto al lector de pantalla. El Let’s talk es un enlace: se anuncia con su nombre, "Go to contact section", y el texto circular que gira va oculto (`aria-hidden`) para que no se lea.

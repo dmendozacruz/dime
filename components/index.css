@@ -1,0 +1,17 @@
+/* Estilos de todos los componentes de DIME, en un solo sitio (lo importa .storybook/preview.js). */
+@import "./link/link.css";
+@import "./button/button.css";
+@import "./badge/badge.css";
+@import "./divider/divider.css";
+@import "./blockquote/blockquote.css";
+@import "./alert/alert.css";
+@import "./tooltip/tooltip.css";
+@import "./skip-nav/skip-nav.css";
+@import "./input/input.css";
+@import "./tabs/tabs.css";
+@import "./accordion/accordion.css";
+@import "./card/card.css";
+@import "./process-list/process-list.css";
+@import "./back-to-top/back-to-top.css";
+@import "./nav-header/nav-header.css";
+@import "./nav-footer/nav-footer.css";

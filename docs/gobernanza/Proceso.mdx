@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Gobernanza/Cómo se trabaja" />
+
+# Cómo se trabaja
+
+DIME se construye con una IA que se encarga de lo repetitivo mientras las decisiones las toma la diseñadora. Estas son las reglas.
+
+## Cuatro fases por componente
+
+1. **Investigar.** Se leen Figma, el uso real, el patrón del APG y los criterios de WCAG, y se compara en una matriz.
+2. **Documentar en Figma.** Anatomía, cuándo usarlo, recomendaciones, qué sí y qué no, accesibilidad y propiedades.
+3. **Construir en Storybook.** Código con tokens, tres páginas de documentación (Uso, Código y Accesibilidad), los ejemplos interactivos y pruebas.
+4. **Llevar a la web.** Sustituir el código de la web por el del componente.
+
+Se para al terminar cada fase para que la diseñadora lo revise. Las notas de cada componente, con sus fuentes y decisiones, están en `docs/work/`.
+
+## Quién decide qué
+
+- **La diseñadora decide.** Cualquier decisión de diseño, de alcance o de prioridad.
+- **La IA propone y ejecuta.** Investiga, compara, explica las opciones con sus pros y contras, hace el cambio mínimo y lo verifica. Si las fuentes no resuelven algo, se detiene y pregunta.
+- **Ninguna mejora se aplica sin visto bueno.** Si se aprueba, se actualiza Figma (o se anota en Storybook si solo afecta al código) y se registra en el changelog.
+- **La IA no publica.** No hace commit, push ni cambios de visibilidad por su cuenta.
+
+## Reglas que no se negocian
+
+- Nunca valores sueltos de color, tipografía ni espaciado: siempre tokens.
+- Los archivos generados (los tokens) no se editan a mano: se cambia la fuente, que es Figma, y se regeneran con `npm run tokens`. Una edición a mano se pierde la próxima vez que se regenera y el gate la detecta. Sí se editan los textos de uso de cada token y el propio generador, porque no son generados.
+- Las imágenes y los iconos los exporta la diseñadora desde Figma o, si ella se lo pide, la IA. En ningún caso se redibujan ni se generan nuevos.
+- Se define un estándar al principio y se contrasta siempre con él: las guías de estilo (de las páginas de Storybook y de los componentes) se aprueban una vez, cada pieza se verifica contra ellas y la versión final la da la diseñadora.
+- Nada se inventa: no hay variantes, estados ni comportamientos que no estén en Figma.
+- Se verifica contra el navegador real y, en accesibilidad, contra el árbol renderizado.
+- Nunca hay secretos en ningún archivo versionado.
+
+## Las skills
+
+La IA trabaja con unas pocas skills, cada una para un momento: una para cerrar decisiones abiertas, otra para sincronizar los tokens con Figma y otra para documentar y construir un componente por fases. Cada una tiene sus casos de prueba.

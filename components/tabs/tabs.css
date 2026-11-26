@@ -1,0 +1,84 @@
+/* Tabs · DIME
+   Figma: página Tabs, sets Tabs (467:1951) y Tabs Items (102:7799).
+   Activación manual: las flechas mueven el foco; Enter o Espacio seleccionan. */
+
+.dime-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  font-family: var(--font-family-base);
+}
+
+/* La barra: píldora con borde que agrupa las pestañas. */
+.dime-tabs__list {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: var(--space-2); /* 8px */
+  padding: var(--space-2); /* 8px; el borde va por fuera, como en Figma: 58px de alto */
+  border: 1px solid var(--color-border-default);
+  border-radius: 100px;
+  background: var(--color-background-default);
+}
+
+/* Cada pestaña: Size small, 40px. */
+.dime-tabs__tab {
+  padding: var(--space-2) var(--space-4); /* 8px 16px */
+  border: 0;
+  border-radius: 100px;
+  background: var(--color-background-default);
+  color: var(--color-content-default);
+  font-family: inherit;
+  font-size: var(--interaction-size-medium); /* 16px */
+  line-height: var(--interaction-line-height-medium); /* 24px */
+  font-weight: var(--interaction-font-weight-regular);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dime-tabs__tab:hover {
+  background: var(--color-background-hover);
+}
+
+/* Active = seleccionada. */
+.dime-tabs__tab[aria-selected="true"] {
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+}
+
+.dime-tabs__tab:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* Size large (48 px) en tablet y móvil: objetivo táctil cómodo. */
+@media (max-width: 64rem) {
+  .dime-tabs__tab {
+    padding: var(--space-3) var(--space-4); /* 12px 16px */
+    font-size: var(--interaction-size-large); /* 18px */
+    line-height: var(--interaction-line-height-large); /* 24px */
+  }
+
+  .dime-tabs__list {
+    align-self: center;
+  }
+}
+
+.dime-tabs--large .dime-tabs__tab {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--interaction-size-large);
+  line-height: var(--interaction-line-height-large);
+}
+
+.dime-tabs__panel:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-tabs__panel[hidden] {
+  display: none;
+}
+
+/* <dime-tabs>: web component en light DOM (D-017). No pinta nada: solo envuelve el HTML. */
+dime-tabs {
+  display: contents;
+}

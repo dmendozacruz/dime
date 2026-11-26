@@ -1,0 +1,1473 @@
+{
+  "colors": [
+    {
+      "css": "--color-base-white",
+      "figma": "base/white",
+      "collection": "Globals",
+      "hex": "#ffffff",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-base-black",
+      "figma": "base/black",
+      "collection": "Globals",
+      "hex": "#1a1a1a",
+      "alias": "--color-neutral-900",
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-50",
+      "figma": "yellow/50",
+      "collection": "Globals",
+      "hex": "#fcf6e9",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-base-transparent",
+      "figma": "base/transparent",
+      "collection": "Globals",
+      "hex": "transparent",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-100",
+      "figma": "yellow/100",
+      "collection": "Globals",
+      "hex": "#f5dfaa",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-200",
+      "figma": "yellow/200",
+      "collection": "Globals",
+      "hex": "#f5d37b",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-300",
+      "figma": "yellow/300",
+      "collection": "Globals",
+      "hex": "#f6c531",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-400",
+      "figma": "yellow/400",
+      "collection": "Globals",
+      "hex": "#d6a90c",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-500",
+      "figma": "yellow/500",
+      "collection": "Globals",
+      "hex": "#b58e00",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-600",
+      "figma": "yellow/600",
+      "collection": "Globals",
+      "hex": "#957400",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-700",
+      "figma": "yellow/700",
+      "collection": "Globals",
+      "hex": "#765b00",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-800",
+      "figma": "yellow/800",
+      "collection": "Globals",
+      "hex": "#584400",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-yellow-900",
+      "figma": "yellow/900",
+      "collection": "Globals",
+      "hex": "#3c2d00",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-red-50",
+      "figma": "red/50",
+      "collection": "Globals",
+      "hex": "#fff4f3",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-red-400",
+      "figma": "red/400",
+      "collection": "Globals",
+      "hex": "#e23645",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-red-600",
+      "figma": "red/600",
+      "collection": "Globals",
+      "hex": "#a00523",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-orange-50",
+      "figma": "orange/50",
+      "collection": "Globals",
+      "hex": "#fff5ee",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-orange-300",
+      "figma": "orange/300",
+      "collection": "Globals",
+      "hex": "#f68000",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-orange-500",
+      "figma": "orange/500",
+      "collection": "Globals",
+      "hex": "#ad5800",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-green-50",
+      "figma": "green/50",
+      "collection": "Globals",
+      "hex": "#ecfceb",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-green-300",
+      "figma": "green/300",
+      "collection": "Globals",
+      "hex": "#25ce36",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-green-500",
+      "figma": "green/500",
+      "collection": "Globals",
+      "hex": "#009019",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-green-600",
+      "figma": "green/600",
+      "collection": "Globals",
+      "hex": "#007212",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-blue-50",
+      "figma": "blue/50",
+      "collection": "Globals",
+      "hex": "#f0f8ff",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-blue-300",
+      "figma": "blue/300",
+      "collection": "Globals",
+      "hex": "#2aa5f7",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-blue-500",
+      "figma": "blue/500",
+      "collection": "Globals",
+      "hex": "#0073b4",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-50",
+      "figma": "neutral/50",
+      "collection": "Globals",
+      "hex": "#f7f7f7",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-100",
+      "figma": "neutral/100",
+      "collection": "Globals",
+      "hex": "#dbdbdb",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-200",
+      "figma": "neutral/200",
+      "collection": "Globals",
+      "hex": "#c0c0c0",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-300",
+      "figma": "neutral/300",
+      "collection": "Globals",
+      "hex": "#a5a5a5",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-400",
+      "figma": "neutral/400",
+      "collection": "Globals",
+      "hex": "#8c8c8c",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-500",
+      "figma": "neutral/500",
+      "collection": "Globals",
+      "hex": "#737373",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-600",
+      "figma": "neutral/600",
+      "collection": "Globals",
+      "hex": "#5b5b5b",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-700",
+      "figma": "neutral/700",
+      "collection": "Globals",
+      "hex": "#444444",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-800",
+      "figma": "neutral/800",
+      "collection": "Globals",
+      "hex": "#2e2e2e",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-neutral-900",
+      "figma": "neutral/900",
+      "collection": "Globals",
+      "hex": "#1a1a1a",
+      "alias": null,
+      "description": ""
+    },
+    {
+      "css": "--color-feedback-error-background",
+      "figma": "feedback/error/background",
+      "collection": "Alias",
+      "hex": "#fff4f3",
+      "alias": "--color-red-50",
+      "description": "Fondo de mensajes y alertas de error."
+    },
+    {
+      "css": "--color-feedback-error-border",
+      "figma": "feedback/error/border",
+      "collection": "Alias",
+      "hex": "#a00523",
+      "alias": "--color-red-600",
+      "description": "Borde de campos y alertas con error."
+    },
+    {
+      "css": "--color-feedback-error-content",
+      "figma": "feedback/error/content",
+      "collection": "Alias",
+      "hex": "#a00523",
+      "alias": "--color-red-600",
+      "description": "Texto e iconos de error, como el mensaje de contraseña incorrecta."
+    },
+    {
+      "css": "--color-feedback-success-background",
+      "figma": "feedback/success/background",
+      "collection": "Alias",
+      "hex": "#ecfceb",
+      "alias": "--color-green-50",
+      "description": "Fondo de mensajes y alertas de éxito."
+    },
+    {
+      "css": "--color-feedback-success-border",
+      "figma": "feedback/success/border",
+      "collection": "Alias",
+      "hex": "#009019",
+      "alias": "--color-green-500",
+      "description": "Borde de alertas de éxito."
+    },
+    {
+      "css": "--color-feedback-success-content",
+      "figma": "feedback/success/content",
+      "collection": "Alias",
+      "hex": "#007212",
+      "alias": "--color-green-600",
+      "description": "Texto e iconos de éxito, como los checks de resultados."
+    },
+    {
+      "css": "--color-feedback-warning-background",
+      "figma": "feedback/warning/background",
+      "collection": "Alias",
+      "hex": "#fcf6e9",
+      "alias": "--color-yellow-50",
+      "description": "Fondo de avisos."
+    },
+    {
+      "css": "--color-feedback-info-background",
+      "figma": "feedback/info/background",
+      "collection": "Alias",
+      "hex": "#f0f8ff",
+      "alias": "--color-blue-50",
+      "description": "Fondo de mensajes informativos."
+    },
+    {
+      "css": "--color-feedback-info-border",
+      "figma": "feedback/info/border",
+      "collection": "Alias",
+      "hex": "#0073b4",
+      "alias": "--color-blue-500",
+      "description": "Borde de mensajes informativos."
+    },
+    {
+      "css": "--color-feedback-info-content",
+      "figma": "feedback/info/content",
+      "collection": "Alias",
+      "hex": "#0073b4",
+      "alias": "--color-blue-500",
+      "description": "Texto e iconos informativos."
+    },
+    {
+      "css": "--color-feedback-warning-border",
+      "figma": "feedback/warning/border",
+      "collection": "Alias",
+      "hex": "#ad5800",
+      "alias": "--color-orange-500",
+      "description": "Borde de avisos."
+    },
+    {
+      "css": "--color-feedback-warning-content",
+      "figma": "feedback/warning/content",
+      "collection": "Alias",
+      "hex": "#ad5800",
+      "alias": "--color-orange-500",
+      "description": "Texto e iconos de aviso."
+    },
+    {
+      "css": "--color-base-accent",
+      "figma": "base/accent",
+      "collection": "Globals",
+      "hex": "#f6c531",
+      "alias": "--color-yellow-300",
+      "description": "Color de acento de la marca. Subrayados de los títulos de sección, marcadores y detalles destacados. No usar para texto sobre blanco."
+    },
+    {
+      "css": "--color-background-default",
+      "figma": "background/default",
+      "collection": "Alias",
+      "hex": "#ffffff",
+      "alias": "--color-base-white",
+      "description": "Fondo general de las páginas y de la mayoría de componentes."
+    },
+    {
+      "css": "--color-background-subtle",
+      "figma": "background/subtle",
+      "collection": "Alias",
+      "hex": "#f7f7f7",
+      "alias": "--color-neutral-50",
+      "description": "Fondo suave para separar zonas sin usar líneas: cabeceras de tabla, áreas de ejemplo, tarjetas."
+    },
+    {
+      "css": "--color-background-disabled",
+      "figma": "background/disabled",
+      "collection": "Alias",
+      "hex": "#dbdbdb",
+      "alias": "--color-neutral-100",
+      "description": "Fondo de controles deshabilitados."
+    },
+    {
+      "css": "--color-background-hover",
+      "figma": "background/hover",
+      "collection": "Alias",
+      "hex": "#dbdbdb",
+      "alias": "--color-neutral-100",
+      "description": "Fondo de un elemento interactivo al pasar el ratón, como la pestaña de Tabs en Hover. Mismo gris que background/disabled, pero otro uso."
+    },
+    {
+      "css": "--color-background-strong",
+      "figma": "background/strong",
+      "collection": "Alias",
+      "hex": "#444444",
+      "alias": "--color-neutral-700",
+      "description": "Fondo oscuro intermedio para superficies que deben destacar sin llegar al negro de marca."
+    },
+    {
+      "css": "--color-background-brand",
+      "figma": "background/brand",
+      "collection": "Alias",
+      "hex": "#1a1a1a",
+      "alias": "--color-neutral-900",
+      "description": "Fondo oscuro de marca: footer, overlay del menú móvil y tooltip."
+    },
+    {
+      "css": "--color-border-default",
+      "figma": "border/default",
+      "collection": "Alias",
+      "hex": "#1a1a1a",
+      "alias": "--color-neutral-900",
+      "description": "Borde principal: divisores del acordeón, bordes de inputs y botones secundarios."
+    },
+    {
+      "css": "--color-border-strong",
+      "figma": "border/strong",
+      "collection": "Alias",
+      "hex": "#5b5b5b",
+      "alias": "--color-neutral-600",
+      "description": "Borde de alto contraste cuando el default no destaca lo suficiente."
+    },
+    {
+      "css": "--color-border-medium",
+      "figma": "border/medium",
+      "collection": "Alias",
+      "hex": "#8c8c8c",
+      "alias": "--color-neutral-400",
+      "description": "Borde medio para separar elementos con menos peso visual."
+    },
+    {
+      "css": "--color-border-disabled",
+      "figma": "border/disabled",
+      "collection": "Alias",
+      "hex": "#a5a5a5",
+      "alias": "--color-neutral-300",
+      "description": "Borde de controles deshabilitados."
+    },
+    {
+      "css": "--color-border-subtle",
+      "figma": "border/subtle",
+      "collection": "Alias",
+      "hex": "#dbdbdb",
+      "alias": "--color-neutral-100",
+      "description": "Borde suave: separadores de filas y raíles decorativos."
+    },
+    {
+      "css": "--color-border-subtle-light",
+      "figma": "border/subtle-light",
+      "collection": "Alias",
+      "hex": "#f7f7f7",
+      "alias": "--color-neutral-50",
+      "description": "El borde más suave, casi imperceptible sobre blanco."
+    },
+    {
+      "css": "--color-border-inverse",
+      "figma": "border/inverse",
+      "collection": "Alias",
+      "hex": "#ffffff",
+      "alias": "--color-base-white",
+      "description": "Borde sobre fondos oscuros."
+    },
+    {
+      "css": "--color-content-default",
+      "figma": "content/default",
+      "collection": "Alias",
+      "hex": "#1a1a1a",
+      "alias": "--color-neutral-900",
+      "description": "Texto e iconos principales."
+    },
+    {
+      "css": "--color-content-subtle",
+      "figma": "content/subtle",
+      "collection": "Alias",
+      "hex": "#5b5b5b",
+      "alias": "--color-neutral-600",
+      "description": "Texto secundario: subtítulos, metadatos y descripciones."
+    },
+    {
+      "css": "--color-content-disabled",
+      "figma": "content/disabled",
+      "collection": "Alias",
+      "hex": "#a5a5a5",
+      "alias": "--color-neutral-300",
+      "description": "Texto de controles deshabilitados. No cumple contraste de texto: úsalo solo en estados deshabilitados."
+    },
+    {
+      "css": "--color-content-inverse",
+      "figma": "content/inverse",
+      "collection": "Alias",
+      "hex": "#ffffff",
+      "alias": "--color-base-white",
+      "description": "Texto e iconos sobre fondos oscuros."
+    },
+    {
+      "css": "--color-focus-ring",
+      "figma": "focus/ring",
+      "collection": "Alias",
+      "hex": "#f6c531",
+      "alias": "--color-yellow-300",
+      "description": "Anillo exterior del foco de teclado (amarillo). Se combina siempre con focus/ring-inner."
+    },
+    {
+      "css": "--color-focus-ring-inner",
+      "figma": "focus/ring-inner",
+      "collection": "Alias",
+      "hex": "#1a1a1a",
+      "alias": "--color-base-black",
+      "description": "Anillo interior del foco de teclado. Junto con focus/ring forma el doble anillo, visible sobre fondos claros y oscuros."
+    }
+  ],
+  "dimensions": [
+    {
+      "css": "--size-none",
+      "figma": "Globals/size/none",
+      "px": 0
+    },
+    {
+      "css": "--size-4",
+      "figma": "Globals/size/4",
+      "px": 4
+    },
+    {
+      "css": "--size-8",
+      "figma": "Globals/size/8",
+      "px": 8
+    },
+    {
+      "css": "--size-12",
+      "figma": "Globals/size/12",
+      "px": 12
+    },
+    {
+      "css": "--size-14",
+      "figma": "Globals/size/14",
+      "px": 14
+    },
+    {
+      "css": "--size-16",
+      "figma": "Globals/size/16",
+      "px": 16
+    },
+    {
+      "css": "--size-18",
+      "figma": "Globals/size/18",
+      "px": 18
+    },
+    {
+      "css": "--size-20",
+      "figma": "Globals/size/20",
+      "px": 20
+    },
+    {
+      "css": "--size-24",
+      "figma": "Globals/size/24",
+      "px": 24
+    },
+    {
+      "css": "--size-28",
+      "figma": "Globals/size/28",
+      "px": 28
+    },
+    {
+      "css": "--size-32",
+      "figma": "Globals/size/32",
+      "px": 32
+    },
+    {
+      "css": "--size-40",
+      "figma": "Globals/size/40",
+      "px": 40
+    },
+    {
+      "css": "--size-48",
+      "figma": "Globals/size/48",
+      "px": 48
+    },
+    {
+      "css": "--size-52",
+      "figma": "Globals/size/52",
+      "px": 52
+    },
+    {
+      "css": "--size-64",
+      "figma": "Globals/size/64",
+      "px": 64
+    },
+    {
+      "css": "--size-68",
+      "figma": "Globals/size/68",
+      "px": 68
+    },
+    {
+      "css": "--size-80",
+      "figma": "Globals/size/80",
+      "px": 80
+    },
+    {
+      "css": "--size-96",
+      "figma": "Globals/size/96",
+      "px": 96
+    },
+    {
+      "css": "--size-128",
+      "figma": "Globals/size/128",
+      "px": 128
+    },
+    {
+      "css": "--size-160",
+      "figma": "Globals/size/160",
+      "px": 160
+    },
+    {
+      "css": "--size-192",
+      "figma": "Globals/size/192",
+      "px": 192
+    },
+    {
+      "css": "--space-1",
+      "figma": "Globals/space/1",
+      "px": 4
+    },
+    {
+      "css": "--space-2",
+      "figma": "Globals/space/2",
+      "px": 8
+    },
+    {
+      "css": "--space-3",
+      "figma": "Globals/space/3",
+      "px": 12
+    },
+    {
+      "css": "--space-4",
+      "figma": "Globals/space/4",
+      "px": 16
+    },
+    {
+      "css": "--space-5",
+      "figma": "Globals/space/5",
+      "px": 20
+    },
+    {
+      "css": "--space-6",
+      "figma": "Globals/space/6",
+      "px": 24
+    },
+    {
+      "css": "--space-7",
+      "figma": "Globals/space/7",
+      "px": 32
+    },
+    {
+      "css": "--space-8",
+      "figma": "Globals/space/8",
+      "px": 40
+    },
+    {
+      "css": "--space-9",
+      "figma": "Globals/space/9",
+      "px": 48
+    },
+    {
+      "css": "--space-10",
+      "figma": "Globals/space/10",
+      "px": 64
+    },
+    {
+      "css": "--space-11",
+      "figma": "Globals/space/11",
+      "px": 80
+    },
+    {
+      "css": "--space-12",
+      "figma": "Globals/space/12",
+      "px": 96
+    },
+    {
+      "css": "--space-13",
+      "figma": "Globals/space/13",
+      "px": 120
+    },
+    {
+      "css": "--space-14",
+      "figma": "Globals/space/14",
+      "px": 128
+    },
+    {
+      "css": "--space-15",
+      "figma": "Globals/space/15",
+      "px": 160
+    },
+    {
+      "css": "--space-16",
+      "figma": "Globals/space/16",
+      "px": 192
+    },
+    {
+      "css": "--font-size-display",
+      "figma": "Typography/size/display",
+      "px": 64
+    },
+    {
+      "css": "--font-size-heading-l",
+      "figma": "Typography/size/heading-l",
+      "px": 48
+    },
+    {
+      "css": "--font-size-heading-m",
+      "figma": "Typography/size/heading-m",
+      "px": 40
+    },
+    {
+      "css": "--font-size-heading-s",
+      "figma": "Typography/size/heading-s",
+      "px": 32
+    },
+    {
+      "css": "--font-size-subheading",
+      "figma": "Typography/size/subheading",
+      "px": 24
+    },
+    {
+      "css": "--font-size-body-xl",
+      "figma": "Typography/size/body-xl",
+      "px": 20
+    },
+    {
+      "css": "--font-size-body-l",
+      "figma": "Typography/size/body-l",
+      "px": 18
+    },
+    {
+      "css": "--font-size-body-m",
+      "figma": "Typography/size/body-m",
+      "px": 16
+    },
+    {
+      "css": "--font-size-body-s",
+      "figma": "Typography/size/body-s",
+      "px": 14
+    },
+    {
+      "css": "--font-size-label-m",
+      "figma": "Typography/size/label-m",
+      "px": 14
+    },
+    {
+      "css": "--font-size-label-s",
+      "figma": "Typography/size/label-s",
+      "px": 12
+    },
+    {
+      "css": "--line-height-display",
+      "figma": "Typography/line-height/display",
+      "px": 68
+    },
+    {
+      "css": "--line-height-heading-l",
+      "figma": "Typography/line-height/heading-l",
+      "px": 52
+    },
+    {
+      "css": "--line-height-heading-m",
+      "figma": "Typography/line-height/heading-m",
+      "px": 48
+    },
+    {
+      "css": "--line-height-heading-s",
+      "figma": "Typography/line-height/heading-s",
+      "px": 40
+    },
+    {
+      "css": "--line-height-subheading",
+      "figma": "Typography/line-height/subheading",
+      "px": 32
+    },
+    {
+      "css": "--line-height-body-xl",
+      "figma": "Typography/line-height/body-xl",
+      "px": 28
+    },
+    {
+      "css": "--line-height-body-l",
+      "figma": "Typography/line-height/body-l",
+      "px": 28
+    },
+    {
+      "css": "--line-height-body-m",
+      "figma": "Typography/line-height/body-m",
+      "px": 24
+    },
+    {
+      "css": "--line-height-body-s",
+      "figma": "Typography/line-height/body-s",
+      "px": 20
+    },
+    {
+      "css": "--line-height-label-m",
+      "figma": "Typography/line-height/label-m",
+      "px": 20
+    },
+    {
+      "css": "--line-height-label-s",
+      "figma": "Typography/line-height/label-s",
+      "px": 16
+    },
+    {
+      "css": "--interaction-line-height-extra-large",
+      "figma": "Component/interaction/line-height/extra-large",
+      "px": 32
+    },
+    {
+      "css": "--interaction-line-height-large",
+      "figma": "Component/interaction/line-height/large",
+      "px": 24
+    },
+    {
+      "css": "--interaction-line-height-medium",
+      "figma": "Component/interaction/line-height/medium",
+      "px": 24
+    },
+    {
+      "css": "--interaction-size-extra-large",
+      "figma": "Component/interaction/size/extra-large",
+      "px": 24
+    },
+    {
+      "css": "--interaction-size-large",
+      "figma": "Component/interaction/size/large",
+      "px": 18
+    },
+    {
+      "css": "--interaction-size-medium",
+      "figma": "Component/interaction/size/medium",
+      "px": 16
+    }
+  ],
+  "typography": [
+    {
+      "css": "--font-family-base",
+      "figma": "font-family",
+      "collection": "Typography",
+      "value": "\"ABC Monument Grotesk\", \"Helvetica Neue\", Arial, sans-serif",
+      "px": null,
+      "weight": null
+    },
+    {
+      "css": "--font-weight-bold",
+      "figma": "font-weight/bold",
+      "collection": "Typography",
+      "value": "700",
+      "px": null,
+      "weight": 700
+    },
+    {
+      "css": "--font-weight-medium",
+      "figma": "font-weight/medium",
+      "collection": "Typography",
+      "value": "500",
+      "px": null,
+      "weight": 500
+    },
+    {
+      "css": "--font-weight-regular",
+      "figma": "font-weight/regular",
+      "collection": "Typography",
+      "value": "400",
+      "px": null,
+      "weight": 400
+    },
+    {
+      "css": "--font-weight-light",
+      "figma": "font-weight/light",
+      "collection": "Typography",
+      "value": "300",
+      "px": null,
+      "weight": 300
+    },
+    {
+      "css": "--font-size-display",
+      "figma": "size/display",
+      "collection": "Typography",
+      "value": "var(--size-64)",
+      "px": 64,
+      "weight": null
+    },
+    {
+      "css": "--font-size-heading-l",
+      "figma": "size/heading-l",
+      "collection": "Typography",
+      "value": "var(--size-48)",
+      "px": 48,
+      "weight": null
+    },
+    {
+      "css": "--font-size-heading-m",
+      "figma": "size/heading-m",
+      "collection": "Typography",
+      "value": "var(--size-40)",
+      "px": 40,
+      "weight": null
+    },
+    {
+      "css": "--font-size-heading-s",
+      "figma": "size/heading-s",
+      "collection": "Typography",
+      "value": "var(--size-32)",
+      "px": 32,
+      "weight": null
+    },
+    {
+      "css": "--font-size-subheading",
+      "figma": "size/subheading",
+      "collection": "Typography",
+      "value": "var(--size-24)",
+      "px": 24,
+      "weight": null
+    },
+    {
+      "css": "--font-size-body-xl",
+      "figma": "size/body-xl",
+      "collection": "Typography",
+      "value": "var(--size-20)",
+      "px": 20,
+      "weight": null
+    },
+    {
+      "css": "--font-size-body-l",
+      "figma": "size/body-l",
+      "collection": "Typography",
+      "value": "var(--size-18)",
+      "px": 18,
+      "weight": null
+    },
+    {
+      "css": "--font-size-body-m",
+      "figma": "size/body-m",
+      "collection": "Typography",
+      "value": "var(--size-16)",
+      "px": 16,
+      "weight": null
+    },
+    {
+      "css": "--font-size-body-s",
+      "figma": "size/body-s",
+      "collection": "Typography",
+      "value": "var(--size-14)",
+      "px": 14,
+      "weight": null
+    },
+    {
+      "css": "--font-size-label-m",
+      "figma": "size/label-m",
+      "collection": "Typography",
+      "value": "var(--size-14)",
+      "px": 14,
+      "weight": null
+    },
+    {
+      "css": "--font-size-label-s",
+      "figma": "size/label-s",
+      "collection": "Typography",
+      "value": "var(--size-12)",
+      "px": 12,
+      "weight": null
+    },
+    {
+      "css": "--line-height-display",
+      "figma": "line-height/display",
+      "collection": "Typography",
+      "value": "var(--size-68)",
+      "px": 68,
+      "weight": null
+    },
+    {
+      "css": "--line-height-heading-l",
+      "figma": "line-height/heading-l",
+      "collection": "Typography",
+      "value": "var(--size-52)",
+      "px": 52,
+      "weight": null
+    },
+    {
+      "css": "--line-height-heading-m",
+      "figma": "line-height/heading-m",
+      "collection": "Typography",
+      "value": "var(--size-48)",
+      "px": 48,
+      "weight": null
+    },
+    {
+      "css": "--line-height-heading-s",
+      "figma": "line-height/heading-s",
+      "collection": "Typography",
+      "value": "var(--size-40)",
+      "px": 40,
+      "weight": null
+    },
+    {
+      "css": "--line-height-subheading",
+      "figma": "line-height/subheading",
+      "collection": "Typography",
+      "value": "var(--size-32)",
+      "px": 32,
+      "weight": null
+    },
+    {
+      "css": "--line-height-body-xl",
+      "figma": "line-height/body-xl",
+      "collection": "Typography",
+      "value": "var(--size-28)",
+      "px": 28,
+      "weight": null
+    },
+    {
+      "css": "--line-height-body-l",
+      "figma": "line-height/body-l",
+      "collection": "Typography",
+      "value": "var(--size-28)",
+      "px": 28,
+      "weight": null
+    },
+    {
+      "css": "--line-height-body-m",
+      "figma": "line-height/body-m",
+      "collection": "Typography",
+      "value": "var(--size-24)",
+      "px": 24,
+      "weight": null
+    },
+    {
+      "css": "--line-height-body-s",
+      "figma": "line-height/body-s",
+      "collection": "Typography",
+      "value": "var(--size-20)",
+      "px": 20,
+      "weight": null
+    },
+    {
+      "css": "--line-height-label-m",
+      "figma": "line-height/label-m",
+      "collection": "Typography",
+      "value": "var(--size-20)",
+      "px": 20,
+      "weight": null
+    },
+    {
+      "css": "--line-height-label-s",
+      "figma": "line-height/label-s",
+      "collection": "Typography",
+      "value": "var(--size-16)",
+      "px": 16,
+      "weight": null
+    },
+    {
+      "css": "--interaction-font-weight-regular",
+      "figma": "interaction/font-weight/regular",
+      "collection": "Component",
+      "value": "400",
+      "px": null,
+      "weight": 400
+    },
+    {
+      "css": "--interaction-font-weight-medium",
+      "figma": "interaction/font-weight/medium",
+      "collection": "Component",
+      "value": "500",
+      "px": null,
+      "weight": 500
+    },
+    {
+      "css": "--interaction-line-height-extra-large",
+      "figma": "interaction/line-height/extra-large",
+      "collection": "Component",
+      "value": "var(--size-32)",
+      "px": 32,
+      "weight": null
+    },
+    {
+      "css": "--interaction-line-height-large",
+      "figma": "interaction/line-height/large",
+      "collection": "Component",
+      "value": "var(--size-24)",
+      "px": 24,
+      "weight": null
+    },
+    {
+      "css": "--interaction-line-height-medium",
+      "figma": "interaction/line-height/medium",
+      "collection": "Component",
+      "value": "var(--size-24)",
+      "px": 24,
+      "weight": null
+    },
+    {
+      "css": "--interaction-size-extra-large",
+      "figma": "interaction/size/extra-large",
+      "collection": "Component",
+      "value": "var(--size-24)",
+      "px": 24,
+      "weight": null
+    },
+    {
+      "css": "--interaction-size-large",
+      "figma": "interaction/size/large",
+      "collection": "Component",
+      "value": "var(--size-18)",
+      "px": 18,
+      "weight": null
+    },
+    {
+      "css": "--interaction-size-medium",
+      "figma": "interaction/size/medium",
+      "collection": "Component",
+      "value": "var(--size-16)",
+      "px": 16,
+      "weight": null
+    }
+  ],
+  "textStyles": [
+    {
+      "name": "Display/bold",
+      "cls": ".text-display-bold",
+      "weight": "bold",
+      "size": 64,
+      "lineHeight": 68,
+      "fs": "font-size-display",
+      "lh": "line-height-display",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Display/light",
+      "cls": ".text-display-light",
+      "weight": "light",
+      "size": 64,
+      "lineHeight": 68,
+      "fs": "font-size-display",
+      "lh": "line-height-display",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Heading/Large/bold",
+      "cls": ".text-heading-l-bold",
+      "weight": "bold",
+      "size": 48,
+      "lineHeight": 52,
+      "fs": "font-size-heading-l",
+      "lh": "line-height-heading-l",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Heading/Medium/bold",
+      "cls": ".text-heading-m-bold",
+      "weight": "bold",
+      "size": 40,
+      "lineHeight": 48,
+      "fs": "font-size-heading-m",
+      "lh": "line-height-heading-m",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Heading/Medium/light",
+      "cls": ".text-heading-m-light",
+      "weight": "light",
+      "size": 40,
+      "lineHeight": 48,
+      "fs": "font-size-heading-m",
+      "lh": "line-height-heading-m",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Heading/Small/bold",
+      "cls": ".text-heading-s-bold",
+      "weight": "bold",
+      "size": 32,
+      "lineHeight": 40,
+      "fs": "font-size-heading-s",
+      "lh": "line-height-heading-s",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Heading/Small/light",
+      "cls": ".text-heading-s-light",
+      "weight": "light",
+      "size": 32,
+      "lineHeight": 40,
+      "fs": "font-size-heading-s",
+      "lh": "line-height-heading-s",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Subheading/regular",
+      "cls": ".text-subheading-regular",
+      "weight": "regular",
+      "size": 24,
+      "lineHeight": 32,
+      "fs": "font-size-subheading",
+      "lh": "line-height-subheading",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Subheading/bold",
+      "cls": ".text-subheading-bold",
+      "weight": "bold",
+      "size": 24,
+      "lineHeight": 32,
+      "fs": "font-size-subheading",
+      "lh": "line-height-subheading",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Extra large/light",
+      "cls": ".text-body-xl-light",
+      "weight": "light",
+      "size": 20,
+      "lineHeight": 28,
+      "fs": "font-size-body-xl",
+      "lh": "line-height-body-xl",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Extra large/regular",
+      "cls": ".text-body-xl-regular",
+      "weight": "regular",
+      "size": 20,
+      "lineHeight": 28,
+      "fs": "font-size-body-xl",
+      "lh": "line-height-body-xl",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Extra large/bold",
+      "cls": ".text-body-xl-bold",
+      "weight": "bold",
+      "size": 20,
+      "lineHeight": 28,
+      "fs": "font-size-body-xl",
+      "lh": "line-height-body-xl",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Large/light",
+      "cls": ".text-body-l-light",
+      "weight": "light",
+      "size": 18,
+      "lineHeight": 28,
+      "fs": "font-size-body-l",
+      "lh": "line-height-body-l",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Large/regular",
+      "cls": ".text-body-l-regular",
+      "weight": "regular",
+      "size": 18,
+      "lineHeight": 28,
+      "fs": "font-size-body-l",
+      "lh": "line-height-body-l",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Large/bold",
+      "cls": ".text-body-l-bold",
+      "weight": "bold",
+      "size": 18,
+      "lineHeight": 28,
+      "fs": "font-size-body-l",
+      "lh": "line-height-body-l",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Medium/regular",
+      "cls": ".text-body-m-regular",
+      "weight": "regular",
+      "size": 16,
+      "lineHeight": 24,
+      "fs": "font-size-body-m",
+      "lh": "line-height-body-m",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Medium/bold",
+      "cls": ".text-body-m-bold",
+      "weight": "bold",
+      "size": 16,
+      "lineHeight": 24,
+      "fs": "font-size-body-m",
+      "lh": "line-height-body-m",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Body/Small/regular",
+      "cls": ".text-body-s-regular",
+      "weight": "regular",
+      "size": 14,
+      "lineHeight": 20,
+      "fs": "font-size-body-s",
+      "lh": "line-height-body-s",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Interaction/Large/regular",
+      "cls": ".text-interaction-l-regular",
+      "weight": "regular",
+      "size": 18,
+      "lineHeight": 24,
+      "fs": "interaction-size-large",
+      "lh": "interaction-line-height-large",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Interaction/Large/medium",
+      "cls": ".text-interaction-l-medium",
+      "weight": "medium",
+      "size": 18,
+      "lineHeight": 24,
+      "fs": "interaction-size-large",
+      "lh": "interaction-line-height-large",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Interaction/Medium/regular",
+      "cls": ".text-interaction-m-regular",
+      "weight": "regular",
+      "size": 16,
+      "lineHeight": 24,
+      "fs": "interaction-size-medium",
+      "lh": "interaction-line-height-medium",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Interaction/Medium/medium",
+      "cls": ".text-interaction-m-medium",
+      "weight": "medium",
+      "size": 16,
+      "lineHeight": 24,
+      "fs": "interaction-size-medium",
+      "lh": "interaction-line-height-medium",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Label/Medium/medium",
+      "cls": ".text-label-m-medium",
+      "weight": "medium",
+      "size": 14,
+      "lineHeight": 20,
+      "fs": "font-size-label-m",
+      "lh": "line-height-label-m",
+      "ls": 0.04,
+      "upper": true
+    },
+    {
+      "name": "Label/Small/regular",
+      "cls": ".text-label-s-regular",
+      "weight": "regular",
+      "size": 12,
+      "lineHeight": 16,
+      "fs": "font-size-label-s",
+      "lh": "line-height-label-s",
+      "ls": 0.04,
+      "upper": true
+    },
+    {
+      "name": "Interaction/Extra large/regular",
+      "cls": ".text-interaction-xl-regular",
+      "weight": "regular",
+      "size": 24,
+      "lineHeight": 32,
+      "fs": "interaction-size-extra-large",
+      "lh": "interaction-line-height-extra-large",
+      "ls": 0,
+      "upper": false
+    },
+    {
+      "name": "Interaction/Extra large/medium",
+      "cls": ".text-interaction-xl-medium",
+      "weight": "medium",
+      "size": 24,
+      "lineHeight": 32,
+      "fs": "interaction-size-extra-large",
+      "lh": "interaction-line-height-extra-large",
+      "ls": 0,
+      "upper": false
+    }
+  ],
+  "effects": [
+    {
+      "name": "Elevation/Small",
+      "css": "--elevation-s",
+      "value": "0px 2px 8px 0px rgba(0, 0, 0, 0.08)",
+      "description": "Separación mínima del fondo, para elementos que solo necesitan despegarse un poco."
+    },
+    {
+      "name": "Elevation/Medium",
+      "css": "--elevation-m",
+      "value": "0px 4px 16px 0px rgba(0, 0, 0, 0.1)",
+      "description": "Elementos que flotan sobre el contenido, como capturas de producto destacadas, tooltips o menús."
+    },
+    {
+      "name": "Elevation/Large",
+      "css": "--elevation-l",
+      "value": "0px 20px 40px 0px rgba(0, 0, 0, 0.4)",
+      "description": "La sombra más marcada, para capas que quedan por encima de todo, como modales u overlays."
+    }
+  ],
+  "blurs": [
+    {
+      "name": "Blur/Header",
+      "css": "--blur-header",
+      "value": "blur(4.15px)",
+      "description": "Desenfoque del fondo del header, sobre background/default al 85 %. Sin soporte o si se pide menos transparencia, el fondo queda sólido."
+    }
+  ]
+}

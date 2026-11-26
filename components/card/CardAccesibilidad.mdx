@@ -1,0 +1,49 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./card.stories.js";
+
+<Meta title="Componentes/Card/Accesibilidad" />
+
+# Card
+
+<ComponentHeader description="Tarjeta de un caso: nombre, áreas, categoría y enlace. Toda la tarjeta lleva al destino con un solo enlace." figmaNode="102:7204" updated="25-11-2026" />
+
+<ComponentTabs component="card" current="accesibilidad" />
+
+Un `<article>` con un encabezado y un solo enlace que cubre toda la tarjeta.
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd></td><td>Un solo Tab por tarjeta. El doble anillo rodea la tarjeta entera.</td></tr>
+    <tr><td><kbd>Enter</kbd></td><td>Abre el caso.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- **Un solo enlace** para toda la tarjeta: un Tab por tarjeta.
+- **El nombre del caso es un encabezado**, para recorrer una rejilla de casos por encabezados.
+- **La imagen es decorativa** (`alt=""`): el nombre ya dice el caso.
+- **El nombre accesible empieza por el texto visible**: "Open case study: Title (password protected)". Así funciona también con control por voz.
+- **El candado es decorativo** (`aria-hidden`): la protección la dice el nombre del enlace.
+- **El tooltip «Password protected» también es decorativo** (`aria-hidden`, sin `role`): repite lo que ya dice el nombre del enlace y no entra en el orden de lectura, así que ningún lector lo anuncia dos veces. Como aparece con el ratón y con el foco, cumple 1.4.13: Escape lo cierra sin mover el foco (`<dime-tooltip>`), no tapa el enlace, y se queda mientras la tarjeta tiene el ratón o el foco.
+- **El candado en blanco** sobre la imagen es una ayuda visual: no es el único modo de saber que el contenido está protegido.
+- Lo que aparece con el ratón (imagen y pie oscuro) aparece también con el foco.
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado*: un solo enlace, con su nombre completo, que recibe el foco con Tab.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): el encabezado y el enlace con "(password protected)".
+- Con las imágenes de los casos: contraste del texto del pie sobre la imagen.

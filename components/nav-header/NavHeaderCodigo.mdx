@@ -1,0 +1,88 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./nav-header.stories.js";
+
+<Meta title="Componentes/Nav Header/Código" />
+
+# Nav Header
+
+<ComponentHeader description="Cabecera de la página: logo, navegación y contacto. En tablet y mobile la navegación pasa a un menú que se abre sobre la página." figmaNode="102:7511" updated="25-11-2026" />
+
+<ComponentTabs component="nav header" current="codigo" />
+
+Web component en light DOM (D-017): `<dime-nav-header>` envuelve el HTML del componente y le añade el comportamiento del menú. El CSS está en `components/nav-header/nav-header.css`, el JavaScript en `components/nav-header/nav-header.js` (registrado en `components/index.js`), y solo usan tokens de DIME. Sin el componente, la cabecera se ve igual; solo falta abrir y cerrar el menú.
+
+## Componente en vivo
+
+Reduce la ventana o usa la story de tablet: el botón abre el menú.
+
+<Canvas of={Stories.Tablet} sourceState="shown" />
+
+## Variantes
+
+### Desktop
+
+<Canvas of={Stories.Desktop} sourceState="shown" />
+
+### Menú abierto · mobile
+
+<Canvas of={Stories.MenuOpenMobile} sourceState="shown" />
+
+## Clases y atributos
+
+<table>
+  <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>&lt;dime-nav-header&gt;</code></td><td>Envuelve el <code>&lt;header&gt;</code>. Abre y cierra el menú, gestiona el foco y deja el resto de la página inactiva.</td></tr>
+    <tr><td><code>.dime-nav-header</code></td><td>En el <code>&lt;header&gt;</code> (rol <code>banner</code>).</td></tr>
+    <tr><td><code>.dime-nav-header__bar</code></td><td>Barra con fondo translúcido y desenfoque. Es el contenedor del que dependen las container queries.</td></tr>
+    <tr><td><code>.dime-nav-header__row</code></td><td>Disposición y márgenes de la barra.</td></tr>
+    <tr><td><code>.dime-nav-header__logo</code></td><td>Enlace al inicio con el vector del nombre (<code>&lt;img alt=""&gt;</code>) y <code>aria-label="Diana Mendoza, home"</code>.</td></tr>
+    <tr><td><code>.dime-nav-header__nav</code> · <code>__list</code> · <code>__item</code></td><td><code>&lt;nav aria-label="Main"&gt;</code> con una lista de enlaces. La página actual lleva <code>aria-current="page"</code>.</td></tr>
+    <tr><td><code>.dime-nav-header__actions</code></td><td>Button de contacto (<code>.dime-button</code>) y botón del menú.</td></tr>
+    <tr><td><code>.dime-nav-header__toggle</code></td><td>Botón del menú: <code>aria-expanded</code> y <code>aria-controls</code> con el id del menú. Solo se ve en tablet y mobile.</td></tr>
+    <tr><td><code>.dime-nav-header__menu</code></td><td>El menú abierto: <code>role="dialog"</code> <code>aria-modal="true"</code> <code>aria-label="Menu"</code>. Cerrado está <code>inert</code>; abierto lleva <code>data-open</code>.</td></tr>
+    <tr><td><code>.dime-nav-header__close</code></td><td>Botón de cerrar (<code>aria-label="Close menu"</code>), el primero del menú.</td></tr>
+    <tr><td><code>.dime-nav-header__menu-item</code></td><td>Enlace del menú.</td></tr>
+    <tr><td><code>.dime-nav-header__menu--static</code></td><td>Solo para documentar: el menú como bloque en lugar de ventana.</td></tr>
+  </tbody>
+</table>
+
+## Responsive
+
+La barra usa **container queries** y el menú abierto, el suyo, por separado. El menú es `position: fixed` y un contenedor con `container-type` crea su propio bloque de contención: por eso el menú va fuera de la barra y tiene un interior (`__menu-inner`) que hace de contenedor.
+
+- **Tablet (hasta 1024 px, `@container (max-width: 64rem)`):** la navegación y el Button se ocultan y aparece el botón del menú. 60 px de alto y márgenes de 32 px.
+- **Mobile (hasta 768 px, `@container (max-width: 48rem)`):** márgenes de 24 px, también en la barra del menú.
+- El HTML es el mismo en los tres anchos.
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--color-background-default</code> · <code>--blur-header</code></td><td>Fondo al 85 % y desenfoque de la barra.</td></tr>
+    <tr><td><code>--space-10</code> · <code>--space-7</code> · <code>--space-6</code> · <code>--space-2</code> · <code>--space-4</code></td><td>Márgenes (64, 32, 24 px) y relleno de la barra y los ítems.</td></tr>
+    <tr><td><code>--interaction-size-medium</code> · <code>--interaction-font-weight-medium</code></td><td>Texto de los ítems y de la página actual.</td></tr>
+    <tr><td><code>--color-border-default</code></td><td>Subrayado.</td></tr>
+    <tr><td><code>--color-background-brand</code> · <code>--color-content-inverse</code></td><td>Menú abierto.</td></tr>
+    <tr><td><code>--font-size-heading-l</code> · <code>--line-height-heading-l</code></td><td>Enlaces del menú, 48/52 bold.</td></tr>
+    <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+`<dime-nav-header>` (`components/nav-header/nav-header.js`):
+
+- **Abrir:** quita `inert` del menú, pone `data-open`, `aria-expanded="true"`, deja `inert` el resto de la página y la barra, bloquea el scroll y lleva el foco al botón de cerrar.
+- **Tab** no sale del menú: del último pasa al primero y al revés. **Escape** y el botón de cerrar lo cierran. Pulsar un enlace también lo cierra.
+- **Cerrar:** deshace todo lo anterior y devuelve el foco al botón del menú.
+- Si la ventana se ensancha hasta desktop con el menú abierto, se cierra.
+- **Sin JavaScript** (`@media (scripting: none)`), en tablet y mobile el botón del menú no se muestra y los enlaces aparecen en línea, debajo del logo. Así nadie se queda sin navegación; el menú modal es una mejora para cuando hay script.
+- **Animación:** es CSS. El menú tiene un `clip-path: circle()` que pasa de 0 a `150vmax` en 650 ms desde el centro del botón de menú (el JavaScript solo escribe `--dime-reveal-x` y `--dime-reveal-y` al abrir); los enlaces entran en cascada de 250 a 430 ms. Con `prefers-reduced-motion` no hay animación.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir de los sets `Header`, `Item`, `Menu` y `Menu item` de Figma. El logo es el vector `Name Diana` de Figma (`public/logos/name-diana.svg`), con el nombre accesible en el enlace.

@@ -1,0 +1,24 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Gobernanza/El gate" />
+
+# El gate
+
+Una sola orden decide si algo se puede subir: `npm run gate`. Una integración continua la ejecuta en cada cambio. No hay un pase parcial: o está en verde o el trabajo no está terminado.
+
+```bash
+npm run gate
+```
+
+## Qué comprueba y para qué
+
+| Comprobación | Qué afirma | Para qué |
+|---|---|---|
+| **Tokens** | Los archivos generados coinciden con el volcado de Figma. | Un archivo generado editado a mano se pierde la próxima vez que se regenera, o diverge sin que nadie lo vea. |
+| **Estructura** | Cada componente tiene sus páginas de Uso, Código y Accesibilidad, su nodo de Figma y stories con axe en modo error. | Que ningún componente se dé por terminado sin su página de accesibilidad o su enlace a Figma. |
+| **Stories** | Cada story se ejecuta en un navegador real: las pruebas de interacción (teclado, foco, roles, estados) y axe. | Una prueba que no se ejecuta sola no protege: la del teclado del Accordion llevaba fallando sin que nadie lo viera. |
+| **Build** | Storybook se construye sin errores. | Que una página rota se detecte antes de publicar. |
+
+## Qué no sustituye
+
+El gate comprueba lo que una máquina puede ver. No sustituye a la prueba con un lector de pantalla ni en un dispositivo real: la complementa. La revisión manual se hace con **VoiceOver** en macOS (Safari) en desktop y con **TalkBack** en Android (Chrome) en móvil.

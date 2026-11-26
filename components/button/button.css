@@ -1,0 +1,230 @@
+/* Button · DIME
+   Figma: página Buttons. Sets Button (48:2481), icon button (48:2554) y
+   Button back (48:2534). Sin JavaScript.
+   El elemento lo decide lo que hace: <button> si ejecuta una acción en la página,
+   <a href> si navega, descarga o abre el correo (misma clase, mismo aspecto). */
+
+/* ======================================================================
+   Button
+   ====================================================================== */
+.dime-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1); /* 4px */
+  /* En Figma el borde va por dentro: se resta del relleno para que mida 40px. */
+  padding: calc(var(--space-2) - 1px) calc(var(--space-4) - 1px); /* 8px 16px */
+  box-sizing: border-box;
+  max-width: 100%;
+  border: 1px solid var(--color-border-default);
+  border-radius: 100px; /* píldora: único radio de DIME */
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+  font-family: var(--font-family-base);
+  font-size: var(--interaction-size-medium); /* 16px */
+  line-height: var(--interaction-line-height-medium); /* 24px */
+  font-weight: var(--interaction-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.dime-button__icon {
+  flex-shrink: 0;
+  width: var(--size-20);
+  height: var(--size-20);
+}
+
+/* Hover: se vacía (fondo transparente, texto oscuro, mismo borde). */
+.dime-button:hover {
+  background: transparent;
+  color: var(--color-content-default);
+}
+
+/* Doble anillo de foco de DIME. */
+.dime-button:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* Size large: 48px */
+.dime-button--large {
+  padding: calc(var(--space-3) - 1px) calc(var(--space-4) - 1px); /* 12px 16px: 48px */
+  font-size: var(--interaction-size-large); /* 18px */
+  line-height: var(--interaction-line-height-large); /* 24px */
+}
+
+.dime-button--large .dime-button__icon {
+  width: var(--size-24);
+  height: var(--size-24);
+}
+
+/* Width large: ocupa todo el ancho de su contenedor. */
+.dime-button--full {
+  display: flex;
+  width: 100%;
+}
+
+/* Inverted: sobre fondos oscuros. */
+.dime-button--inverted {
+  --dime-focus-gap: var(--color-background-brand); /* el hueco del anillo de foco toma el fondo oscuro */
+  border-color: var(--color-border-inverse);
+  background: var(--color-background-default);
+  color: var(--color-content-default);
+}
+
+.dime-button--inverted:hover {
+  background: transparent;
+  color: var(--color-content-inverse);
+}
+
+/* Disabled: aria-disabled="true" para que siga recibiendo el foco. */
+.dime-button[aria-disabled="true"],
+.dime-button[aria-disabled="true"]:hover {
+  border-color: var(--color-border-disabled);
+  background: var(--color-background-disabled);
+  color: var(--color-content-disabled);
+  cursor: default;
+}
+
+/* ======================================================================
+   icon button: solo icono, con nombre accesible en aria-label
+   ====================================================================== */
+.dime-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2); /* 8px: 44px */
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 100px;
+  background: transparent;
+  color: var(--color-content-default);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.dime-icon-button__icon {
+  width: var(--size-28);
+  height: var(--size-28);
+}
+
+.dime-icon-button:hover {
+  background: var(--color-background-subtle);
+}
+
+.dime-icon-button:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-icon-button--large {
+  padding: var(--space-3); /* 12px: 52px */
+}
+
+.dime-icon-button--inverted {
+  --dime-focus-gap: var(--color-background-brand); /* el hueco del anillo de foco toma el fondo oscuro */
+  color: var(--color-border-inverse);
+}
+
+.dime-icon-button--inverted:hover {
+  background: var(--color-background-strong);
+}
+
+/* Bounce: invita a bajar. Rebota la flecha (no el botón, para que el círculo de
+   Hover no se mueva bajo el puntero). 3 × 1,5 s = 4,5 s y se para: por debajo de
+   los 5 s de WCAG 2.2.2, así que no necesita botón de pausa. */
+@keyframes dime-icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(var(--space-1)); } /* 4px */
+}
+
+.dime-icon-button--bounce .dime-icon-button__icon {
+  animation: dime-icon-bounce 1.5s ease-in-out 3;
+}
+
+/* ======================================================================
+   Button back: círculo con flecha; al pasar el ratón muestra el texto
+   ====================================================================== */
+.dime-button-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0; /* sin texto visible, sin hueco: círculo de 44px */
+  min-height: 2.75rem; /* 44px: área táctil */
+  padding: var(--space-2);
+  box-sizing: border-box;
+  border-radius: 100px;
+  background: var(--color-background-brand);
+  color: var(--color-border-inverse);
+  font-family: var(--font-family-base);
+  font-size: var(--interaction-size-medium);
+  line-height: var(--interaction-line-height-medium);
+  font-weight: var(--interaction-font-weight-regular);
+  text-decoration: none;
+  transition: padding 200ms ease;
+}
+
+.dime-button-back__icon {
+  flex-shrink: 0;
+  width: var(--size-28);
+  height: var(--size-28);
+}
+
+/* El texto está, pero oculto, hasta Hover o Active. Es decorativo: el nombre
+   accesible lo da aria-label y no cambia. */
+.dime-button-back__label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--color-content-inverse);
+  transition: max-width 200ms ease;
+}
+
+.dime-button-back:hover,
+.dime-button-back:active {
+  gap: var(--space-1); /* 4px */
+  padding-inline: var(--space-4); /* 16px */
+}
+
+.dime-button-back:hover .dime-button-back__label,
+.dime-button-back:active .dime-button-back__label {
+  max-width: var(--size-160);
+}
+
+.dime-button-back:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-button-back--inverted {
+  --dime-focus-gap: var(--color-background-brand); /* el hueco del anillo de foco toma el fondo oscuro */
+  background: var(--color-background-default);
+  color: var(--color-border-default);
+}
+
+.dime-button-back--inverted .dime-button-back__label {
+  color: var(--color-content-default);
+}
+
+/* ======================================================================
+   Movimiento reducido y alto contraste
+   ====================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .dime-button,
+  .dime-icon-button,
+  .dime-button-back,
+  .dime-button-back__label {
+    transition: none;
+  }
+
+  .dime-icon-button--bounce .dime-icon-button__icon {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .dime-icon-button,
+  .dime-button-back {
+    border: 1px solid ButtonText;
+  }
+}

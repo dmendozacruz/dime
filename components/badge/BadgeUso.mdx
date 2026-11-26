@@ -1,0 +1,58 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { Overview } from "../shared/Demo.jsx";
+import { badgeHTML as b, badgeListHTML as bl } from "./badge.stories.js";
+
+<Meta title="Componentes/Badge/Uso" />
+
+# Badge
+
+<ComponentHeader
+  description="Etiqueta estática que clasifica un contenido con una o dos palabras. No es interactiva."
+  figmaNode="133:17054"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="badge" current="uso" />
+
+## Overview
+
+<Overview light={[b({})]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Texto</strong></td><td>La categoría, en una o dos palabras. Se escribe normal y el estilo la muestra en mayúsculas.</td><td>Label / Medium / medium · <code>content/default</code></td></tr>
+    <tr><td>2</td><td><strong>Borde</strong></td><td>Píldora de 1 px alrededor del texto.</td><td><code>border/medium</code> · radio 100 · padding <code>space/3</code> × <code>space/1</code></td></tr>
+  </tbody>
+</table>
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Necesitas una etiqueta estática, que no hace nada al pulsarla, para clasificar un contenido con una o dos palabras, como el tipo de proyecto: B2B, B2C, SaaS.
+- Quieres que la categoría se vea de un vistazo junto al título.
+
+**No lo uses cuando**
+
+- El texto es una frase: usa texto normal.
+- Comunica un estado o un aviso (error, éxito): usa un Alert.
+
+## Recomendaciones de uso
+
+- Una o dos palabras. Si es una sigla, el nombre completo tiene que llegar al lector de pantalla.
+- Escribe el texto normal: las mayúsculas las pone el estilo.
+- Varios juntos, en fila y separados con `space/2`; si no caben, bajan de línea enteros, sin cortarse.
+- No cambies el color del borde ni el radio.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: bl([{ text: "Label" }, { text: "Label" }, { text: "Label" }]), text: "Una o dos palabras: se lee de un vistazo." },
+  { type: "dont", html: b({ text: "Producto digital para empresas" }), text: "Una frase dentro de un Badge pierde su función: ya no se lee de un vistazo." },
+]} />

@@ -1,0 +1,275 @@
+/* Nav Header · DIME
+   Cabecera de la página. Figma: página Header nav, sets Header (102:7511), Menu
+   (636:114), Item (102:11436) y Menu item (636:113).
+   Reúne otros componentes: se compone de Link de logo, Item de navegación, Button, icon button y,
+   en tablet y mobile, el Menu abierto. Desktop > 1024 px · tablet 769 – 1024 px ·
+   mobile ≤ 768 px.
+   La barra responde al ancho de SU contenedor (container queries). El menú abierto va
+   FUERA de ese contenedor: un contenedor con container-type crea su propio bloque de
+   contención y rompería el position: fixed del menú. */
+
+.dime-nav-header {
+  position: relative;
+  font-family: var(--font-family-base);
+  color: var(--color-content-default);
+}
+
+/* ---------- Barra */
+.dime-nav-header__bar {
+  container-type: inline-size;
+  /* Fondo blanco al 85 % con desenfoque: el texto sigue siendo legible sobre el contenido. */
+  background: color-mix(in srgb, var(--color-background-default) 85%, transparent);
+  -webkit-backdrop-filter: var(--blur-header);
+  backdrop-filter: var(--blur-header);
+}
+
+.dime-nav-header__row {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(12.5rem, 18.75rem) 1fr minmax(6.25rem, 18.75rem); /* 200–300 · flexible · 100–300 */
+  align-items: center;
+  column-gap: var(--space-6); /* 24px */
+  padding: var(--space-2) var(--space-10); /* 8px 64px: 72px de alto */
+}
+
+/* El logo es el vector del nombre (Name Diana, 142 × 38) dentro de un enlace: el nombre
+   accesible lo da el aria-label del enlace, no la imagen. */
+.dime-nav-header__logo {
+  display: flex;
+  justify-self: start;
+  padding: 0; /* 38px de alto: la barra de 60 la marca el botón del menú */
+  line-height: 0;
+}
+
+.dime-nav-header__logo img {
+  display: block;
+  width: 8.875rem; /* 142px */
+  height: auto;
+}
+
+/* ---------- Navegación (Nav item e Item) */
+.dime-nav-header__nav { justify-self: center; }
+
+.dime-nav-header__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dime-nav-header__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: var(--space-4); /* 16px: 56px de alto */
+  color: inherit;
+  font-size: var(--interaction-size-medium); /* 16px */
+  line-height: var(--interaction-line-height-medium); /* 24px */
+  font-weight: var(--interaction-font-weight-regular);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dime-nav-header__item-label { position: relative; }
+
+/* Subrayado de 1 px: aparece en Hover, Focus y Active (la página actual) y crece desde la izquierda. */
+.dime-nav-header__item-label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--color-border-default);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+
+.dime-nav-header__item:hover .dime-nav-header__item-label::after,
+.dime-nav-header__item:focus-visible .dime-nav-header__item-label::after,
+.dime-nav-header__item[aria-current="page"] .dime-nav-header__item-label::after {
+  transform: scaleX(1);
+}
+
+/* Active y Focus en Medium (sin fondo ni borde, es lo que marca el estado; igual que el Link). */
+.dime-nav-header__item:focus-visible,
+.dime-nav-header__item[aria-current="page"] {
+  font-weight: var(--interaction-font-weight-medium);
+}
+
+.dime-nav-header__item:focus-visible,
+.dime-nav-header__logo:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* ---------- Acciones: botón de contacto y botón del menú */
+.dime-nav-header__actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4); /* 16px */
+}
+
+.dime-icon-button.dime-nav-header__toggle { display: none; }
+
+/* ---------- Tablet (769 – 1024 px): logo y botón de menú */
+@container (max-width: 64rem) {
+  .dime-nav-header__row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-7); /* 8px 32px: 60px de alto */
+  }
+
+  .dime-nav-header__nav,
+  .dime-nav-header__actions .dime-button { display: none; }
+
+  .dime-icon-button.dime-nav-header__toggle { display: inline-flex; }
+}
+
+/* ---------- Mobile (≤ 768 px) */
+@container (max-width: 48rem) {
+  .dime-nav-header__row {
+    padding-inline: var(--space-6); /* 24px */
+  }
+}
+
+/* Sin JavaScript no hay quien abra el menú: en tablet y mobile los enlaces se ven en línea,
+   debajo del logo, y el botón del menú no aparece. */
+@media (scripting: none) {
+  @container (max-width: 64rem) {
+    .dime-nav-header__row { flex-wrap: wrap; row-gap: var(--space-2); }
+    .dime-nav-header__nav { display: block; order: 3; flex-basis: 100%; }
+    .dime-nav-header__list { flex-wrap: wrap; margin-inline: calc(var(--space-4) * -1); } /* el texto del primer enlace queda alineado con el logo */
+    .dime-icon-button.dime-nav-header__toggle { display: none; }
+  }
+}
+
+/* ---------- Menú abierto (tablet y mobile) */
+.dime-nav-header__menu {
+  --dime-focus-gap: var(--color-background-brand); /* el hueco del anillo de foco toma el fondo oscuro */
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+  /* Se abre como un círculo que nace en el botón de menú y crece hasta cubrir la pantalla.
+     El origen (--dime-reveal-x / --dime-reveal-y) lo pone el JavaScript al abrir; el valor de
+     reserva es la esquina superior derecha, donde está el botón. */
+  clip-path: circle(0 at var(--dime-reveal-x, calc(100% - 3.5rem)) var(--dime-reveal-y, 2rem));
+  visibility: hidden;
+  transition: clip-path 400ms cubic-bezier(0.64, 0, 0.78, 0), visibility 0s linear 400ms;
+}
+
+.dime-nav-header__menu[data-open] {
+  clip-path: circle(150vmax at var(--dime-reveal-x, calc(100% - 3.5rem)) var(--dime-reveal-y, 2rem));
+  visibility: visible;
+  transition: clip-path 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Interior del menú: es el contenedor del que dependen sus container queries (el menú en sí
+   es position: fixed y no puede serlo). */
+.dime-nav-header__menu-inner {
+  container-type: inline-size;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dime-nav-header__menu-bar {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-2) var(--space-7); /* mismo padding que la barra: la X queda donde estaba la hamburguesa */
+}
+
+.dime-nav-header__menu-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dime-nav-header__menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-7); /* 32px */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dime-nav-header__menu-item {
+  display: block;
+  color: inherit;
+  font-size: var(--font-size-heading-l); /* 48px */
+  line-height: var(--line-height-heading-l); /* 52px */
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dime-nav-header__menu-item:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* Los enlaces entran en cascada cuando el círculo ya les ha llegado (250 – 430 ms). */
+.dime-nav-header__menu-list li {
+  opacity: 0;
+  transform: translateY(var(--space-2)); /* 8px */
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.dime-nav-header__menu[data-open] .dime-nav-header__menu-list li {
+  opacity: 1;
+  transform: none;
+}
+
+.dime-nav-header__menu[data-open] .dime-nav-header__menu-list li:nth-child(1) { transition-delay: 250ms; }
+.dime-nav-header__menu[data-open] .dime-nav-header__menu-list li:nth-child(2) { transition-delay: 310ms; }
+.dime-nav-header__menu[data-open] .dime-nav-header__menu-list li:nth-child(3) { transition-delay: 370ms; }
+.dime-nav-header__menu[data-open] .dime-nav-header__menu-list li:nth-child(4) { transition-delay: 430ms; }
+
+@container (max-width: 48rem) {
+  .dime-nav-header__menu-bar { padding-inline: var(--space-6); } /* 24px */
+}
+
+/* Para documentarlo: el menú abierto como bloque, no como ventana a pantalla completa. */
+.dime-nav-header__menu--static {
+  position: relative;
+  inset: auto;
+  height: 52.75rem; /* 844px */
+  clip-path: none;
+  visibility: visible;
+}
+
+.dime-nav-header__menu--static .dime-nav-header__menu-list li { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dime-nav-header__item-label::after,
+  .dime-nav-header__menu,
+  .dime-nav-header__menu[data-open],
+  .dime-nav-header__menu-list li,
+  .dime-nav-header__menu[data-open] .dime-nav-header__menu-list li {
+    transition: none;
+    transition-delay: 0s;
+  }
+}
+
+/* Sin transparencia (preferencia del sistema): fondo sólido, sin desenfoque. */
+@media (prefers-reduced-transparency: reduce) {
+  .dime-nav-header__bar {
+    background: var(--color-background-default);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* <dime-nav-header>: web component en light DOM (D-017). No pinta nada: solo envuelve el HTML. */
+dime-nav-header { display: contents; }

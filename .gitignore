@@ -1,0 +1,9 @@
+node_modules/
+storybook-static/
+*.log
+.DS_Store
+
+# ABC Monument Grotesk es una fuente con licencia: los archivos NO se suben al repo.
+# En local se copian desde el portfolio (ver README). En producción se cargan desde
+# dianamendozacruz.com.
+public/fonts/*.woff2

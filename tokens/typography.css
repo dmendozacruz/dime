@@ -1,0 +1,188 @@
+/* DIME — estilos de texto. Generado por scripts/build-tokens.mjs. */
+
+.text-display-bold { /* Display/bold · 64/68 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+}
+
+.text-display-light { /* Display/light · 64/68 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+}
+
+.text-heading-l-bold { /* Heading/Large/bold · 48/52 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading-l);
+  line-height: var(--line-height-heading-l);
+}
+
+.text-heading-m-bold { /* Heading/Medium/bold · 40/48 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading-m);
+  line-height: var(--line-height-heading-m);
+}
+
+.text-heading-m-light { /* Heading/Medium/light · 40/48 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-heading-m);
+  line-height: var(--line-height-heading-m);
+}
+
+.text-heading-s-bold { /* Heading/Small/bold · 32/40 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading-s);
+  line-height: var(--line-height-heading-s);
+}
+
+.text-heading-s-light { /* Heading/Small/light · 32/40 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-heading-s);
+  line-height: var(--line-height-heading-s);
+}
+
+.text-subheading-regular { /* Subheading/regular · 24/32 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-subheading);
+  line-height: var(--line-height-subheading);
+}
+
+.text-subheading-bold { /* Subheading/bold · 24/32 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-subheading);
+  line-height: var(--line-height-subheading);
+}
+
+.text-body-xl-light { /* Body/Extra large/light · 20/28 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-body-xl);
+  line-height: var(--line-height-body-xl);
+}
+
+.text-body-xl-regular { /* Body/Extra large/regular · 20/28 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-xl);
+  line-height: var(--line-height-body-xl);
+}
+
+.text-body-xl-bold { /* Body/Extra large/bold · 20/28 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-body-xl);
+  line-height: var(--line-height-body-xl);
+}
+
+.text-body-l-light { /* Body/Large/light · 18/28 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+}
+
+.text-body-l-regular { /* Body/Large/regular · 18/28 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+}
+
+.text-body-l-bold { /* Body/Large/bold · 18/28 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+}
+
+.text-body-m-regular { /* Body/Medium/regular · 16/24 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+}
+
+.text-body-m-bold { /* Body/Medium/bold · 16/24 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+}
+
+.text-body-s-regular { /* Body/Small/regular · 14/20 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+}
+
+.text-interaction-l-regular { /* Interaction/Large/regular · 18/24 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--interaction-size-large);
+  line-height: var(--interaction-line-height-large);
+}
+
+.text-interaction-l-medium { /* Interaction/Large/medium · 18/24 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--interaction-size-large);
+  line-height: var(--interaction-line-height-large);
+}
+
+.text-interaction-m-regular { /* Interaction/Medium/regular · 16/24 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--interaction-size-medium);
+  line-height: var(--interaction-line-height-medium);
+}
+
+.text-interaction-m-medium { /* Interaction/Medium/medium · 16/24 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--interaction-size-medium);
+  line-height: var(--interaction-line-height-medium);
+}
+
+.text-label-m-medium { /* Label/Medium/medium · 14/20 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-label-m);
+  line-height: var(--line-height-label-m);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.text-label-s-regular { /* Label/Small/regular · 12/16 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-label-s);
+  line-height: var(--line-height-label-s);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.text-interaction-xl-regular { /* Interaction/Extra large/regular · 24/32 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--interaction-size-extra-large);
+  line-height: var(--interaction-line-height-extra-large);
+}
+
+.text-interaction-xl-medium { /* Interaction/Extra large/medium · 24/32 */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--interaction-size-extra-large);
+  line-height: var(--interaction-line-height-extra-large);
+}
+

@@ -1,0 +1,46 @@
+# Publica Storybook en GitHub Pages en cada push a main.
+# La fuente ABC Monument Grotesk no está en el repositorio (D-008): se quitan las
+# reglas @font-face para que el sitio use la fuente de respaldo sin pedir archivos
+# que no existen.
+name: Storybook
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Quitar las reglas @font-face (la fuente no se publica)
+        run: sed -i '/@font-face/d' .storybook/fonts.css .storybook/manager-head.html
+      - run: npm run build-storybook
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: storybook-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

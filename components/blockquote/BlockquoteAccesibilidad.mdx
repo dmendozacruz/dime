@@ -1,0 +1,46 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./blockquote.stories.js";
+
+<Meta title="Componentes/Blockquote/Accesibilidad" />
+
+# Blockquote
+
+<ComponentHeader
+  description="Cita con comillas grandes. Puede ser corta o un párrafo largo, con autor o sin él."
+  figmaNode="404:1620"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="blockquote" current="accesibilidad" />
+
+Elementos nativos: `<figure>`, `<blockquote>` y `<figcaption>`. No es interactivo.
+
+## Roles, nombres y estados
+
+- **Comillas decorativas:** las pone el CSS, así que el lector de pantalla no las lee.
+- **Autor fuera de la cita:** va en `<figcaption>` (con `<cite>`), no dentro del `<blockquote>`, para que no se lea como parte de lo que se dijo.
+- **Nombre del grupo:** el `<figure>` lleva `aria-label`, porque algunos navegadores no exponen el `<blockquote>` por sí solo.
+- **No es interactivo:** no recibe el foco.
+
+<Canvas of={Stories.WithAuthor} />
+
+## Contraste y zoom
+
+El texto tiene contraste de sobra (17,4:1) y crece con el zoom sin cortarse: la cita baja de línea dentro de su columna. En pantallas estrechas las comillas pasan arriba.
+
+## Responsive
+
+- Las comillas son decorativas y no están en el HTML (las dibuja el CSS), así que apilarlas en mobile no cambia el orden de lectura.
+- Al apilarse en una columna, la cita se lee sin desplazamiento horizontal con zoom del 400 % (1.4.10).
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver (desktop) y TalkBack (móvil): que anuncie la cita y el autor por separado y que no lea las comillas.

@@ -1,0 +1,75 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./blockquote.stories.js";
+
+<Meta title="Componentes/Blockquote/Código" />
+
+# Blockquote
+
+<ComponentHeader
+  description="Cita con comillas grandes. Puede ser corta o un párrafo largo, con autor o sin él."
+  figmaNode="404:1620"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="blockquote" current="codigo" />
+
+HTML y CSS, sin JavaScript. El CSS está en `components/blockquote/blockquote.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Con autor
+
+`<figcaption>` con `<cite>`, fuera del `<blockquote>`.
+
+<Canvas of={Stories.WithAuthor} sourceState="shown" />
+
+### Texto largo
+
+<Canvas of={Stories.Long} sourceState="shown" />
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-blockquote</code></td><td>En el <code>&lt;figure&gt;</code>. Las comillas las pone el CSS (<code>::before</code>), así que el lector de pantalla no las lee.</td></tr>
+    <tr><td><code>.dime-blockquote__body</code></td><td>Columna de la cita y el autor.</td></tr>
+    <tr><td><code>.dime-blockquote__quote</code></td><td>En el <code>&lt;blockquote&gt;</code>; el texto va en un <code>&lt;p&gt;</code>.</td></tr>
+    <tr><td><code>.dime-blockquote__author</code></td><td>En el <code>&lt;figcaption&gt;</code>, con el nombre en <code>&lt;cite&gt;</code>.</td></tr>
+  </tbody>
+</table>
+
+## Responsive
+
+- **Tablet (769 – 1024 px):** igual que desktop.
+- **Mobile (hasta 768 px, `@media (max-width: 48rem)`):** el bloque pasa a una columna: las comillas quedan encima del texto, sin hueco entre ellas. Sin cambios de HTML.
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--space-6</code> · <code>--space-7</code> · <code>--space-4</code></td><td>Comillas → texto (24 px), aire arriba y abajo de la cita (32 px) y cita → autor (16 px).</td></tr>
+    <tr><td><code>--size-80</code></td><td>Hueco de las comillas.</td></tr>
+    <tr><td><code>--font-size-heading-s</code> · <code>--line-height-heading-s</code> · <code>--font-weight-light</code></td><td>Texto de la cita: 32/40, light.</td></tr>
+    <tr><td><code>--font-size-body-xl</code> · <code>--line-height-body-xl</code> · <code>--font-weight-bold</code></td><td>Autor: 20/28, bold.</td></tr>
+    <tr><td><code>--color-content-default</code></td><td>Texto y comillas.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+No necesita.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`404:1620`). 
+- 25-11-2026: las comillas son el SVG real del `.icon Quote` de Figma (`404:1611`, 80 × 80), exportado a `components/blockquote/quote.svg` y pintado con máscara y `background/brand`.

@@ -1,0 +1,64 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./nav-header.stories.js";
+
+<Meta title="Componentes/Nav Header/Accesibilidad" />
+
+# Nav Header
+
+<ComponentHeader description="Cabecera de la página: logo, navegación y contacto. En tablet y mobile la navegación pasa a un menú que se abre sobre la página." figmaNode="102:7511" updated="25-11-2026" />
+
+<ComponentTabs component="nav header" current="accesibilidad" />
+
+Landmark `banner` con una navegación. El menú de tablet y mobile sigue el patrón *Disclosure navigation* del APG, con una ventana modal (no `role="menu"`, que es para menús de aplicación).
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd></td><td>Recorre el logo, los enlaces y el botón. Con el menú abierto, no sale de él.</td></tr>
+    <tr><td><kbd>Enter</kbd> · <kbd>Espacio</kbd></td><td>En el botón del menú, lo abre; en un enlace, lo sigue.</td></tr>
+    <tr><td><kbd>Escape</kbd></td><td>Cierra el menú y el foco vuelve al botón que lo abrió.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- **Landmarks:** `<header>` (banner) y `<nav aria-label="Main">`. Solo hay una navegación a la vez: en tablet y mobile la de la barra no se muestra y la del menú existe solo mientras está abierto.
+- **La página actual no se marca solo con el estilo:** el enlace lleva `aria-current="page"`.
+- **Logo:** enlace a inicio con el vector del nombre (imagen decorativa, `alt=""`) y el nombre «Diana Mendoza, home» en el enlace, que contiene el nombre que se ve (2.5.3). La imagen no se anuncia dos veces.
+- **Botón del menú:** nombre «Menu» fijo; el estado lo da `aria-expanded` y `aria-controls` lo une con el menú. No cambia a «Close»: eso lo hace el botón de cerrar del propio menú.
+- **El menú es una ventana modal** (`role="dialog"`, `aria-modal="true"`, `aria-label="Menu"`): al abrir, el foco entra en el botón de cerrar y el resto de la página queda `inert`. Cerrado, el menú es `inert`: no se lee ni se tabula.
+- **Foco al cerrar:** vuelve al botón que lo abrió.
+- **Button de contacto:** es un enlace con aspecto de botón; su nombre contiene el texto visible.
+- **Antes de la cabecera va el Skip nav** (2.4.1).
+
+## Contraste y movimiento
+
+- Texto negro sobre el fondo blanco translúcido: al menos 12:1 incluso con contenido negro detrás (17,4:1 sobre blanco), por el 85 % de opacidad. Con «reducir transparencia», fondo sólido.
+- Menú: blanco sobre `background/brand`, 17,4:1.
+- El subrayado no es lo único que marca la página actual: también el peso y `aria-current`.
+- **Movimiento (2.2.2 y 2.3.3):** la apertura dura 650 ms (un círculo que crece desde el botón) más la cascada de los enlaces, que termina a los 430 ms de empezar; no se repite y no empieza sola. Con «reducir movimiento» el menú aparece sin animación.
+
+## Responsive
+
+- En tablet y mobile el botón del menú mide 44 px (2.5.8) y los enlaces del menú, 52 px de alto.
+- El orden de tabulación y de lectura es el mismo en todos los anchos.
+- Con zoom del 400 % no hay scroll horizontal (1.4.10).
+- Si la cabecera es fija, `scroll-padding-top` evita que tape lo que recibe el foco (2.4.11).
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado · menú*: el botón abre el menú, el foco va al botón de cerrar, Escape lo cierra y el foco vuelve.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver en Safari (macOS) y TalkBack en Chrome (Android): «banner», «navegación Main», el botón «Menu, contraído / expandido» y la ventana modal. En TalkBack, que el foco no salga del menú abierto y que el fondo quede fuera del recorrido.
+- Dispositivo real: el menú abierto con el teclado de pantalla y el cambio de orientación.

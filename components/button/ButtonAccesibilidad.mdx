@@ -1,0 +1,66 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./button.stories.js";
+
+<Meta title="Componentes/Button/Accesibilidad" />
+
+# Button
+
+<ComponentHeader
+  description="Destaca la acción o el destino principal de una zona. La familia incluye el icon button, que solo lleva icono, y el Button back, para volver atrás."
+  figmaNode="48:2481"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="button" current="accesibilidad" />
+
+Elementos nativos: `<button>` o `<a href>`, según lo que haga. El navegador da el rol, el teclado y el foco. Patrón de referencia: [Button del APG](https://www.w3.org/WAI/ARIA/apg/patterns/button/) y `useButton` de React Aria (como referencia de comportamiento, no como dependencia).
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Button (<code>&lt;button&gt;</code>)</th><th>Como enlace y Button back (<code>&lt;a&gt;</code>)</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd> · <kbd>Mayús</kbd> + <kbd>Tab</kbd></td><td>Llega y sale. Doble anillo de foco.</td><td>Igual.</td></tr>
+    <tr><td><kbd>Enter</kbd></td><td>Ejecuta la acción.</td><td>Abre el destino.</td></tr>
+    <tr><td><kbd>Espacio</kbd></td><td>Ejecuta la acción.</td><td>No lo activa: hace scroll.</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- **Rol:** botón (`<button type="button">`) si ejecuta una acción; enlace (`<a href>`) si navega, descarga o abre el correo. Nunca un `<div>` con un evento de clic.
+- **Nombre accesible:** el texto visible. El icono es decorativo (`aria-hidden="true"`) y no se anuncia.
+- **icon button:** no tiene texto visible, así que el nombre va en `aria-label` y dice qué pasa, no qué dibujo es: "Ir al contenido", no "Flecha abajo".
+- **Button back:** es un enlace. Su nombre va en `aria-label`, dice adónde lleva y es **fijo**: el texto que aparece al pasar el ratón es decorativo (`aria-hidden="true"`), para que no cambie lo que se anuncia.
+- **Disabled:** `aria-disabled="true"`, no `disabled`, para que siga recibiendo el foco y se anuncie como no disponible. El motivo va escrito cerca. El atributo no impide el clic: quien escriba la acción tiene que ignorarlo mientras esté activo.
+
+<Canvas of={Stories.BackName} />
+
+## Contraste y visibilidad
+
+- Texto blanco sobre `background/brand` y negro sobre blanco: 17,4:1. El borde de la píldora (`border/default`) también tiene 17,4:1, así que en Hover, cuando el fondo se vacía, el botón sigue viéndose.
+- El estado no depende solo del color: Hover cambia el fondo y Focus añade el doble anillo, también en Inverted.
+- Disabled tiene contraste bajo, como permite WCAG en lo que no se puede usar.
+- **Movimiento (2.2.2):** el rebote del icon button (`--bounce`) dura 4,5 s en total y se para solo, por debajo de los 5 s a partir de los cuales WCAG pide un control de pausa. Con «reducir movimiento» activado no se mueve.
+- En modo de alto contraste, el icon button y el Button back llevan un borde del sistema para no perder su contorno.
+
+## Área táctil
+
+40 px de alto en small, 48 px en large, 44 px el icon button medium y el Button back, y 52 px el icon button large. Todos superan el mínimo de WCAG 2.5.8 (24 px).
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado*: Tab llega al botón; Enter y Espacio lo activan.
+- Story *Button back · nombre fijo*: el nombre no cambia al pasar el ratón.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver en Safari (macOS) y TalkBack en Chrome (Android): "botón" o "enlace" según el caso, nombre completo y "no disponible" en Disabled.
+- Dispositivo real: el área táctil y el Button back al tocarlo (sin hover).

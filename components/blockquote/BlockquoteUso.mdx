@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { Overview } from "../shared/Demo.jsx";
+import { blockquoteHTML as q } from "./blockquote.stories.js";
+
+<Meta title="Componentes/Blockquote/Uso" />
+
+# Blockquote
+
+<ComponentHeader
+  description="Cita con comillas grandes. Puede ser corta o un párrafo largo, con autor o sin él."
+  figmaNode="404:1620"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="blockquote" current="uso" />
+
+## Overview
+
+<Overview light={[`<div style="max-width: 640px">${q({ showAuthor: true })}</div>`]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Comillas</strong></td><td>Comillas grandes que marcan que es una cita. Son decorativas.</td><td>.icon Quote · 80 px · <code>content/default</code></td></tr>
+    <tr><td>2</td><td><strong>Texto</strong></td><td>La cita: corta o un párrafo largo.</td><td>Heading / Small / light · <code>content/default</code></td></tr>
+    <tr><td>3</td><td><strong>Autor (opcional)</strong></td><td>Nombre, cargo y empresa de quien lo dijo. Se activa con Show author.</td><td>Body / Extra large / bold · <code>content/default</code> · <code>space/4</code> bajo la cita</td></tr>
+  </tbody>
+</table>
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Citas lo que dijo otra persona, como el testimonio de un cliente. El autor es opcional (Show author).
+- Quieres destacar una idea clave, como un aprendizaje.
+
+**No lo uses cuando**
+
+- Es el título o el resumen de una sección: usa un encabezado.
+- Es un aviso para quien lee: usa un Alert.
+
+## Recomendaciones de uso
+
+- Una cita por sección, como cierre o apoyo; si hay varias, pierden fuerza.
+- Puede ser corta o un párrafo largo: el texto crece en alto sin cortarse.
+- Si es de otra persona, activa Show author con nombre, cargo y empresa.
+- No cambies el tamaño de las comillas ni el estilo del texto.

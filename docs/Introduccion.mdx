@@ -1,0 +1,61 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introducción" />
+
+<header className="dime-cover sb-unstyled">
+  <h1 className="dime-cover__title">DIME Design System</h1>
+  <img className="dime-cover__img" src="./brand/cover-ds.webp" width="2000" height="480" alt="" />
+</header>
+
+DIME es el design system de [dianamendozacruz.com](https://dianamendozacruz.com): accesible por diseño, documentado y compartido entre Figma y código. Esta documentación es la referencia para desarrollo (tokens, código y especificaciones) y se construye con el mismo código que se publica, para que no se desalinee. El diseño de cada componente nace en la librería de Figma, que es el punto de partida; cuando todo esté volcado aquí, esta documentación pasa a ser la fuente de verdad, y lo que se cree en código o se diseñe en Figma se vuelca en ella.
+
+## Qué es
+
+- **Basado en tokens.** Cada color, tamaño, espaciado y estilo de texto es un token con nombre que sale de Figma. El código lee el token, nunca el valor.
+- **Accesible desde el principio.** El listón es WCAG 2.2 AA. Cada componente tiene su página de accesibilidad y una prueba que se ejecuta de verdad: teclado, foco, roles y axe.
+- **Con las decisiones escritas.** Se hizo con una IA que se encarga de lo repetitivo mientras cada decisión la toma la diseñadora. Las decisiones, con su motivo y lo que se descartó, están en `docs/decisions.md`.
+
+## Dónde está cada cosa
+
+- [Mapa del sistema](?path=/docs/mapa-del-sistema--docs): qué piezas hay, en qué estado está cada una y cómo se relacionan.
+- Foundations: [Color](?path=/docs/foundations-color--docs), [Tipografía](?path=/docs/foundations-tipografía--docs), [Espacio y layout](?path=/docs/foundations-espacio-y-layout--docs), [Primitivos](?path=/docs/foundations-primitivos--docs), [Iconos](?path=/docs/foundations-iconos--docs), [Logos](?path=/docs/foundations-logos--docs) y [Layout y grid](?path=/docs/foundations-layout-y-grid--docs).
+- **Componentes:** 16, cada uno con tres páginas de documentación y los ejemplos interactivos. *Uso* dice cuándo usarlo, *Código* cómo y *Accesibilidad* qué garantiza; los *Ejemplos* lo enseñan funcionando.
+
+## Cómo usar los tokens
+
+Los tokens se generan desde las variables de Figma y se publican como custom properties de CSS.
+
+```html
+<link rel="stylesheet" href="tokens/tokens.css" />
+<link rel="stylesheet" href="tokens/typography.css" />
+```
+
+```css
+/* «mi-tarjeta» es un nombre de ejemplo: tu propia clase, escrita con tokens de DIME */
+.mi-tarjeta {
+  background: var(--color-background-default);
+  color: var(--color-content-default);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-4);
+  font-family: var(--font-family-base);
+}
+```
+
+Ese ejemplo usa cinco tokens para enseñar la idea; hay más de 140 (colores, tamaños, espaciado, tipografía, elevación…). Los componentes de DIME (`.dime-button`, `.dime-badge`…) son clases hechas igual, con los tokens que cada uno necesita.
+
+- `tokens/tokens.css`: colores, tamaños, espaciado, tipografía y elevación.
+- `tokens/typography.css`: una clase por cada estilo de texto de Figma (`.text-body-l-regular`, `.text-heading-m-bold`…).
+- `tokens/tokens.json`: los mismos tokens en formato W3C Design Tokens.
+
+Nunca se edita a mano ninguno de estos archivos: se cambia Figma y se regeneran con `npm run tokens`.
+
+## Cómo se comprueba
+
+`npm run gate` decide si algo se puede subir, y una integración continua lo ejecuta en cada cambio:
+
+1. Los tokens generados coinciden con Figma.
+2. Cada componente tiene sus páginas y su nodo de Figma.
+3. Cada story se ejecuta en un navegador real: pruebas de teclado, foco y roles, y axe.
+4. Storybook se construye sin errores.
+
+Lo automático no sustituye a la prueba con lector de pantalla y en dispositivo real: la complementa. La revisión manual se hace con VoiceOver en macOS (Safari) en desktop y con TalkBack en Android (Chrome) en móvil.

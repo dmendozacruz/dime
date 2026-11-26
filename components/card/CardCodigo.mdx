@@ -1,0 +1,73 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./card.stories.js";
+
+<Meta title="Componentes/Card/Código" />
+
+# Card
+
+<ComponentHeader description="Tarjeta de un caso: nombre, áreas, categoría y enlace. Toda la tarjeta lleva al destino con un solo enlace." figmaNode="102:7204" updated="25-11-2026" />
+
+<ComponentTabs component="card" current="codigo" />
+
+HTML y CSS, sin JavaScript. Usa el Link y el Badge de DIME. El CSS está en `components/card/card.css` y solo usa tokens.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Show lock
+
+<Canvas of={Stories.Locked} sourceState="shown" />
+
+Con candado, la tarjeta va dentro de `<dime-tooltip>` (web component en light DOM, D-017, el mismo del Tooltip): en Hover y Focus el candado pasa a blanco y aparece el tooltip «Password protected» a su izquierda, con 400 ms de retraso. Escape lo cierra sin mover el foco. Pasa el ratón o usa Tab para verlo.
+
+### Texto largo
+
+<Canvas of={Stories.LongText} sourceState="shown" />
+
+## Imagen
+
+La tarjeta estándar lleva un placeholder: `<span class="dime-card__image dime-card__image--placeholder" aria-hidden="true">`, un fondo gris con un icono de imagen. Para una imagen propia, se sustituye por `<img class="dime-card__image" src="…" width="300" height="300" alt="">`, de 300 × 300 px, como primer hijo de la tarjeta. En los dos casos se descubre de abajo arriba en Hover y en Focus, por detrás del pie y del enlace. En las stories, el control *Image* acepta la dirección de una imagen.
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-card</code></td><td>En un <code>&lt;article&gt;</code>. 300 × 300 px como máximo, borde de 0,5 px.</td></tr>
+    <tr><td><code>.dime-card__image</code></td><td>Imagen decorativa (<code>alt=""</code>).</td></tr>
+    <tr><td><code>.dime-card__image--placeholder</code></td><td>Placeholder estándar: gris con un icono de imagen.</td></tr>
+    <tr><td><code>.dime-card__lock</code></td><td>Contenedor del candado (<code>aria-hidden</code>): la protección la dice el enlace. Dentro, un <code>.dime-tooltip-host</code> con el icono y un <code>.dime-tooltip.dime-tooltip--left</code> decorativo.</td></tr>
+    <tr><td><code>&lt;dime-tooltip&gt;</code></td><td>Envuelve la tarjeta con candado. Solo añade Escape para cerrar el tooltip.</td></tr>
+    <tr><td><code>.dime-card__title</code> · <code>.dime-card__subtitle</code></td><td>Nombre (<code>&lt;h3&gt;</code>) y áreas.</td></tr>
+    <tr><td><code>.dime-card__footer</code></td><td>Pie con el Link. Su <code>::after</code> cubre toda la tarjeta: un solo destino.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--space-7</code> · <code>--space-6</code> · <code>--space-4</code> · <code>--space-2</code></td><td>Rellenos (32 × 24 px y los del pie) y separaciones.</td></tr>
+    <tr><td><code>--font-size-heading-s</code> · <code>--font-size-label-s</code></td><td>Nombre 32/40 light y áreas 12/16.</td></tr>
+    <tr><td><code>--color-border-default</code> · <code>--color-content-subtle</code></td><td>Borde y áreas.</td></tr>
+    <tr><td><code>--color-background-brand</code> · <code>--color-content-inverse</code></td><td>Pie en Hover y Focus, y candado blanco sobre la imagen.</td></tr>
+    <tr><td>Los del Tooltip</td><td>Caja y flecha de «Password protected» (<code>tooltip.css</code>).</td></tr>
+    <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo alrededor de la tarjeta.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+La tarjeta no necesita JavaScript. Con candado, `<dime-tooltip>` (`components/tooltip/tooltip.js`) añade Escape para cerrar el tooltip (WCAG 1.4.13) y lo vuelve a mostrar al salir y volver a entrar.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`102:7204`). Las imágenes de cada Type y el candado con su Tooltip se añadieron el mismo día.

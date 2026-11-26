@@ -1,0 +1,50 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { Overview } from "../shared/Demo.jsx";
+import { dividerHTML as d } from "./divider.stories.js";
+
+<Meta title="Componentes/Divider/Uso" />
+
+# Divider
+
+<ComponentHeader
+  description="Línea de 1 px que separa dos bloques distintos. Ocupa el ancho de su contenedor."
+  figmaNode="114:13404"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="divider" current="uso" />
+
+## Overview
+
+<Overview light={[`<div style="width: 320px">${d({})}</div>`]} dark={[`<div style="width: 320px">${d({ inverted: true })}</div>`]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Línea</strong></td><td>Separador horizontal de 1 px de alto. Ocupa el ancho de su contenedor; no tiene texto ni estados.</td><td><code>border/default</code> · <code>border/inverse</code> (inverted) · 1 px</td></tr>
+  </tbody>
+</table>
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Separa dos bloques distintos dentro de una misma zona, como un contenido y su pie.
+- Marca el límite entre filas que se repiten, como las de un acordeón.
+
+**No lo uses cuando**
+
+- Solo quieres separar con aire: usa el espaciado (`space/*`).
+- Los elementos de una lista corta ya se distinguen sin línea.
+- Como subrayado de un título o de un enlace: el subrayado del Link es otra cosa.
+
+## Recomendaciones de uso
+
+- Ocupa siempre el ancho de su contenedor; no lo recortes a mano.
+- No cambies el grosor ni el color: sobre fondo oscuro (`background/brand`) usa Inverted.
+- Deja el mismo espacio arriba y abajo, siempre con variables `space/*`.
+- Uno entre bloques, no uno detrás de cada elemento.

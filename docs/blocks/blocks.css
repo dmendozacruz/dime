@@ -1,0 +1,1032 @@
+/* Estilos de los bloques de documentación (muestras de tokens, botón copiar…).
+   Composición tomada del design system de Nueva York (designsystem.ny.gov/tokens),
+   con los tokens de DIME. Prefijo .dime- para no chocar con los estilos de Storybook. */
+
+.dime-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Storybook aplica sus propios márgenes y tamaños a h4/p/code del MDX:
+   los anulamos dentro de los bloques. */
+.dime-token *,
+.dime-palette__item * {
+  margin: 0 !important;
+}
+
+/* Los bloques llevan .sb-unstyled para que Storybook no les imponga sus estilos:
+   por eso fijamos aquí la fuente y el color base. */
+.dime-tokens,
+.dime-palette {
+  font-family: var(--font-family-base);
+  color: var(--color-content-default);
+}
+
+.dime-tokens *,
+.dime-palette * {
+  box-sizing: border-box;
+}
+
+/* ---------- Muestra de color (con el contraste dentro) */
+.dime-swatch {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: var(--size-192);
+  border-radius: var(--size-4);
+  padding: var(--space-2) var(--space-3);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); /* contorno para que el blanco no se pierda */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+}
+
+/* Contraste: círculo del color de texto que pasa + número, como en Nueva York */
+.dime-swatch__contrast {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.dime-swatch__dot {
+  width: var(--size-12);
+  height: var(--size-12);
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dime-swatch--l {
+  height: var(--size-96);
+}
+
+.dime-swatch--m {
+  height: var(--size-64);
+}
+
+.dime-swatch--transparent {
+  background-image: repeating-conic-gradient(var(--color-neutral-100) 0 25%, var(--color-base-white) 0 50%);
+  background-size: var(--size-16) var(--size-16);
+}
+
+/* ---------- Fila de token semántico: muestra | nombre y uso | variable */
+.dime-tokens {
+  list-style: none;
+  margin: var(--space-6) 0 var(--space-10);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.dime-token {
+  display: grid;
+  grid-template-columns: 3fr 5fr 4fr; /* 3 · 5 · 4 de 12 columnas, como Nueva York */
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.dime-token__example,
+.dime-token__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.dime-token__details {
+  gap: var(--space-2);
+}
+
+.dime-token__raw,
+.dime-token .dime-token__raw {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: var(--font-size-label-s) !important;
+  line-height: var(--line-height-label-s);
+  color: var(--color-content-subtle);
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.dime-token__name {
+  font-family: var(--font-family-base) !important;
+  font-size: var(--font-size-body-xl) !important;
+  line-height: var(--line-height-body-xl) !important;
+  font-weight: var(--font-weight-bold) !important;
+  color: var(--color-content-default);
+}
+
+.dime-token__desc {
+  font-size: var(--font-size-body-m) !important;
+  line-height: var(--line-height-body-m) !important;
+  color: var(--color-content-default);
+}
+
+.dime-token__alias {
+  font-size: var(--font-size-body-s) !important;
+  line-height: var(--line-height-body-s) !important;
+  color: var(--color-content-subtle);
+}
+
+/* ---------- Caja gris con la variable y el botón copiar */
+.dime-codebox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: var(--size-48);
+  padding: var(--space-1) var(--space-2) var(--space-1) var(--space-4);
+  background: var(--color-background-subtle);
+}
+
+.dime-codebox code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: var(--font-size-label-s) !important;
+  line-height: var(--line-height-label-s);
+  color: var(--color-content-default);
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Botón copiar (icono, ghost) */
+.dime-copy {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-40);
+  height: var(--size-40);
+  padding: 0;
+  color: var(--color-content-default);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.dime-copy svg {
+  width: var(--size-16);
+  height: var(--size-16);
+}
+
+.dime-copy:hover {
+  background: var(--color-background-hover);
+}
+
+/* Tooltip "Copiar" / "Copiado" (visual; el nombre accesible va en aria-label) */
+.dime-copy__tip {
+  position: absolute;
+  bottom: calc(100% + var(--space-1));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+
+.dime-copy:hover .dime-copy__tip,
+.dime-copy:focus-visible .dime-copy__tip,
+.dime-copy[data-copied] .dime-copy__tip {
+  opacity: 1;
+}
+
+/* Doble anillo de foco de DIME: base oscura dentro + anillo amarillo fuera. */
+.dime-copy:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* ---------- Paleta primitiva (rejilla) */
+.dime-palette {
+  list-style: none;
+  margin: var(--space-4) 0 var(--space-10);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--size-192), 1fr));
+  gap: var(--space-7) var(--space-6);
+}
+
+.dime-palette__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.dime-palette__item .dime-swatch {
+  margin-bottom: var(--space-1) !important;
+}
+
+.dime-palette__name {
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-default);
+}
+
+.dime-palette__item .dime-codebox {
+  margin-top: var(--space-2) !important;
+}
+
+/* ---------- Pantallas estrechas: la fila se apila */
+@media (max-width: 48rem) {
+  .dime-token {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Tipografía de la documentación
+   Storybook fija su propia fuente en los títulos del MDX: los pasamos a ABC Monument
+   y a la escala de DIME. */
+/* Solo los títulos de la documentación: no los de dentro de los componentes
+   (muestras .sb-unstyled y ejemplos .docs-story), que llevan sus propios estilos. */
+.sbdocs-content h1:not(.sb-unstyled *, .docs-story *),
+.sbdocs-content h2:not(.sb-unstyled *, .docs-story *),
+.sbdocs-content h3:not(.sb-unstyled *, .docs-story *) {
+  font-family: var(--font-family-base);
+  color: var(--color-content-default);
+  font-weight: var(--font-weight-bold);
+  border: 0;
+}
+
+/* Texto corrido de la documentación: Body M (16/24) en TODA la página, también
+   dentro de bloques Markdown y tablas. Storybook pone 14 px por defecto.
+   Los bloques de tokens (.sb-unstyled) fijan sus propios tamaños y se excluyen. */
+.sbdocs-content :where(p, li, td, th, blockquote):not(.sb-unstyled *) {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  color: var(--color-content-default);
+}
+
+.sbdocs-content :where(th):not(.sb-unstyled *) {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Código en línea dentro del texto: 14 px, legible junto a los 16 px del texto */
+.sbdocs-content :where(p, li, td) code:not(.sb-unstyled *) {
+  font-size: var(--font-size-body-s);
+}
+
+.sbdocs-content h1:not(.sb-unstyled *, .docs-story *) {
+  font-size: var(--font-size-heading-l);
+  line-height: var(--line-height-heading-l);
+}
+
+.sbdocs-content h2:not(.sb-unstyled *, .docs-story *) {
+  font-size: var(--font-size-heading-s);
+  line-height: var(--line-height-heading-s);
+  margin: var(--space-12) 0 var(--space-4);
+}
+
+.sbdocs-content h3:not(.sb-unstyled *, .docs-story *) {
+  font-size: var(--font-size-subheading);
+  line-height: var(--line-height-subheading);
+  margin: var(--space-9) 0 var(--space-2);
+}
+
+/* ---------- Muestras de tipografía (columna de ejemplo) */
+.dime-type-example {
+  display: flex;
+  align-items: flex-start; /* arriba, alineado con el nombre de la columna central */
+  font-family: var(--font-family-base);
+  font-size: var(--size-40);
+  line-height: 1;
+  color: var(--color-content-default);
+  overflow: hidden;
+}
+
+/* Las sombras se salen de la caja: no recortarlas */
+.dime-type-example:has(.dime-shadow-card) {
+  overflow: visible;
+}
+
+.dime-line-sample {
+  display: block;
+  width: 100%;
+  background: var(--color-background-subtle);
+  border-block: 1px solid var(--color-border-medium);
+}
+
+/* ---------- Muestras de espaciado, tamaño y elevación */
+.dime-space-bar {
+  display: block;
+  height: var(--size-48);
+  min-width: 1px;
+  max-width: 100%;
+  background: var(--color-neutral-200);
+}
+
+.dime-space-bar--size {
+  background: var(--color-neutral-100);
+}
+
+.dime-shadow-card {
+  display: block;
+  width: 100%;
+  max-width: var(--size-192);
+  height: var(--size-64);
+  margin: 0 0 var(--space-6) !important; /* aire debajo para que se vea la sombra entera */
+  background: var(--color-background-default);
+  border-radius: var(--size-8);
+}
+
+/* Muestra del desenfoque: la mitad de arriba del texto queda bajo el panel. */
+.dime-blur-sample {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: var(--size-192);
+  height: var(--size-64);
+  overflow: hidden;
+  background: var(--color-background-subtle);
+}
+
+.dime-blur-sample__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding-inline: var(--space-3);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  color: var(--color-content-default);
+}
+
+.dime-blur-sample__panel {
+  position: absolute;
+  inset: 0 0 50% 0;
+  background: color-mix(in srgb, var(--color-background-default) 85%, transparent);
+}
+
+/* ---------- Portada (solo en la Introducción)
+   La imagen deja libre la mitad izquierda: el título va encima, en esa zona.
+   La imagen es decorativa (alt=""): el título es texto real. */
+.dime-cover {
+  position: relative;
+  margin: 0 0 var(--space-9);
+}
+
+.dime-cover__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dime-cover .dime-cover__title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  max-width: 55%;
+  margin: 0;
+  transform: translateY(-50%);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-l);
+  line-height: var(--line-height-heading-l);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-default);
+}
+
+/* Pantallas estrechas: la imagen arriba y el título debajo, sin solaparse.
+   El h1 sigue primero en el HTML (orden de lectura); la imagen es decorativa,
+   así que invertir solo el orden visual no afecta al lector de pantalla. */
+@media (max-width: 48rem) {
+  .dime-cover {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .dime-cover .dime-cover__title {
+    position: static;
+    max-width: none;
+    margin-top: var(--space-4);
+    transform: none;
+    font-size: var(--font-size-heading-s);
+    line-height: var(--line-height-heading-s);
+  }
+}
+
+/* ---------- Muestra de grid: columnas, gutter y margen a escala */
+.dime-grid-sample {
+  display: flex;
+  width: 100%;
+  height: var(--size-64);
+  box-sizing: border-box;
+  background: var(--color-background-subtle);
+}
+
+.dime-grid-sample__col {
+  flex: 1;
+  min-width: 0;
+  background: var(--color-neutral-200);
+}
+
+/* Los valores en línea (--space-6) no se parten por el guion al saltar de línea */
+.dime-token__desc code {
+  white-space: nowrap;
+}
+
+/* ---------- Catálogo de iconos: tarjetas como en Nueva York (icono arriba, nombre
+   debajo). Toda la tarjeta es el botón que copia el SVG; sin radio, como el resto de
+   DIME. Borde gris que pasa a negro al pasar el ratón; sin fondo de hover ni tooltip. */
+.dime-icons {
+  list-style: none;
+  margin: var(--space-6) 0 var(--space-10);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--size-160), 1fr));
+  gap: var(--space-4);
+  font-family: var(--font-family-base);
+}
+
+.dime-icons li {
+  margin: 0 !important;
+}
+
+.dime-icon-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dime-icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--space-7) var(--space-4) var(--space-6);
+  background: var(--color-background-default);
+  border: 1px solid var(--color-border-medium);
+  color: var(--color-content-default);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dime-icon-card:hover,
+.dime-icon-card[data-copied] {
+  border-color: var(--color-border-default);
+}
+
+.dime-icon-card:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-icon-card__img {
+  width: var(--size-28);
+  height: var(--size-28);
+}
+
+.dime-icon-card__name {
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  overflow-wrap: anywhere;
+}
+
+/* Mensaje bajo la tarjeta: ocupa siempre su sitio (no mueve la rejilla) y solo se
+   ve al pasar el ratón, con el foco o justo después de copiar. */
+.dime-icon-card__msg {
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+  color: var(--color-content-subtle);
+  text-align: center;
+  visibility: hidden;
+}
+
+.dime-icon-item:hover .dime-icon-card__msg,
+.dime-icon-card:focus-visible + .dime-icon-card__msg,
+.dime-icon-card[data-copied] + .dime-icon-card__msg {
+  visibility: visible;
+}
+
+/* Copiado: en verde de éxito y con el check de DIME (el color nunca va solo). */
+.dime-icon-card[data-copied] + .dime-icon-card__msg {
+  color: var(--color-feedback-success-content);
+}
+
+.dime-icon-card__msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.dime-icon-card__check {
+  width: var(--size-16);
+  height: var(--size-16);
+  background-color: currentColor;
+  -webkit-mask: url("/icons/check.svg") no-repeat center / contain;
+  mask: url("/icons/check.svg") no-repeat center / contain;
+}
+
+.dime-icon-colors {
+  display: flex;
+  gap: var(--space-6);
+  margin: var(--space-6) 0 var(--space-10);
+}
+
+.dime-icon-colors__panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-96);
+  height: var(--size-96);
+  border: 1px solid var(--color-border-medium);
+}
+
+.dime-icon-colors__panel--dark {
+  background: var(--color-background-brand);
+  border-color: var(--color-background-brand);
+}
+
+.dime-icon-mask {
+  display: block;
+  width: var(--size-24);
+  height: var(--size-24);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* ---------- Logos: mismas tarjetas que los iconos, más anchas y a tamaño real */
+.dime-logos {
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--size-192) + var(--size-64)), 1fr));
+}
+
+.dime-logo-card__img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.dime-icon-card__note {
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+  color: var(--color-content-subtle);
+}
+
+/* Tarjetas de una misma fila con el mismo alto (los logos miden distinto) */
+.dime-icon-card {
+  flex: 1;
+  justify-content: center;
+}
+
+/* ---------- Pestañas de un componente (Uso · Código · Accesibilidad) */
+.dime-comp-tabs ul {
+  display: flex;
+  gap: var(--space-6);
+  margin: 0 0 var(--space-9);
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-border-medium);
+  font-family: var(--font-family-base);
+}
+
+.dime-comp-tabs li {
+  margin: 0;
+}
+
+.dime-comp-tabs a {
+  display: block;
+  padding: var(--space-3) 0;
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  color: var(--color-content-subtle);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.dime-comp-tabs a:hover {
+  color: var(--color-content-default);
+}
+
+.dime-comp-tabs a[aria-current="page"] {
+  color: var(--color-content-default);
+  font-weight: var(--font-weight-bold);
+  border-bottom-color: var(--color-border-default);
+}
+
+.dime-comp-tabs a:focus-visible {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* ---------- Muestras de estados de un componente */
+.dime-states {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-9);
+  margin: var(--space-4) 0 var(--space-9);
+  padding: var(--space-7);
+  background: var(--color-background-subtle);
+  font-family: var(--font-family-base);
+}
+
+.dime-states--inverted {
+  background: var(--color-background-brand);
+}
+
+/* Fondo blanco con borde: para componentes cuyo Hover es gris. */
+.dime-states--plain {
+  background: var(--color-background-default);
+  border: 1px solid var(--color-border-medium);
+}
+
+.dime-states__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+/* Muestra con fondo blanco sobre el panel gris (Hover del icon button, como en Figma). */
+.dime-states__item--card {
+  position: relative;
+  isolation: isolate;
+}
+
+/* El fondo blanco se dibuja detrás sin ocupar sitio: la muestra queda alineada con
+   las demás. */
+.dime-states__item--card::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--space-3) * -1);
+  z-index: -1;
+  background: var(--color-background-default);
+}
+
+.dime-states__item figcaption {
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+  color: var(--color-content-subtle);
+}
+
+.dime-states--inverted .dime-states__item figcaption {
+  color: var(--color-content-inverse);
+}
+
+/* Estados forzados solo en la muestra (data-demo): no forman parte del componente. */
+.dime-states [data-demo="hover"] .dime-link__label::after,
+.dime-states [data-demo="active"] .dime-link__label::after,
+.dime-states [data-demo="focus"] .dime-link__label::after {
+  transform: scaleX(1);
+}
+
+.dime-states [data-demo="active"] .dime-link,
+.dime-states [data-demo="focus"] .dime-link {
+  font-weight: var(--interaction-font-weight-medium);
+}
+
+.dime-states [data-demo="focus"] .dime-link {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* ---------- Hazlo / Evítalo */
+.dime-dodont {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-7) var(--space-6);
+  margin: var(--space-4) 0 var(--space-9);
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-family-base);
+}
+
+.dime-dodont__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.dime-dodont__example {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: var(--size-96);
+  padding: var(--space-6);
+  box-sizing: border-box;
+  background: var(--color-background-subtle);
+  border-bottom: 2px solid var(--dodont-color);
+}
+
+.dime-dodont__item--do { --dodont-color: var(--color-feedback-success-content); }
+.dime-dodont__item--dont { --dodont-color: var(--color-feedback-error-content); }
+
+.dime-dodont__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-bold);
+  color: var(--dodont-color);
+}
+
+.dime-dodont__icon {
+  width: var(--size-20);
+  height: var(--size-20);
+  background-color: currentColor;
+  -webkit-mask: url("/icons/check.svg") no-repeat center / contain;
+  mask: url("/icons/check.svg") no-repeat center / contain;
+}
+
+.dime-dodont__item--dont .dime-dodont__icon {
+  -webkit-mask-image: url("/icons/close.svg");
+  mask-image: url("/icons/close.svg");
+}
+
+.dime-dodont__text {
+  margin: 0;
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  color: var(--color-content-default);
+}
+
+.dime-dodont__example .dime-dark {
+  padding: var(--space-4);
+  background: var(--color-background-brand);
+}
+
+/* Tabla de controles de Storybook (propiedades del componente): a 16 px y en
+   ABC Monument, como el resto de la documentación (Storybook la pone a 13 px). */
+.sbdocs .docblock-argstable,
+.sbdocs .docblock-argstable td,
+.sbdocs .docblock-argstable th,
+.sbdocs .docblock-argstable input,
+.sbdocs .docblock-argstable textarea,
+.sbdocs .docblock-argstable label {
+  font-family: var(--font-family-base) !important;
+  font-size: var(--font-size-body-m) !important;
+  line-height: var(--line-height-body-m) !important;
+}
+
+/* ---------- Cabecera de un componente: descripción + WCAG + Figma + fecha */
+.dime-comp-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-7);
+  font-family: var(--font-family-base);
+}
+
+.dime-comp-header__desc {
+  margin: 0;
+  max-width: 48rem; /* 768px: línea de lectura cómoda */
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  color: var(--color-content-default);
+}
+
+.dime-comp-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+}
+
+/* Etiqueta de conformidad: verde de éxito con check (el color nunca va solo). */
+.dime-wcag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-feedback-success-border);
+  border-radius: 100px; /* píldora: único radio de DIME */
+  background: var(--color-feedback-success-background);
+  color: var(--color-feedback-success-content);
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+}
+
+.dime-wcag strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.dime-wcag__icon {
+  width: var(--size-16);
+  height: var(--size-16);
+  background-color: currentColor;
+  -webkit-mask: url("/icons/check.svg") no-repeat center / contain;
+  mask: url("/icons/check.svg") no-repeat center / contain;
+}
+
+.dime-comp-header__date {
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+  color: var(--color-content-subtle);
+}
+
+/* ---------- Overview, como en Astryx: un solo panel con las variantes juntas */
+.dime-overview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-7);
+  min-height: calc(var(--size-192) + var(--size-64)); /* 256px */
+  margin: var(--space-4) 0 var(--space-9);
+  padding: var(--space-9);
+  box-sizing: border-box;
+  background: var(--color-background-subtle);
+  font-family: var(--font-family-base);
+}
+
+/* Variantes sobre fondo blanco (p. ej. el icon button, cuyo Hover es gris), en un
+   bloque blanco dentro del panel. */
+.dime-overview__white {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-7);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-background-default);
+}
+
+/* Las variantes Inverted, juntas en un bloque oscuro dentro del panel. */
+.dime-overview__dark {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-7);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-background-brand);
+}
+
+/* Estados forzados del Button en las muestras (data-demo). */
+.dime-states [data-demo="hover"] .dime-button {
+  background: transparent;
+  color: var(--color-content-default);
+}
+
+.dime-states [data-demo="hover"] .dime-button--inverted {
+  color: var(--color-content-inverse);
+}
+
+.dime-states [data-demo="focus"] .dime-button,
+.dime-states [data-demo="focus"] .dime-icon-button,
+.dime-states [data-demo="focus"] .dime-button-back {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-states [data-demo="hover"] .dime-icon-button {
+  background: var(--color-background-subtle);
+}
+
+.dime-states [data-demo="hover"] .dime-icon-button--inverted {
+  background: var(--color-background-strong);
+}
+
+.dime-states [data-demo="hover"] .dime-button-back,
+.dime-states [data-demo="active"] .dime-button-back {
+  gap: var(--space-1);
+  padding-inline: var(--space-4);
+}
+
+.dime-states [data-demo="hover"] .dime-button-back__label,
+.dime-states [data-demo="active"] .dime-button-back__label {
+  max-width: var(--size-160);
+}
+
+/* Overview en columna: para componentes anchos (Alert). */
+.dime-overview--stack {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-4);
+  min-height: 0;
+}
+
+/* Overview en rejilla: para campos de formulario (Input). */
+.dime-overview--grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--space-7);
+  min-height: 0;
+}
+
+/* Estados forzados de Tabs en las muestras (data-demo). */
+.dime-states [data-demo="hover"] .dime-tabs__tab {
+  background: var(--color-background-hover);
+}
+
+.dime-states [data-demo="focus"] .dime-tabs__tab {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* Aviso de algo pendiente en una página de documentación. */
+.dime-pending {
+  margin: var(--space-4) 0 var(--space-9);
+  padding: var(--space-4) var(--space-5);
+  border-left: 4px solid var(--color-feedback-warning-border);
+  background: var(--color-feedback-warning-background);
+  color: var(--color-feedback-warning-content);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+}
+
+/* Estados forzados de Card y Back to top en las muestras (data-demo). */
+.dime-states [data-demo="hover"] .dime-card__image,
+.dime-states [data-demo="focus"] .dime-card__image {
+  clip-path: inset(0 0 0 0);
+}
+
+.dime-states [data-demo="hover"] .dime-card:has(.dime-card__image) .dime-card__body > :not(.dime-card__lock),
+.dime-states [data-demo="focus"] .dime-card:has(.dime-card__image) .dime-card__body > :not(.dime-card__lock) {
+  opacity: 0;
+}
+
+.dime-states [data-demo="hover"] .dime-card:has(.dime-card__image) .dime-card__lock,
+.dime-states [data-demo="focus"] .dime-card:has(.dime-card__image) .dime-card__lock {
+  color: var(--color-content-inverse);
+}
+
+.dime-states [data-demo="hover"] .dime-card__lock .dime-tooltip,
+.dime-states [data-demo="focus"] .dime-card__lock .dime-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dime-states [data-demo="hover"] .dime-card__footer,
+.dime-states [data-demo="focus"] .dime-card__footer {
+  background: var(--color-background-brand);
+}
+
+.dime-states [data-demo="hover"] .dime-card__footer .dime-link,
+.dime-states [data-demo="focus"] .dime-card__footer .dime-link {
+  color: var(--color-content-inverse);
+}
+
+.dime-states [data-demo="focus"] .dime-card {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-states [data-demo="hover"] .dime-back-to-top {
+  background: transparent;
+  color: var(--color-content-default);
+}
+
+.dime-states [data-demo="focus"] .dime-back-to-top {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+/* Marcos a un ancho concreto dentro de la documentación (Nav Header y Nav Footer). */
+.dime-pattern-frame {
+  margin: var(--space-4) 0 var(--space-6);
+  overflow-x: auto;
+}
+
+.dime-pattern-scroll {
+  overflow-x: auto;
+}
+
+/* Estados forzados del Header en las muestras (data-demo). */
+.dime-states [data-demo="hover"] .dime-nav-header__item .dime-nav-header__item-label::after {
+  transform: scaleX(1);
+}
+
+.dime-states [data-demo="focus"] .dime-nav-header__item .dime-nav-header__item-label::after {
+  transform: scaleX(1);
+}
+
+.dime-states [data-demo="focus"] .dime-nav-header__item {
+  font-weight: var(--interaction-font-weight-medium);
+}
+
+.dime-states [data-demo="focus"] .dime-nav-header__item,
+.dime-states [data-demo="focus"] .dime-nav-header__menu-item {
+  outline: 2px solid transparent; /* alto contraste: el navegador dibuja su propio contorno */
+  box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);
+}
+
+.dime-states__item--dark-sample {
+  --dime-focus-gap: var(--color-background-brand); /* el hueco del anillo de foco toma el fondo oscuro */
+  padding: var(--space-6);
+  background: var(--color-background-brand);
+  color: var(--color-content-inverse);
+}

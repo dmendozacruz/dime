@@ -1,0 +1,118 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./button.stories.js";
+
+<Meta title="Componentes/Button/Código" />
+
+# Button
+
+<ComponentHeader
+  description="Destaca la acción o el destino principal de una zona. La familia incluye el icon button, que solo lleva icono, y el Button back, para volver atrás."
+  figmaNode="48:2481"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="button" current="codigo" />
+
+HTML y CSS, sin JavaScript. El CSS está en `components/button/button.css` y solo usa tokens de DIME. Los iconos son los SVG del set Icons, en línea para que tomen el color del texto.
+
+## Componente en vivo
+
+<Canvas of={Stories.Default} sourceState="shown" />
+
+<Controls of={Stories.Default} />
+
+## Variantes
+
+### Size large
+
+<Canvas of={Stories.Large} sourceState="shown" />
+
+### Width large
+
+Ocupa todo el ancho de su contenedor.
+
+<Canvas of={Stories.FullWidth} sourceState="shown" />
+
+### Inverted
+
+<Canvas of={Stories.Inverted} sourceState="shown" />
+
+### Sin icono
+
+<Canvas of={Stories.NoIcon} sourceState="shown" />
+
+### Como enlace
+
+Mismo aspecto, otro elemento: si navega, descarga o abre el correo es un `<a href>`.
+
+<Canvas of={Stories.AsLink} sourceState="shown" />
+
+### Disabled
+
+`aria-disabled="true"` en vez de `disabled`: así sigue recibiendo el foco y se anuncia como no disponible. Quien escriba el JavaScript de la acción tiene que ignorar el clic mientras tenga ese atributo. Si es un enlace, además, sin `href`.
+
+<Canvas of={Stories.Disabled} sourceState="shown" />
+
+### icon button
+
+Solo icono, con el nombre en `aria-label`. Medium (44 px) y large (52 px).
+
+<Canvas of={Stories.IconButton} sourceState="shown" />
+
+Para invitar a bajar a la siguiente sección, añade `dime-icon-button--bounce`: la flecha rebota tres veces y se queda quieta. Con «reducir movimiento» activado no rebota.
+
+<Canvas of={Stories.IconButtonBounce} sourceState="shown" />
+
+<Canvas of={Stories.IconButtonLarge} sourceState="shown" />
+
+<Canvas of={Stories.IconButtonInverted} sourceState="shown" />
+
+### Button back
+
+Es un enlace. El nombre accesible va en `aria-label` y es fijo; el texto que aparece al pasar el ratón es decorativo (`aria-hidden`).
+
+<Canvas of={Stories.Back} sourceState="shown" />
+
+<Canvas of={Stories.BackInverted} sourceState="shown" />
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-button</code></td><td>Button · Size small · Width default</td><td>En un <code>&lt;button type="button"&gt;</code> o en un <code>&lt;a href&gt;</code>.</td></tr>
+    <tr><td><code>.dime-button--large</code></td><td>Size large</td><td>48 px, texto de 18 px e icono de 24 px.</td></tr>
+    <tr><td><code>.dime-button--full</code></td><td>Width large</td><td>Ocupa todo el ancho.</td></tr>
+    <tr><td><code>.dime-button--inverted</code></td><td>Inverted True</td><td>Sobre fondos oscuros.</td></tr>
+    <tr><td><code>.dime-button__label</code> · <code>.dime-button__icon</code></td><td>Text · Show icon</td><td>El texto y la flecha (SVG con <code>aria-hidden</code>).</td></tr>
+    <tr><td><code>[aria-disabled="true"]</code></td><td>State Disabled</td><td>Hover, Active y Focus los pone el navegador.</td></tr>
+    <tr><td><code>.dime-icon-button</code> · <code>--large</code> · <code>--inverted</code> · <code>--bounce</code></td><td>icon button</td><td>Solo icono, con <code>aria-label</code>.</td></tr>
+    <tr><td><code>.dime-button-back</code> · <code>--inverted</code></td><td>Button back</td><td>Enlace con <code>aria-label</code> fijo; <code>.dime-button-back__label</code> con <code>aria-hidden</code>.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--space-1</code> · <code>--space-2</code> · <code>--space-3</code> · <code>--space-4</code></td><td>Separación entre texto e icono (4 px) y rellenos (8, 12 y 16 px).</td></tr>
+    <tr><td><code>--interaction-size-medium</code> · <code>--interaction-size-large</code> · <code>--interaction-line-height-*</code></td><td>Texto: 16/24 en small y 18/24 en large.</td></tr>
+    <tr><td><code>--size-20</code> · <code>--size-24</code> · <code>--size-28</code></td><td>Iconos: 20 (small), 24 (large) y 28 (icon button y Button back).</td></tr>
+    <tr><td><code>--color-background-brand</code> · <code>--color-background-default</code> · <code>--color-background-disabled</code></td><td>Fondos de Default, Inverted y Disabled.</td></tr>
+    <tr><td><code>--color-background-subtle</code> · <code>--color-background-strong</code></td><td>Hover del icon button y del icon button inverted.</td></tr>
+    <tr><td><code>--color-content-default</code> · <code>--color-content-inverse</code> · <code>--color-content-disabled</code></td><td>Texto e iconos.</td></tr>
+    <tr><td><code>--color-border-default</code> · <code>--color-border-inverse</code> · <code>--color-border-disabled</code></td><td>Borde de la píldora.</td></tr>
+    <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+No necesita. El cambio de fondo en Hover y el texto del Button back se animan con CSS y se quedan quietos con "reducir movimiento".
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir de los sets de Figma Button (`48:2481`), icon button (`48:2554`) y Button back (`48:2534`).

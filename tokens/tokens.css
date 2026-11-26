@@ -1,0 +1,166 @@
+/* DIME — design tokens. Generado por scripts/build-tokens.mjs desde Figma.
+   No editar a mano: cambia Figma y ejecuta `npm run tokens`. */
+
+:root {
+  /* Color · primitivos */
+  --color-base-white: #ffffff;
+  --color-base-black: var(--color-neutral-900);
+  --color-yellow-50: #fcf6e9;
+  --color-base-transparent: transparent;
+  --color-yellow-100: #f5dfaa;
+  --color-yellow-200: #f5d37b;
+  --color-yellow-300: #f6c531;
+  --color-yellow-400: #d6a90c;
+  --color-yellow-500: #b58e00;
+  --color-yellow-600: #957400;
+  --color-yellow-700: #765b00;
+  --color-yellow-800: #584400;
+  --color-yellow-900: #3c2d00;
+  --color-red-50: #fff4f3;
+  --color-red-400: #e23645;
+  --color-red-600: #a00523;
+  --color-orange-50: #fff5ee;
+  --color-orange-300: #f68000;
+  --color-orange-500: #ad5800;
+  --color-green-50: #ecfceb;
+  --color-green-300: #25ce36;
+  --color-green-500: #009019;
+  --color-green-600: #007212;
+  --color-blue-50: #f0f8ff;
+  --color-blue-300: #2aa5f7;
+  --color-blue-500: #0073b4;
+  --color-neutral-50: #f7f7f7;
+  --color-neutral-100: #dbdbdb;
+  --color-neutral-200: #c0c0c0;
+  --color-neutral-300: #a5a5a5;
+  --color-neutral-400: #8c8c8c;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #5b5b5b;
+  --color-neutral-700: #444444;
+  --color-neutral-800: #2e2e2e;
+  --color-neutral-900: #1a1a1a;
+  --color-base-accent: var(--color-yellow-300);
+
+  /* Color · feedback */
+  --color-feedback-error-background: var(--color-red-50);
+  --color-feedback-error-border: var(--color-red-600);
+  --color-feedback-error-content: var(--color-red-600);
+  --color-feedback-success-background: var(--color-green-50);
+  --color-feedback-success-border: var(--color-green-500);
+  --color-feedback-success-content: var(--color-green-600);
+  --color-feedback-warning-background: var(--color-yellow-50);
+  --color-feedback-info-background: var(--color-blue-50);
+  --color-feedback-info-border: var(--color-blue-500);
+  --color-feedback-info-content: var(--color-blue-500);
+  --color-feedback-warning-border: var(--color-orange-500);
+  --color-feedback-warning-content: var(--color-orange-500);
+
+  /* Color · semánticos */
+  --color-background-default: var(--color-base-white);
+  --color-background-subtle: var(--color-neutral-50);
+  --color-background-disabled: var(--color-neutral-100);
+  --color-background-hover: var(--color-neutral-100);
+  --color-background-strong: var(--color-neutral-700);
+  --color-background-brand: var(--color-neutral-900);
+  --color-border-default: var(--color-neutral-900);
+  --color-border-strong: var(--color-neutral-600);
+  --color-border-medium: var(--color-neutral-400);
+  --color-border-disabled: var(--color-neutral-300);
+  --color-border-subtle: var(--color-neutral-100);
+  --color-border-subtle-light: var(--color-neutral-50);
+  --color-border-inverse: var(--color-base-white);
+  --color-content-default: var(--color-neutral-900);
+  --color-content-subtle: var(--color-neutral-600);
+  --color-content-disabled: var(--color-neutral-300);
+  --color-content-inverse: var(--color-base-white);
+  --color-focus-ring: var(--color-yellow-300);
+  --color-focus-ring-inner: var(--color-base-black);
+
+  /* Tamaños (escala base) */
+  --size-none: 0;
+  --size-4: 0.25rem; /* 4px */
+  --size-8: 0.5rem; /* 8px */
+  --size-12: 0.75rem; /* 12px */
+  --size-14: 0.875rem; /* 14px */
+  --size-16: 1rem; /* 16px */
+  --size-18: 1.125rem; /* 18px */
+  --size-20: 1.25rem; /* 20px */
+  --size-24: 1.5rem; /* 24px */
+  --size-28: 1.75rem; /* 28px */
+  --size-32: 2rem; /* 32px */
+  --size-40: 2.5rem; /* 40px */
+  --size-48: 3rem; /* 48px */
+  --size-52: 3.25rem; /* 52px */
+  --size-64: 4rem; /* 64px */
+  --size-68: 4.25rem; /* 68px */
+  --size-80: 5rem; /* 80px */
+  --size-96: 6rem; /* 96px */
+  --size-128: 8rem; /* 128px */
+  --size-160: 10rem; /* 160px */
+  --size-192: 12rem; /* 192px */
+
+  /* Espaciado */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 2rem; /* 32px */
+  --space-8: 2.5rem; /* 40px */
+  --space-9: 3rem; /* 48px */
+  --space-10: 4rem; /* 64px */
+  --space-11: 5rem; /* 80px */
+  --space-12: 6rem; /* 96px */
+  --space-13: 7.5rem; /* 120px */
+  --space-14: 8rem; /* 128px */
+  --space-15: 10rem; /* 160px */
+  --space-16: 12rem; /* 192px */
+
+  /* Tipografía */
+  --font-family-base: "ABC Monument Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
+  --font-size-display: var(--size-64); /* 64px */
+  --font-size-heading-l: var(--size-48); /* 48px */
+  --font-size-heading-m: var(--size-40); /* 40px */
+  --font-size-heading-s: var(--size-32); /* 32px */
+  --font-size-subheading: var(--size-24); /* 24px */
+  --font-size-body-xl: var(--size-20); /* 20px */
+  --font-size-body-l: var(--size-18); /* 18px */
+  --font-size-body-m: var(--size-16); /* 16px */
+  --font-size-body-s: var(--size-14); /* 14px */
+  --font-size-label-m: var(--size-14); /* 14px */
+  --font-size-label-s: var(--size-12); /* 12px */
+  --line-height-display: var(--size-68); /* 68px */
+  --line-height-heading-l: var(--size-52); /* 52px */
+  --line-height-heading-m: var(--size-48); /* 48px */
+  --line-height-heading-s: var(--size-40); /* 40px */
+  --line-height-subheading: var(--size-32); /* 32px */
+  --line-height-body-xl: var(--size-28); /* 28px */
+  --line-height-body-l: var(--size-28); /* 28px */
+  --line-height-body-m: var(--size-24); /* 24px */
+  --line-height-body-s: var(--size-20); /* 20px */
+  --line-height-label-m: var(--size-20); /* 20px */
+  --line-height-label-s: var(--size-16); /* 16px */
+
+  /* Componentes · interacción */
+  --interaction-font-weight-regular: 400;
+  --interaction-font-weight-medium: 500;
+  --interaction-line-height-extra-large: var(--size-32); /* 32px */
+  --interaction-line-height-large: var(--size-24); /* 24px */
+  --interaction-line-height-medium: var(--size-24); /* 24px */
+  --interaction-size-extra-large: var(--size-24); /* 24px */
+  --interaction-size-large: var(--size-18); /* 18px */
+  --interaction-size-medium: var(--size-16); /* 16px */
+
+  /* Elevación */
+  --elevation-s: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
+  --elevation-m: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);
+  --elevation-l: 0px 20px 40px 0px rgba(0, 0, 0, 0.4);
+
+  /* Desenfoque (backdrop-filter) */
+  --blur-header: blur(4.15px);
+}

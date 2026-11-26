@@ -1,0 +1,77 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { inputHTML as i } from "./input.html.js";
+
+<Meta title="Componentes/Input/Uso" />
+
+# Input
+
+<ComponentHeader description="Campo para escribir una contraseña. Lleva etiqueta visible, botón para ver lo escrito, ayuda opcional y mensaje de error." figmaNode="232:19462" updated="25-11-2026" />
+
+<ComponentTabs component="input" current="uso" />
+
+## Overview
+
+Los estados del campo y la contraseña visible (Masked false).
+
+<div className="dime-overview dime-overview--grid sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: [
+  i({ id: "o1" }),
+  i({ id: "o2", value: "password123" }),
+  i({ id: "o3", value: "password123", error: "Incorrect password." }),
+  i({ id: "o4", value: "example123", masked: false }),
+].join("").replace(/<(input|button)\s/g, '<$1 tabindex="-1" ') }} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Etiqueta</strong></td><td>Dice qué hay que escribir. Siempre visible, encima del campo.</td><td>Body / Small / regular · <code>content/default</code></td></tr>
+    <tr><td>2</td><td><strong>Campo</strong></td><td>Píldora de 48 px de alto. El borde cambia con el estado.</td><td><code>border/medium</code> (Default) · <code>border/default</code> · <code>feedback/error/border</code> · <code>border/disabled</code> · radio 100</td></tr>
+    <tr><td>3</td><td><strong>Texto</strong></td><td>Lo que se escribe (•••) o el placeholder, que es solo un ejemplo.</td><td>Body / Small / regular · <code>content/default</code> · <code>content/subtle</code> (placeholder)</td></tr>
+    <tr><td>4</td><td><strong>Botón ver contraseña</strong></td><td>Subcomponente con foco propio: es un botón aparte del campo. Muestra u oculta lo escrito y cambia el icono con Masked.</td><td>.Button password · 44 px · Icons view / view off</td></tr>
+    <tr><td>5</td><td><strong>Ayuda (opcional)</strong></td><td>Explica qué hay que escribir. Se activa con Show description.</td><td>Body / Small / regular · <code>content/default</code></td></tr>
+    <tr><td>6</td><td><strong>Mensaje de error</strong></td><td>Dice qué pasa y cómo arreglarlo. Icono y texto, no solo color.</td><td>Icons danger · <code>feedback/error/content</code></td></tr>
+  </tbody>
+</table>
+
+## Estados
+
+Default, Filled, Error y Disabled. Hover y Focus oscurecen el borde; Focus añade el doble anillo.
+
+<div className="dime-overview dime-overview--grid sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: [
+  i({ id: "s1" }),
+  i({ id: "s2", value: "password123" }),
+  i({ id: "s3", value: "password123", error: "Incorrect password." }),
+  i({ id: "s4", disabled: true }),
+  i({ id: "s5", showDescription: true }),
+].join("").replace(/<(input|button)\s/g, '<$1 tabindex="-1" ') }} />
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- Pides la contraseña de un contenido protegido.
+
+**No lo uses cuando**
+
+- Para otro tipo de dato (correo, búsqueda): hoy no existe y sería un componente nuevo.
+
+## Recomendaciones de uso
+
+- Etiqueta siempre visible encima del campo; el placeholder es solo un ejemplo y desaparece al escribir.
+- Texto de ayuda (Show description): explica qué hay que escribir y se ve siempre bajo el campo. Úsalo solo si hace falta.
+- Mensaje de error: dice qué pasa y cómo arreglarlo ("Incorrect password.", "Please enter a password."). Aparece en el mismo sitio, bajo el campo.
+- El error aparece al enviar, no mientras se escribe.
+- El campo ocupa el ancho de su contenedor.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: i({ id: "d1" }), text: "Etiqueta visible encima del campo." },
+  { type: "dont", html: i({ id: "d2", label: "" }).replace('<label class="dime-input__label" for="d2"></label>', ""), text: "Sin etiqueta, al escribir desaparece el placeholder y ya no se sabe qué campo es." },
+  { type: "do", html: i({ id: "d3", value: "password123", error: "Incorrect password." }), text: "El error dice qué pasa, con icono y texto." },
+  { type: "dont", html: i({ id: "d4", value: "password123", error: "Error" }), text: "Un error genérico no ayuda a resolverlo." },
+]} />

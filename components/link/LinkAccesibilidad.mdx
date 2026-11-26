@@ -1,0 +1,66 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import * as Stories from "./link.stories.js";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+
+<Meta title="Componentes/Link/Accesibilidad" />
+
+# Link
+
+<ComponentHeader
+  description="Enlace de texto con icono. Lleva a otra página, a un perfil externo o al correo. Es siempre un enlace (<a href>), aunque esté fuera de un párrafo."
+  figmaNode="102:7604"
+  updated="25-11-2026"
+/>
+
+<ComponentTabs component="link" current="accesibilidad" />
+
+Es un `<a href>` nativo. El navegador da el rol, el teclado y el foco; el componente solo añade el aspecto. Patrón de referencia: [Link del APG](https://www.w3.org/WAI/ARIA/apg/patterns/link/) y `useLink` de React Aria (como referencia de comportamiento, no como dependencia).
+
+## Teclado
+
+<table>
+  <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Tab</kbd> · <kbd>Mayús</kbd> + <kbd>Tab</kbd></td><td>Llega al enlace y sale de él. El foco se ve con el doble anillo.</td></tr>
+    <tr><td><kbd>Enter</kbd></td><td>Abre el destino.</td></tr>
+    <tr><td><kbd>Espacio</kbd></td><td>No lo activa (eso es de los botones): hace scroll en la página.</td></tr>
+  </tbody>
+</table>
+
+La prueba automática de teclado está en la story *Teclado*: llega con Tab, comprueba que es un enlace llamado "Link" y lo activa con Enter.
+
+<Canvas of={Stories.Keyboard} />
+
+## Roles, nombres y estados
+
+- **Rol:** enlace (`link`), el del `<a href>`. Aparece en la lista de enlaces del lector de pantalla.
+- **Nombre accesible:** el texto visible. Si hace falta ampliarlo, con `aria-label`, que **empieza siempre por el texto visible** (WCAG 2.5.3), para que funcione también con control por voz: "Open case study: Title (password protected)", "LinkedIn (opens in a new tab)".
+- **Pestaña nueva:** `target="_blank"` con `rel="noopener"`, y el nombre lo dice: "(opens in a new tab)".
+- **Icono:** decorativo, `aria-hidden="true"` y `focusable="false"`. No forma parte del nombre.
+- **Siempre con texto:** el Link no se usa solo con el icono. Si algún día hiciera falta, necesitaría un `aria-label` que diga adónde lleva y mantendría el relleno del componente.
+- **Disabled:** sin `href`, con `role="link"`, `aria-disabled="true"` y `tabindex="0"`. Sigue en el orden del tabulador y se anuncia como no disponible. El motivo va escrito cerca.
+
+## Link o Button en código
+
+El elemento lo decide lo que hace, no cómo se ve. Si navega, descarga o abre el correo, es `<a href>` (se activa con Enter). Si ejecuta una acción en la página, es `<button>` (Enter y Espacio). Nunca un `<div>` o un `<span>` con un evento de clic: no recibe el foco ni tiene rol.
+
+## Contraste y visibilidad
+
+- Texto `content/default` sobre blanco: 17,4:1. Inverted, blanco sobre `background/brand`: 17,4:1. `content/disabled` no cumple 4,5:1, como permite WCAG para lo que no se puede usar.
+- **Fuera de un párrafo**, el icono y el subrayado en Hover y Focus lo distinguen del texto. **Dentro de un párrafo** tendría que ir subrayado siempre (WCAG 1.4.1): hoy no hay ese uso.
+- En modo de alto contraste, el subrayado toma el color de enlace del sistema.
+- Área táctil: 40 px de alto en small y 48 px en large (mínimo de WCAG 2.5.8: 24 px).
+
+## Comprobaciones
+
+**Automáticas**
+
+- addon-a11y (axe) en todas las stories, con `parameters.a11y.test = "error"`: las violaciones salen en el panel Accessibility de Storybook.
+- Story *Teclado*: foco con Tab, rol y nombre, y activación con Enter.
+
+**Manuales, pendientes de verificar**
+
+- VoiceOver en Safari (macOS) y TalkBack en Chrome (Android): que anuncie "enlace", el nombre completo y "no disponible" en Disabled.
+- Control por voz: decir "Open case study" activa el enlace.
+- Dispositivo real: el área táctil y el subrayado.

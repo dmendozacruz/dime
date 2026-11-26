@@ -1,0 +1,79 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import * as Stories from "./tooltip.stories.js";
+
+<Meta title="Componentes/Tooltip/Código" />
+
+# Tooltip
+
+<ComponentHeader description="Pista breve, de dos o tres palabras, junto a un elemento. Aparece con el ratón o con el foco del teclado." figmaNode="102:11509" updated="25-11-2026" />
+
+<ComponentTabs component="tooltip" current="codigo" />
+
+HTML y CSS, y el web component `<dime-tooltip>` para cerrarlo con Escape. El CSS está en `components/tooltip/tooltip.css` y solo usa tokens de DIME.
+
+## Componente en vivo
+
+<Canvas of={Stories.Top} sourceState="shown" />
+
+<Controls of={Stories.Top} />
+
+## Variantes
+
+### Bottom
+
+<Canvas of={Stories.Bottom} sourceState="shown" />
+
+### Left
+
+<Canvas of={Stories.Left} sourceState="shown" />
+
+### Right
+
+<Canvas of={Stories.Right} sourceState="shown" />
+
+## En su elemento
+
+El elemento y su tooltip van juntos en `.dime-tooltip-host`. El tooltip lleva `role="tooltip"` y un `id`; el elemento lo cita con `aria-describedby`. Pasa el ratón por el icono o llega a él con Tab.
+
+<Canvas of={Stories.OnElement} sourceState="shown" />
+
+```html
+<dime-tooltip>
+  <span class="dime-tooltip-host">
+    <button aria-describedby="tip">…</button>
+    <span class="dime-tooltip dime-tooltip--top" role="tooltip" id="tip">Tooltip message</span>
+  </span>
+</dime-tooltip>
+```
+
+## Clases
+
+<table>
+  <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td><code>.dime-tooltip</code> + <code>--top</code> · <code>--bottom</code> · <code>--left</code> · <code>--right</code></td><td>Position</td><td>La caja, con <code>role="tooltip"</code> e <code>id</code>.</td></tr>
+    <tr><td><code>.dime-tooltip-host</code></td><td>—</td><td>Envuelve el elemento y su tooltip. Lo muestra con <code>:hover</code> y <code>:focus-within</code>.</td></tr>
+    <tr><td><code>[data-dismissed]</code></td><td>—</td><td>Lo pone <code>&lt;dime-tooltip&gt;</code> al pulsar Escape y lo quita al salir.</td></tr>
+  </tbody>
+</table>
+
+## Tokens
+
+<table>
+  <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td><code>--color-background-brand</code> · <code>--color-content-inverse</code></td><td>Caja, flecha y texto.</td></tr>
+    <tr><td><code>--space-2</code> · <code>--space-3</code></td><td>Relleno (8 y 12 px) y separación del elemento (8 px).</td></tr>
+    <tr><td><code>--font-size-body-s</code> · <code>--line-height-body-s</code></td><td>Texto: 14/20.</td></tr>
+  </tbody>
+</table>
+
+## JavaScript
+
+Es un **web component en light DOM** (D-017): `<dime-tooltip>` envuelve el elemento y su tooltip y se registra al cargar `components/tooltip/tooltip.js`. Solo gestiona Escape; mostrar y ocultar lo hace el CSS.
+
+## Historial
+
+- 25-11-2026: primera versión en Storybook, a partir del componente de Figma (`102:11509`).

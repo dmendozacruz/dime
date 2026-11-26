@@ -1,0 +1,77 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
+import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { DoDont } from "../../docs/blocks/DoDont.jsx";
+import { Overview } from "../shared/Demo.jsx";
+import { skipNavHTML } from "./skip-nav.stories.js";
+
+export const f = (large) => skipNavHTML({ large }).replace('class="dime-skip-nav', 'style="position: static; transform: none; outline: 2px solid transparent; box-shadow: 0 0 0 2px var(--dime-focus-gap, var(--color-background-default)), 0 0 0 4px var(--color-focus-ring-inner), 0 0 0 6px var(--color-focus-ring);" class="dime-skip-nav');
+
+<Meta title="Componentes/Skip nav/Uso" />
+
+# Skip nav
+
+<ComponentHeader description="Primer enlace de la página: salta la navegación y lleva al contenido principal. Solo se ve con el teclado." figmaNode="472:2207" updated="25-11-2026" />
+
+<ComponentTabs component="skip nav" current="uso" />
+
+## Overview
+
+Las dos medidas de la propiedad Size. Se ve siempre con el anillo de foco, porque solo aparece cuando lo tiene.
+
+<Overview light={[f(false), f(true)]} />
+
+## Anatomía
+
+<table>
+  <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Texto</strong></td><td>Dice adónde lleva: "Skip to main content".</td><td>Interaction / Medium (small) · Interaction / Large (large) · <code>content/inverse</code></td></tr>
+    <tr><td>2</td><td><strong>Píldora</strong></td><td>Fondo oscuro con borde de 1 px.</td><td><code>background/brand</code> · <code>border/default</code> · radio 100</td></tr>
+    <tr><td>3</td><td><strong>Anillo de foco</strong></td><td>Doble anillo, siempre visible: el enlace solo se ve cuando tiene el foco.</td><td><code>focus/ring-inner</code> · <code>focus/ring</code></td></tr>
+  </tbody>
+</table>
+
+## Cuándo se ve
+
+Solo con el teclado: es el primer Tab de la página. No tiene estado Default ni Hover.
+
+<table>
+  <thead><tr><th></th><th>Con teclado</th><th>Con ratón o táctil</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Se ve</strong></td><td>Al pulsar Tab: es el primer elemento de la página.</td><td>No se ve.</td></tr>
+    <tr><td><strong>Recibe el foco</strong></td><td>Sí, antes que el header.</td><td>No.</td></tr>
+    <tr><td><strong>Al activarlo</strong></td><td>Salta al contenido principal y el foco se queda allí.</td><td>—</td></tr>
+  </tbody>
+</table>
+
+## Cuándo usarlo
+
+**Úsalo cuando**
+
+- La página tiene navegación que se repite antes del contenido.
+- Siempre como primer elemento de la página, antes del header.
+
+**No lo uses cuando**
+
+- Para ir a otra página: usa un Link.
+- Para saltar a una sección concreta dentro de la página: eso es un índice de la página.
+- Como botón visible todo el tiempo: solo aparece con el teclado.
+
+## Recomendaciones de uso
+
+- Texto fijo: "Skip to main content", en el idioma de la página.
+- Lleva al principio del contenido principal.
+- Aparece arriba a la izquierda, por encima del header, al pulsar Tab.
+- Small en desktop y large en tablet y móvil.
+
+## Do y don’t
+
+<DoDont items={[
+  { type: "do", html: f(false), text: "Dice adónde lleva." },
+  { type: "dont", html: f(false).replace("Skip to main content", "Skip"), text: "Un texto corto no dice adónde salta." },
+]} />
+
+## Responsive
+
+El texto y la posición no cambian: solo el tamaño. Size small (40 px) en desktop y large (48 px) en tablet y móvil (hasta 1024 px), para que se pueda pulsar con el dedo.

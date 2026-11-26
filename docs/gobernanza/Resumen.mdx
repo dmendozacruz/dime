@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Gobernanza/Resumen" />
+
+# Gobernanza
+
+Cómo cambia DIME. Cada decisión se escribe con su motivo, cada cambio pasa por la misma comprobación y cada versión queda en el changelog.
+
+## Las decisiones están escritas
+
+Las decisiones del sistema viven en `docs/decisions.md`, numeradas (D-001…) con su motivo y lo que se descartó. **Una decisión no se borra**: si cambia, se añade otra que la sustituye y la antigua indica cuál. Así se ve cómo evolucionó el sistema, no solo cómo está hoy. Las decisiones de un componente concreto van en su nota, en `docs/work/`.
+
+## De Figma a Storybook
+
+Figma es el punto de partida: hasta ahora todo se ha definido allí. Cuando todo esté volcado en Storybook, **Storybook pasa a ser la fuente de verdad**. Desde entonces, lo que se cree en código o se diseñe en Figma se vuelca en Storybook, en los dos sentidos. Lo que no puede pasar es que queden distintos: cada cambio se anota en el changelog y se refleja en los dos lados.
+
+## Cómo cambia algo
+
+1. Se investiga en las fuentes (Figma, el estándar de accesibilidad, referencias como el APG) y se separan los hechos de las decisiones.
+2. Se explica el plan y se espera el visto bueno antes de editar.
+3. Se hace el cambio mínimo y se anota por qué en la nota del componente.
+4. Se verifica en el navegador, no solo leyendo el código.
+5. Se pasa [el gate](?path=/docs/gobernanza-el-gate--docs).
+6. Se registra en el [changelog](?path=/docs/changelog--docs).
+
+Más detalle, incluido el papel de la IA, en [Cómo se trabaja](?path=/docs/gobernanza-cómo-se-trabaja--docs).
+
+## Versiones
+
+DIME lleva versión semántica, en `package.json`, y la cabecera de este Storybook la muestra. El [changelog](?path=/docs/changelog--docs) va por versión. Mientras el sistema crezca, la versión es `0.x`.
