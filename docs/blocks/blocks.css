@@ -112,6 +112,7 @@
 }
 
 .dime-token__name {
+  overflow-wrap: anywhere; /* un nombre de token largo parte en vez de desbordar a 320 px */
   font-family: var(--font-family-base) !important;
   font-size: var(--font-size-body-xl) !important;
   line-height: var(--line-height-body-xl) !important;
@@ -865,6 +866,9 @@
 
 /* Las variantes Inverted, juntas en un bloque oscuro dentro del panel. */
 .dime-overview__dark {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1029,4 +1033,55 @@
   padding: var(--space-6);
   background: var(--color-background-brand);
   color: var(--color-content-inverse);
+}
+
+/* ---------- Pantallas estrechas: nada se sale de la página
+   Hazlo/Evítalo y las muestras en rejilla pasan a una columna. Lo que es ancho por naturaleza
+   (tablas, vistas previas de componentes, ejemplos) se desplaza dentro de su caja en vez de
+   ensanchar toda la página. */
+.dime-table-scroll,
+.sbdocs-content div:has(> table) {
+  min-width: 0; /* hijo de un flex: sin esto no encoge y ensancha la página */
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Código en línea: parte la palabra en vez de desbordar (Storybook lo deja en una línea). */
+.sbdocs-content :not(pre) > code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Sin min-width: 0 un elemento de la rejilla no encoge por debajo de su contenido y se sale. */
+.dime-dodont__item,
+.dime-dodont__example {
+  min-width: 0;
+}
+
+.dime-dodont__example > * {
+  max-width: 100%;
+}
+
+@media (max-width: 48rem) {
+  .dime-dodont,
+  .dime-overview--grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dime-dodont__example {
+    padding: var(--space-4);
+    overflow-x: auto;
+  }
+
+  /* Vistas previas de Storybook (el componente tal cual) y ejemplos de tokens */
+  .docs-story,
+  .dime-token__example {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .dime-token,
+  .dime-token__example {
+    min-width: 0;
+  }
 }

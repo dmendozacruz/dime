@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import * as Stories from "./link.stories.js";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Link/Accesibilidad" />
 
@@ -19,14 +20,14 @@ Es un `<a href>` nativo. El navegador da el rol, el teclado y el foco; el compon
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd> · <kbd>Mayús</kbd> + <kbd>Tab</kbd></td><td>Llega al enlace y sale de él. El foco se ve con el doble anillo.</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Abre el destino.</td></tr>
     <tr><td><kbd>Espacio</kbd></td><td>No lo activa (eso es de los botones): hace scroll en la página.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 La prueba automática de teclado está en la story *Teclado*: llega con Tab, comprueba que es un enlace llamado "Link" y lo activa con Enter.
 

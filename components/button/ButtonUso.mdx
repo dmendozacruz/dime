@@ -4,6 +4,7 @@ import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { Overview, States } from "../shared/Demo.jsx";
 import { buttonHTML as b, iconButtonHTML as ib, backHTML as bk } from "./button.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Button/Uso" />
 
@@ -45,7 +46,7 @@ Medium y large. Sobre fondo blanco, para que se vea el gris del Hover, e Inverte
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Contenedor</strong></td><td>Píldora con fondo y borde. Alto 40 px (Size small) o 48 px (large). Se ajusta al texto (Width default) u ocupa todo el ancho (Width large).</td><td>Radio 100 px · <code>background/brand</code> · <code>border/default</code></td></tr>
@@ -53,7 +54,7 @@ Medium y large. Sobre fondo blanco, para que se vea el gris del Hover, e Inverte
     <tr><td>3</td><td><strong>Icono</strong></td><td>Flecha que refuerza la dirección. Es decorativa: no forma parte del nombre accesible. Se oculta con Show icon.</td><td>Icons · 20 px (small) · 24 px (large)</td></tr>
     <tr><td>4</td><td><strong>Anillo de foco</strong></td><td>Doble anillo que aparece al navegar con teclado. No se quita nunca.</td><td><code>focus/ring</code> + <code>focus/ring-inner</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Estados
 
@@ -155,7 +156,7 @@ Círculo de 44 px con la flecha. En Hover y Active muestra el texto junto a la f
 
 Se parecen, pero no hacen lo mismo. **Decide por lo que hace, no por cómo se ve**: si al pulsarlo cambia la URL, se descarga algo o se abre el correo, es un enlace aunque tenga forma de botón. El Button back, por ejemplo, es un enlace.
 
-<table>
+<ScrollTable>
   <thead><tr><th></th><th>Button</th><th>Link</th></tr></thead>
   <tbody>
     <tr><td><strong>Qué hace</strong></td><td>Ejecuta una acción en la página: enviar, abrir, cerrar.</td><td>Lleva a otro sitio: otra página, una sección, un archivo o el correo.</td></tr>
@@ -163,7 +164,7 @@ Se parecen, pero no hacen lo mismo. **Decide por lo que hace, no por cómo se ve
     <tr><td><strong>Teclado</strong></td><td>Enter y Espacio</td><td>Enter</td></tr>
     <tr><td><strong>Lector de pantalla</strong></td><td>Lo anuncia como botón.</td><td>Lo anuncia como enlace y aparece en la lista de enlaces.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 

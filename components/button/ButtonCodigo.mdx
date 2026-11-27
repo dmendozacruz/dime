@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./button.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Button/Código" />
 
@@ -79,7 +80,7 @@ Es un enlace. El nombre accesible va en `aria-label` y es fijo; el texto que apa
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-button</code></td><td>Button · Size small · Width default</td><td>En un <code>&lt;button type="button"&gt;</code> o en un <code>&lt;a href&gt;</code>.</td></tr>
@@ -91,11 +92,11 @@ Es un enlace. El nombre accesible va en `aria-label` y es fijo; el texto que apa
     <tr><td><code>.dime-icon-button</code> · <code>--large</code> · <code>--inverted</code> · <code>--bounce</code></td><td>icon button</td><td>Solo icono, con <code>aria-label</code>.</td></tr>
     <tr><td><code>.dime-button-back</code> · <code>--inverted</code></td><td>Button back</td><td>Enlace con <code>aria-label</code> fijo; <code>.dime-button-back__label</code> con <code>aria-hidden</code>.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--space-1</code> · <code>--space-2</code> · <code>--space-3</code> · <code>--space-4</code></td><td>Separación entre texto e icono (4 px) y rellenos (8, 12 y 16 px).</td></tr>
@@ -107,7 +108,7 @@ Es un enlace. El nombre accesible va en `aria-label` y es fijo; el texto que apa
     <tr><td><code>--color-border-default</code> · <code>--color-border-inverse</code> · <code>--color-border-disabled</code></td><td>Borde de la píldora.</td></tr>
     <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./nav-footer.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Nav Footer/Accesibilidad" />
 
@@ -15,13 +16,13 @@ Landmark de pie de página (`<footer>`, rol `contentinfo`) con un título, una l
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd></td><td>Recorre los enlaces de contacto y después el botón, en el orden de la pantalla.</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Abre el enlace o escribe el correo.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 <Canvas of={Stories.Keyboard} />
 

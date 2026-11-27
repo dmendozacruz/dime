@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { alertHTML as a } from "./alert.html.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Alert/Uso" />
 
@@ -20,7 +21,7 @@ Los cuatro tipos de la propiedad Type: info, success, warning y error.
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Fondo y borde</strong></td><td>Fondo suave del color del tipo y borde de 4 px a la izquierda.</td><td><code>feedback/&lt;tipo&gt;/background</code> · <code>feedback/&lt;tipo&gt;/border</code> · padding <code>space/5</code> · sin radio</td></tr>
@@ -28,7 +29,7 @@ Los cuatro tipos de la propiedad Type: info, success, warning y error.
     <tr><td>3</td><td><strong>Título</strong></td><td>Qué ha pasado, en pocas palabras.</td><td>Body / Large / bold · <code>feedback/&lt;tipo&gt;/content</code></td></tr>
     <tr><td>4</td><td><strong>Contenido (opcional)</strong></td><td>Qué hacer o más detalle. Se activa con Show content.</td><td>Body / Medium / regular · <code>feedback/&lt;tipo&gt;/content</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ### Sin contenido
 

@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./back-to-top.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Back to top/Código" />
 
@@ -37,18 +38,18 @@ import "./back-to-top.js"; // registra <dime-back-to-top>
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-back-to-top</code></td><td>En el <code>&lt;a href="#top"&gt;</code>, con <code>aria-label="Back to top"</code>.</td></tr>
     <tr><td><code>.dime-back-to-top--floating</code></td><td>Fijo abajo a la derecha, por debajo del header y del menú.</td></tr>
     <tr><td><code>[data-hidden]</code></td><td>Oculto: lo pone y lo quita <code>&lt;dime-back-to-top&gt;</code>.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--color-background-brand</code> · <code>--color-border-default</code> · <code>--color-content-inverse</code></td><td>Círculo, borde y flecha (Default).</td></tr>
@@ -56,7 +57,7 @@ import "./back-to-top.js"; // registra <dime-back-to-top>
     <tr><td><code>--size-28</code> · <code>--space-6</code></td><td>Flecha y distancia a los bordes de la pantalla (24 px).</td></tr>
     <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

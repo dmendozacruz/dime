@@ -2,6 +2,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { footerHTML as f, frame } from "./nav-footer.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 export const Frame = ({ html, width }) => (
   <div className="dime-pattern-frame sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: frame(html, width).replace(/<(a|button)\s/g, '<$1 tabindex="-1" ') }} />
@@ -23,17 +24,17 @@ Es un componente que reúne otros: Link, Button y Divider, con una disposición 
 
 ## Composición
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Componente y configuración</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Título</strong></td><td>«Let’s talk!». Es un encabezado de nivel 2: nombra la zona.</td><td>Display / bold (completo en desktop) · Heading / Large / bold (tablet y mobile) · Heading / Small / bold o Heading / Medium / bold (compacto) · <code>content/inverse</code></td></tr>
     <tr><td>2</td><td><strong>Frase</strong></td><td>Una invitación a escribir. Solo en el footer completo.</td><td>Heading / Small / light (desktop) · Subheading / regular (tablet y mobile)</td></tr>
-    <tr><td>3</td><td><strong>Enlaces de contacto</strong></td><td>Redes y perfiles. Abren otra página, por eso avisan de que se abren en una pestaña nueva.</td><td><a href="/?path=/docs/componentes-link-uso--docs" target="_top">Link</a> · Size large · Inverted · icono a la derecha</td></tr>
-    <tr><td>4</td><td><strong>Botón de contacto</strong></td><td>La acción principal: escribir un correo.</td><td><a href="/?path=/docs/componentes-button-uso--docs" target="_top">Button</a> · Inverted · small en desktop, large en tablet y mobile, a todo el ancho en mobile</td></tr>
-    <tr><td>5</td><td><strong>Línea</strong></td><td>Separa el contacto del copyright.</td><td><a href="/?path=/docs/componentes-divider-uso--docs" target="_top">Divider</a> · Inverted</td></tr>
+    <tr><td>3</td><td><strong>Enlaces de contacto</strong></td><td>Redes y perfiles. Abren otra página, por eso avisan de que se abren en una pestaña nueva.</td><td><a href="./?path=/docs/componentes-link-uso--docs" target="_top">Link</a> · Size large · Inverted · icono a la derecha</td></tr>
+    <tr><td>4</td><td><strong>Botón de contacto</strong></td><td>La acción principal: escribir un correo.</td><td><a href="./?path=/docs/componentes-button-uso--docs" target="_top">Button</a> · Inverted · small en desktop, large en tablet y mobile, a todo el ancho en mobile</td></tr>
+    <tr><td>5</td><td><strong>Línea</strong></td><td>Separa el contacto del copyright.</td><td><a href="./?path=/docs/componentes-divider-uso--docs" target="_top">Divider</a> · Inverted</td></tr>
     <tr><td>6</td><td><strong>Copyright</strong></td><td>Año, nombre y herramienta. El nombre va en negrita.</td><td>Body / Medium · <code>content/inverse</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 Fondo `background/brand` y todo el texto en `content/inverse`: blanco sobre negro, 17,4:1.
 
@@ -80,24 +81,24 @@ Sin frase: el título, los enlaces y el botón. En desktop van los tres en una f
 
 ## Comportamiento
 
-<table>
+<ScrollTable>
   <thead><tr><th>Qué</th><th>Completo</th><th>Compacto</th></tr></thead>
   <tbody>
     <tr><td><strong>Desktop</strong></td><td>Título y frase arriba, enlaces a la izquierda y botón a la derecha, abajo.</td><td>Enlaces, título y botón en una fila.</td></tr>
     <tr><td><strong>Tablet y mobile</strong></td><td>Todo apilado; en mobile el botón ocupa todo el ancho.</td><td>El título arriba, centrado; después enlaces y botón.</td></tr>
     <tr><td><strong>Copyright</strong></td><td colSpan="2">A la derecha en desktop y tablet; centrado en mobile.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 
 El componente responde al ancho de su contenedor, no al de la ventana.
 
-<table>
+<ScrollTable>
   <thead><tr><th>Breakpoint</th><th>Ancho</th><th>Comportamiento</th></tr></thead>
   <tbody>
     <tr><td><strong>Desktop</strong></td><td>&gt; 1024 px</td><td>Márgenes de 120 px. Button small.</td></tr>
     <tr><td><strong>Tablet</strong></td><td>769 – 1024 px</td><td>Márgenes de 24 px, título de 48 px (40 px en compacto), Button large.</td></tr>
     <tr><td><strong>Mobile</strong></td><td>≤ 768 px</td><td>Enlaces en una fila, Button a todo el ancho y copyright centrado.</td></tr>
   </tbody>
-</table>
+</ScrollTable>

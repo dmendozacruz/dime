@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./nav-header.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Nav Header/Accesibilidad" />
 
@@ -15,14 +16,14 @@ Landmark `banner` con una navegación. El menú de tablet y mobile sigue el patr
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd></td><td>Recorre el logo, los enlaces y el botón. Con el menú abierto, no sale de él.</td></tr>
     <tr><td><kbd>Enter</kbd> · <kbd>Espacio</kbd></td><td>En el botón del menú, lo abre; en un enlace, lo sigue.</td></tr>
     <tr><td><kbd>Escape</kbd></td><td>Cierra el menú y el foco vuelve al botón que lo abrió.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 <Canvas of={Stories.Keyboard} />
 

@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./input.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Input/Código" />
 
@@ -69,7 +70,7 @@ form.addEventListener("submit", (e) => {
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-input</code></td><td>Input</td><td>Contenedor: etiqueta, campo, ayuda y error.</td></tr>
@@ -79,11 +80,11 @@ form.addEventListener("submit", (e) => {
     <tr><td><code>.dime-input__help</code></td><td>Show description</td><td>Ayuda, unida con <code>aria-describedby</code>.</td></tr>
     <tr><td><code>.dime-input__error</code></td><td>.Error help</td><td>Siempre en la página, vacío, con <code>role="alert"</code>. Unido con <code>aria-describedby</code>.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--size-48</code> · <code>--space-5</code> · <code>--space-3</code> · <code>--space-2</code> · <code>--space-1</code></td><td>Alto del campo, rellenos (20 y 12 px) y separaciones.</td></tr>
@@ -93,7 +94,7 @@ form.addEventListener("submit", (e) => {
     <tr><td><code>--color-background-subtle</code></td><td>Hover del botón ver contraseña.</td></tr>
     <tr><td><code>--font-size-body-s</code> · <code>--line-height-body-s</code></td><td>Todo el texto: 14/20.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

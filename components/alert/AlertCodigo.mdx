@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./alert.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Alert/Código" />
 
@@ -67,7 +68,7 @@ Un aviso que está desde que carga la página no lleva rol: se escribe directame
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-alert</code> + <code>.dime-alert--info</code> · <code>--success</code> · <code>--warning</code> · <code>--error</code></td><td>Type</td><td>El aviso. El tipo fija tres variables locales: fondo, borde y texto.</td></tr>
@@ -75,11 +76,11 @@ Un aviso que está desde que carga la página no lleva rol: se escribe directame
     <tr><td><code>.dime-alert__title</code> · <code>.dime-alert__text</code></td><td>Title · Content</td><td>Título y contenido (opcional).</td></tr>
     <tr><td><code>.dime-alert-region</code></td><td>—</td><td>Contenedor vacío con <code>role="status"</code> o <code>role="alert"</code>.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--color-feedback-&lt;tipo&gt;-background</code> · <code>-border</code> · <code>-content</code></td><td>Fondo, borde izquierdo e icono, y texto de cada tipo.</td></tr>
@@ -87,7 +88,7 @@ Un aviso que está desde que carga la página no lleva rol: se escribe directame
     <tr><td><code>--size-28</code></td><td>Icono.</td></tr>
     <tr><td><code>--font-size-body-l</code> · <code>--font-size-body-m</code> y sus interlineados</td><td>Título 18/28 bold y contenido 16/24.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

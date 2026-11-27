@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { accordionHTML as a } from "./accordion.html.js";
 import "./accordion.css";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Accordion/Uso" />
 
@@ -20,7 +21,7 @@ Una lista con la primera sección abierta.
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Cabecera</strong></td><td>Botón que abre y cierra el panel. Ocupa todo el ancho y mide 80 px de alto, por encima del mínimo táctil de 44 px.</td><td>Alto 80 px · padding <code>space/3</code> × <code>space/1</code></td></tr>
@@ -29,7 +30,7 @@ Una lista con la primera sección abierta.
     <tr><td>4</td><td><strong>Contenido</strong></td><td>Texto que aparece al abrir y, si se activa Show slot, contenido libre debajo. Cerrado no se ve ni recibe el foco.</td><td>Body / Medium / regular · <code>content/default</code></td></tr>
     <tr><td>5</td><td><strong>Divisor</strong></td><td>Línea que separa cada elemento de la lista.</td><td>Divider · <code>border/default</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Cuándo usarlo
 

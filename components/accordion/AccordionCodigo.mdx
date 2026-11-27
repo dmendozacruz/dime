@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./accordion.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Accordion/Código" />
 
@@ -35,7 +36,7 @@ Contenido libre debajo del texto (Show slot), como una lista sencilla.
 
 ## Clases y atributos
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-accordion</code> · <code>.dime-accordion__item</code></td><td>Accordion</td><td>Lista (<code>&lt;ul&gt;</code>) y cada elemento, con el divisor debajo.</td></tr>
@@ -44,11 +45,11 @@ Contenido libre debajo del texto (Show slot), como una lista sencilla.
     <tr><td><code>.dime-accordion__icon--closed</code> · <code>--open</code></td><td>Icons add / subtract</td><td>+ y −, decorativos.</td></tr>
     <tr><td><code>.dime-accordion__panel</code></td><td>Content · Slot</td><td><code>role="region"</code> con <code>aria-labelledby</code>; <code>inert</code> mientras está cerrado.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--size-80</code></td><td>Alto mínimo de la cabecera.</td></tr>
@@ -56,7 +57,7 @@ Contenido libre debajo del texto (Show slot), como una lista sencilla.
     <tr><td><code>--font-size-body-xl</code> · <code>--font-size-body-m</code> y sus interlineados</td><td>Título 20/28 bold y contenido 16/24.</td></tr>
     <tr><td><code>--color-content-default</code> · <code>--color-border-default</code></td><td>Texto, iconos y divisor.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

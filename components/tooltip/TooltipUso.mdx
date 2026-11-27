@@ -4,6 +4,7 @@ import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { Overview } from "../shared/Demo.jsx";
 import { tooltipHTML as t } from "./tooltip.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Tooltip/Uso" />
 
@@ -21,14 +22,14 @@ Las cuatro posiciones de la propiedad Position.
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Caja</strong></td><td>Fondo oscuro, sin radio.</td><td><code>background/brand</code> · padding <code>space/3</code> × <code>space/2</code></td></tr>
     <tr><td>2</td><td><strong>Texto</strong></td><td>Dos o tres palabras, en una línea.</td><td>Body / Small / regular · <code>content/inverse</code></td></tr>
     <tr><td>3</td><td><strong>Flecha</strong></td><td>Apunta al elemento. Cambia de lado con Position.</td><td><code>background/brand</code> · 6 × 3 px</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Cuándo usarlo
 

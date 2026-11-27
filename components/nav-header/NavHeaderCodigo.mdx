@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./nav-header.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Nav Header/Código" />
 
@@ -31,7 +32,7 @@ Reduce la ventana o usa la story de tablet: el botón abre el menú.
 
 ## Clases y atributos
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>&lt;dime-nav-header&gt;</code></td><td>Envuelve el <code>&lt;header&gt;</code>. Abre y cierra el menú, gestiona el foco y deja el resto de la página inactiva.</td></tr>
@@ -47,7 +48,7 @@ Reduce la ventana o usa la story de tablet: el botón abre el menú.
     <tr><td><code>.dime-nav-header__menu-item</code></td><td>Enlace del menú.</td></tr>
     <tr><td><code>.dime-nav-header__menu--static</code></td><td>Solo para documentar: el menú como bloque en lugar de ventana.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 
@@ -59,7 +60,7 @@ La barra usa **container queries** y el menú abierto, el suyo, por separado. El
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--color-background-default</code> · <code>--blur-header</code></td><td>Fondo al 85 % y desenfoque de la barra.</td></tr>
@@ -70,7 +71,7 @@ La barra usa **container queries** y el menú abierto, el suyo, por separado. El
     <tr><td><code>--font-size-heading-l</code> · <code>--line-height-heading-l</code></td><td>Enlaces del menú, 48/52 bold.</td></tr>
     <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

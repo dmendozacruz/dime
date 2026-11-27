@@ -6,12 +6,15 @@ import "../docs/blocks/blocks.css";
 import "../components/index.css";
 import "../components/index.js";
 import theme from "./theme.js";
+import { ScrollTable } from "../docs/blocks/ScrollTable.jsx";
 
 /** @type { import('@storybook/html-vite').Preview } */
 const preview = {
   parameters: {
     docs: {
       theme,
+      // Las tablas de la documentación se desplazan dentro de su caja en pantallas estrechas.
+      components: { table: ScrollTable },
       // Índice "En esta página" a la derecha, como en el design system de Nueva York.
       toc: { headingSelector: "h2", title: "En esta página", disable: false },
     },

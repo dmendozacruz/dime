@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./badge.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Badge/Código" />
 
@@ -45,18 +46,18 @@ Si no caben, bajan de línea enteros.
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-badge</code></td><td>En un <code>&lt;span&gt;</code>. Nunca en un <code>&lt;button&gt;</code> ni en un <code>&lt;a&gt;</code>.</td></tr>
     <tr><td><code>.dime-badge__full</code></td><td>Nombre completo de una sigla, solo para el lector de pantalla.</td></tr>
     <tr><td><code>.dime-badge-list</code></td><td>En el <code>&lt;ul&gt;</code> que agrupa varios.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--space-1</code> · <code>--space-3</code></td><td>Relleno (4 y 12 px). El borde va por dentro: 28 px de alto.</td></tr>
@@ -64,7 +65,7 @@ Si no caben, bajan de línea enteros.
     <tr><td><code>--font-size-label-m</code> · <code>--line-height-label-m</code> · <code>--font-weight-medium</code></td><td>Texto: Label / Medium / medium, 14/20, en mayúsculas.</td></tr>
     <tr><td><code>--color-content-default</code> · <code>--color-border-medium</code></td><td>Texto y borde.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

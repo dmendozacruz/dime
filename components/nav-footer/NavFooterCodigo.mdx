@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./nav-footer.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Nav Footer/Código" />
 
@@ -35,7 +36,7 @@ HTML y CSS, sin JavaScript y sin web component propio. Usa las clases de Link, B
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-nav-footer</code> · <code>--page</code></td><td>En el <code>&lt;footer&gt;</code>, con <code>aria-label="Contact"</code>. <code>--page</code> es el compacto. Es el contenedor del que dependen las container queries.</td></tr>
@@ -47,7 +48,7 @@ HTML y CSS, sin JavaScript y sin web component propio. Usa las clases de Link, B
     <tr><td><code>.dime-nav-footer__cta</code></td><td>Contiene un <code>.dime-button.dime-button--inverted</code> en un <code>&lt;a href="mailto:…"&gt;</code>.</td></tr>
     <tr><td><code>.dime-nav-footer__copy</code></td><td>Copyright; el nombre va en <code>&lt;strong&gt;</code>.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 
@@ -59,7 +60,7 @@ El CSS usa **container queries** (`@container`), no media queries: el footer res
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--color-background-brand</code> · <code>--color-content-inverse</code></td><td>Fondo y texto.</td></tr>
@@ -68,7 +69,7 @@ El CSS usa **container queries** (`@container`), no media queries: el footer res
     <tr><td><code>--font-size-display</code> · <code>--font-size-heading-l</code> · <code>--font-size-heading-m</code> · <code>--font-size-heading-s</code></td><td>Título según el ancho y el tipo.</td></tr>
     <tr><td><code>--font-size-subheading</code> · <code>--font-size-body-m</code></td><td>Frase en tablet y mobile, y copyright.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 El alto mínimo (630 y 648 px), el ancho máximo de la frase (707 y 510 px) y el de 40,5 rem quedan en rem con su valor en px, porque no tienen token.
 

@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { inputHTML as i } from "./input.html.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Input/Uso" />
 
@@ -25,7 +26,7 @@ Los estados del campo y la contraseña visible (Masked false).
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Etiqueta</strong></td><td>Dice qué hay que escribir. Siempre visible, encima del campo.</td><td>Body / Small / regular · <code>content/default</code></td></tr>
@@ -35,7 +36,7 @@ Los estados del campo y la contraseña visible (Masked false).
     <tr><td>5</td><td><strong>Ayuda (opcional)</strong></td><td>Explica qué hay que escribir. Se activa con Show description.</td><td>Body / Small / regular · <code>content/default</code></td></tr>
     <tr><td>6</td><td><strong>Mensaje de error</strong></td><td>Dice qué pasa y cómo arreglarlo. Icono y texto, no solo color.</td><td>Icons danger · <code>feedback/error/content</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Estados
 

@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./tabs.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Tabs/Accesibilidad" />
 
@@ -15,7 +16,7 @@ Patrón [Tabs del APG](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) con activ
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd></td><td>Entra en la pestaña seleccionada; el siguiente Tab salta al panel.</td></tr>
@@ -23,7 +24,7 @@ Patrón [Tabs del APG](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) con activ
     <tr><td><kbd>Inicio</kbd> · <kbd>Fin</kbd></td><td>Llevan el foco a la primera o a la última.</td></tr>
     <tr><td><kbd>Enter</kbd> · <kbd>Espacio</kbd></td><td>Seleccionan la pestaña que tiene el foco y muestran su panel.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 <Canvas of={Stories.Keyboard} />
 

@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { LinkStates, LinkOverview, html } from "./LinkDemo.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Link/Uso" />
 
@@ -24,7 +25,7 @@ Las combinaciones de las propiedades de Figma: Size small y large, flecha a la d
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Texto</strong></td><td>Adónde lleva el enlace, en pocas palabras. Es el inicio del nombre accesible: el <code>aria-label</code> puede ampliarlo, pero empieza siempre por este texto.</td><td>Interaction / Medium (small) · Interaction / Extra large (large) · <code>content/default</code></td></tr>
@@ -32,7 +33,7 @@ Las combinaciones de las propiedades de Figma: Size small y large, flecha a la d
     <tr><td>3</td><td><strong>Subrayado</strong></td><td>Línea de 1 px bajo el texto. Aparece en Hover, Active y Focus; en Default no se ve.</td><td><code>border/default</code> (<code>border/inverse</code> en inverted)</td></tr>
     <tr><td>4</td><td><strong>Anillo de foco</strong></td><td>Doble anillo que aparece al navegar con teclado. No se quita nunca.</td><td><code>focus/ring</code> + <code>focus/ring-inner</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Estados
 
@@ -82,7 +83,7 @@ Sobre fondo oscuro.
 
 Se parecen, pero no hacen lo mismo. **Decide por lo que hace, no por cómo se ve**: si al pulsarlo cambia la URL, se descarga algo o se abre el correo, es un enlace aunque tenga forma de botón.
 
-<table>
+<ScrollTable>
   <thead><tr><th></th><th>Button</th><th>Link</th></tr></thead>
   <tbody>
     <tr><td><strong>Qué hace</strong></td><td>Ejecuta una acción en la página: enviar, abrir, cerrar.</td><td>Lleva a otro sitio: otra página, una sección, un archivo o el correo.</td></tr>
@@ -90,4 +91,4 @@ Se parecen, pero no hacen lo mismo. **Decide por lo que hace, no por cómo se ve
     <tr><td><strong>Teclado</strong></td><td>Enter y Espacio</td><td>Enter</td></tr>
     <tr><td><strong>Lector de pantalla</strong></td><td>Lo anuncia como botón.</td><td>Lo anuncia como enlace y aparece en la lista de enlaces.</td></tr>
   </tbody>
-</table>
+</ScrollTable>

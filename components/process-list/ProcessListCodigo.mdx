@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./process-list.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Process list/Código" />
 
@@ -41,7 +42,7 @@ Baja por la página para ver cómo se rellenan la línea y los puntos. Los pasos
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-process-list</code> · <code>--zigzag</code></td><td>Lista ordenada (<code>&lt;ol&gt;</code>). Zigzag: línea en el centro en desktop.</td></tr>
@@ -50,7 +51,7 @@ Baja por la página para ver cómo se rellenan la línea y los puntos. Los pasos
     <tr><td><code>&lt;dime-process-list&gt;</code></td><td>Envuelve la <code>&lt;ol&gt;</code>. Pone <code>data-reached</code> en cada paso alcanzado y <code>--dime-fill</code> (0 a 1) con lo que lleva relleno su tramo de línea.</td></tr>
     <tr><td><code>.dime-process-list__title</code> · <code>__description</code></td><td>Título (encabezado) y descripción.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 
@@ -59,14 +60,14 @@ Baja por la página para ver cómo se rellenan la línea y los puntos. Los pasos
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--space-8</code> · <code>--space-3</code> · <code>--space-7</code></td><td>Línea → texto (40 px), título → descripción (12 px) y aire bajo cada paso (32 px).</td></tr>
     <tr><td><code>--color-border-subtle</code> · <code>--color-border-default</code> · <code>--color-background-brand</code></td><td>Punto y línea en Default y Active.</td></tr>
     <tr><td><code>--font-size-subheading</code> · <code>--line-height-subheading</code> · <code>--font-size-body-xl</code></td><td>Título 24/32 bold, descripción 20/28 y, con el alto de línea del título, el aire sobre el punto para alinearlo con el texto (11 px).</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

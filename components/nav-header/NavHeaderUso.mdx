@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { States } from "../shared/Demo.jsx";
 import { headerHTML as h, frame } from "./nav-header.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 export const Frame = ({ html, width }) => (
   <div className="dime-pattern-frame sb-unstyled" aria-hidden="true" dangerouslySetInnerHTML={{ __html: frame(html, width).replace(/<(a|button)\s/g, '<$1 tabindex="-1" ') }} />
@@ -26,16 +27,16 @@ Es un componente que reúne otros: Link, Button e icon button, más dos piezas p
 
 ## Composición
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Componente y configuración</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Logo</strong></td><td>El nombre en vector (<code>Name Diana</code>, 142 × 38 px), enlace a la página de inicio. Siempre a la izquierda.</td><td>Foundations · Logos · <code>name-diana</code></td></tr>
     <tr><td>2</td><td><strong>Navegación</strong></td><td>Los enlaces a las secciones, centrados. Solo en desktop. El de la página actual va subrayado y en peso medium.</td><td><code>Nav item</code> con <code>Item</code> · Interaction / Medium</td></tr>
-    <tr><td>3</td><td><strong>Botón de contacto</strong></td><td>Una acción principal, a la derecha. Solo en desktop.</td><td><a href="/?path=/docs/componentes-button-uso--docs" target="_top">Button</a> · small · con icono</td></tr>
-    <tr><td>4</td><td><strong>Botón del menú</strong></td><td>Abre el menú. Solo en tablet y mobile.</td><td><a href="/?path=/docs/componentes-button-uso--docs" target="_top">icon button</a> · icono de menú</td></tr>
+    <tr><td>3</td><td><strong>Botón de contacto</strong></td><td>Una acción principal, a la derecha. Solo en desktop.</td><td><a href="./?path=/docs/componentes-button-uso--docs" target="_top">Button</a> · small · con icono</td></tr>
+    <tr><td>4</td><td><strong>Botón del menú</strong></td><td>Abre el menú. Solo en tablet y mobile.</td><td><a href="./?path=/docs/componentes-button-uso--docs" target="_top">icon button</a> · icono de menú</td></tr>
     <tr><td>5</td><td><strong>Menú abierto</strong></td><td>Ventana que cubre la página con los enlaces en grande y un botón para cerrar.</td><td><code>Menu</code> con <code>Menu item</code> · Heading / Large / bold · <code>content/inverse</code> sobre <code>background/brand</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 El fondo es `background/default` al 85 % con el efecto `Blur / Header` (desenfoque de 4,15 px en CSS): el contenido que pasa por debajo se intuye sin quitar legibilidad. Con «reducir transparencia» activado, el fondo es sólido.
 
@@ -103,7 +104,7 @@ El menú solo tiene Default y Focus: en una pantalla táctil no hay hover y puls
 
 ## Comportamiento
 
-<table>
+<ScrollTable>
   <thead><tr><th>Qué</th><th>Desktop</th><th>Tablet y mobile</th></tr></thead>
   <tbody>
     <tr><td><strong>Navegación</strong></td><td>Enlaces visibles en la barra.</td><td>Dentro del menú, que se abre con el botón.</td></tr>
@@ -111,17 +112,17 @@ El menú solo tiene Default y Focus: en una pantalla táctil no hay hover y puls
     <tr><td><strong>Abrir el menú</strong></td><td colSpan="2">El foco entra en el botón de cerrar, el resto de la página queda inactiva y no se puede hacer scroll. Escape o el botón de cerrar lo cierran y el foco vuelve al botón del menú.</td></tr>
     <tr><td><strong>Animación</strong></td><td colSpan="2">El menú se abre como un círculo que nace en el botón y crece hasta cubrir la pantalla (650 ms); los enlaces entran en cascada cuando el círculo les llega (de 250 a 430 ms, con 8 px de desplazamiento). Al cerrar, el círculo se encoge (400 ms). Con «reducir movimiento» no hay animación.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 
 El componente responde al ancho de su contenedor.
 
-<table>
+<ScrollTable>
   <thead><tr><th>Breakpoint</th><th>Ancho</th><th>Comportamiento</th></tr></thead>
   <tbody>
     <tr><td><strong>Desktop</strong></td><td>&gt; 1024 px</td><td>72 px de alto, márgenes de 64 px, navegación y Button.</td></tr>
     <tr><td><strong>Tablet</strong></td><td>769 – 1024 px</td><td>60 px de alto, márgenes de 32 px, logo y botón de menú.</td></tr>
     <tr><td><strong>Mobile</strong></td><td>≤ 768 px</td><td>60 px de alto, márgenes de 24 px.</td></tr>
   </tbody>
-</table>
+</ScrollTable>

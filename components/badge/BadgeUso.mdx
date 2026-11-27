@@ -4,6 +4,7 @@ import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { Overview } from "../shared/Demo.jsx";
 import { badgeHTML as b, badgeListHTML as bl } from "./badge.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Badge/Uso" />
 
@@ -23,13 +24,13 @@ import { badgeHTML as b, badgeListHTML as bl } from "./badge.stories.js";
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Texto</strong></td><td>La categoría, en una o dos palabras. Se escribe normal y el estilo la muestra en mayúsculas.</td><td>Label / Medium / medium · <code>content/default</code></td></tr>
     <tr><td>2</td><td><strong>Borde</strong></td><td>Píldora de 1 px alrededor del texto.</td><td><code>border/medium</code> · radio 100 · padding <code>space/3</code> × <code>space/1</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Cuándo usarlo
 

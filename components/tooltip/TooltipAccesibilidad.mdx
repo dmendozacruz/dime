@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./tooltip.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Tooltip/Accesibilidad" />
 
@@ -15,13 +16,13 @@ El tooltip no es interactivo y no recibe el foco: lo recibe el elemento al que a
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd></td><td>Al llegar al elemento, aparece el tooltip.</td></tr>
     <tr><td><kbd>Escape</kbd></td><td>Lo cierra sin mover el foco.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 <Canvas of={Stories.OnElement} />
 

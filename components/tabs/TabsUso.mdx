@@ -4,6 +4,7 @@ import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { Overview, States } from "../shared/Demo.jsx";
 import "./tabs.css";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 export const bar = (large, items = ["Item", "Item", "Item"]) => `<div class="dime-tabs${large ? " dime-tabs--large" : ""}"><div class="dime-tabs__list">${items.map((t, i) => `<button class="dime-tabs__tab" type="button" aria-selected="${i === 0}">${t}</button>`).join("")}</div></div>`;
 export const item = (selected) => `<div class="dime-tabs"><div class="dime-tabs__list" style="border: 0; padding: 0;"><button class="dime-tabs__tab" type="button" aria-selected="${selected}">Item</button></div></div>`;
@@ -24,7 +25,7 @@ Size small y large, con tres pestañas y la primera seleccionada.
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Contenedor</strong></td><td>Píldora que agrupa las pestañas.</td><td><code>background/default</code> · <code>border/default</code> · <code>space/2</code></td></tr>
@@ -32,7 +33,7 @@ Size small y large, con tres pestañas y la primera seleccionada.
     <tr><td>3</td><td><strong>Etiqueta</strong></td><td>Texto de la pestaña. Es su nombre accesible.</td><td>Interaction / Medium (small) · Interaction / Large (large) · <code>content/default</code> (o <code>content/inverse</code> en Active)</td></tr>
     <tr><td>4</td><td><strong>Anillo de foco</strong></td><td>Doble anillo al navegar con teclado.</td><td><code>focus/ring-inner</code> · <code>focus/ring</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Estados
 
@@ -75,11 +76,11 @@ Size small y large, con tres pestañas y la primera seleccionada.
 
 ## Responsive
 
-<table>
+<ScrollTable>
   <thead><tr><th>Breakpoint</th><th>Ancho</th><th>Comportamiento</th></tr></thead>
   <tbody>
     <tr><td><strong>Desktop</strong></td><td>&gt; 1024 px</td><td>Size small (40 px, Interaction / Medium).</td></tr>
     <tr><td><strong>Tablet</strong></td><td>769 – 1024 px</td><td>Size large (48 px, Interaction / Large): sin ratón, el objetivo táctil es más cómodo.</td></tr>
     <tr><td><strong>Mobile</strong></td><td>≤ 768 px</td><td>Size large, con la barra centrada encima de los paneles.</td></tr>
   </tbody>
-</table>
+</ScrollTable>

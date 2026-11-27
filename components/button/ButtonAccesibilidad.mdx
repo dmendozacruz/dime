@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./button.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Button/Accesibilidad" />
 
@@ -19,14 +20,14 @@ Elementos nativos: `<button>` o `<a href>`, según lo que haga. El navegador da 
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Button (<code>&lt;button&gt;</code>)</th><th>Como enlace y Button back (<code>&lt;a&gt;</code>)</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd> · <kbd>Mayús</kbd> + <kbd>Tab</kbd></td><td>Llega y sale. Doble anillo de foco.</td><td>Igual.</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Ejecuta la acción.</td><td>Abre el destino.</td></tr>
     <tr><td><kbd>Espacio</kbd></td><td>Ejecuta la acción.</td><td>No lo activa: hace scroll.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 <Canvas of={Stories.Keyboard} />
 

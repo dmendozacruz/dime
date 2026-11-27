@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { processListHTML as p } from "./process-list.stories.js";
 import "./process-list.css";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Process list/Uso" />
 
@@ -20,7 +21,7 @@ Pasos con la línea a la izquierda, y en zigzag (desktop).
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Punto</strong></td><td>Marca cada paso y queda a la altura del centro de la primera línea del título. Se rellena al hacer scroll hasta él, o en Active (el paso actual).</td><td>10 px · <code>border/subtle</code> (Default) · <code>background/brand</code> (alcanzado y Active)</td></tr>
@@ -28,7 +29,7 @@ Pasos con la línea a la izquierda, y en zigzag (desktop).
     <tr><td>3</td><td><strong>Título</strong></td><td>El nombre del paso, numerado si el orden importa.</td><td>Subheading / bold · <code>content/default</code></td></tr>
     <tr><td>4</td><td><strong>Descripción</strong></td><td>Qué pasa en ese paso.</td><td>Body / Extra large / regular · <code>content/default</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Relleno al hacer scroll
 
@@ -57,11 +58,11 @@ Con «reducir movimiento» activado, la línea y los puntos aparecen ya rellenos
 
 ## Responsive
 
-<table>
+<ScrollTable>
   <thead><tr><th>Breakpoint</th><th>Ancho</th><th>Comportamiento</th></tr></thead>
   <tbody>
     <tr><td><strong>Desktop</strong></td><td>&gt; 1024 px</td><td>La línea en el centro y el texto en zigzag: el primer paso a la derecha, el siguiente a la izquierda.</td></tr>
     <tr><td><strong>Tablet</strong></td><td>769 – 1024 px</td><td>Igual que desktop.</td></tr>
     <tr><td><strong>Mobile</strong></td><td>≤ 768 px</td><td>Sin zigzag: la línea a la izquierda y el texto alineado a la izquierda.</td></tr>
   </tbody>
-</table>
+</ScrollTable>

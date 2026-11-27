@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./blockquote.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Blockquote/Código" />
 
@@ -37,7 +38,7 @@ HTML y CSS, sin JavaScript. El CSS está en `components/blockquote/blockquote.cs
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-blockquote</code></td><td>En el <code>&lt;figure&gt;</code>. Las comillas las pone el CSS (<code>::before</code>), así que el lector de pantalla no las lee.</td></tr>
@@ -45,7 +46,7 @@ HTML y CSS, sin JavaScript. El CSS está en `components/blockquote/blockquote.cs
     <tr><td><code>.dime-blockquote__quote</code></td><td>En el <code>&lt;blockquote&gt;</code>; el texto va en un <code>&lt;p&gt;</code>.</td></tr>
     <tr><td><code>.dime-blockquote__author</code></td><td>En el <code>&lt;figcaption&gt;</code>, con el nombre en <code>&lt;cite&gt;</code>.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 
@@ -54,7 +55,7 @@ HTML y CSS, sin JavaScript. El CSS está en `components/blockquote/blockquote.cs
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--space-6</code> · <code>--space-7</code> · <code>--space-4</code></td><td>Comillas → texto (24 px), aire arriba y abajo de la cita (32 px) y cita → autor (16 px).</td></tr>
@@ -63,7 +64,7 @@ HTML y CSS, sin JavaScript. El CSS está en `components/blockquote/blockquote.cs
     <tr><td><code>--font-size-body-xl</code> · <code>--line-height-body-xl</code> · <code>--font-weight-bold</code></td><td>Autor: 20/28, bold.</td></tr>
     <tr><td><code>--color-content-default</code></td><td>Texto y comillas.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

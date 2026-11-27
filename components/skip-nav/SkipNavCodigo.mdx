@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./skip-nav.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Skip nav/Código" />
 
@@ -41,13 +42,13 @@ Pulsa Tab dentro del ejemplo: aparece el enlace; con Enter, el foco pasa al cont
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-skip-nav</code></td><td>Size small (desktop)</td><td>En el <code>&lt;a&gt;</code>, primer elemento del <code>&lt;body&gt;</code>. Pasa a large solo por debajo de 1024 px.</td></tr>
     <tr><td><code>.dime-skip-nav--large</code></td><td>Size large</td><td>Para forzar el tamaño large en cualquier ancho.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Responsive
 
@@ -57,7 +58,7 @@ Pulsa Tab dentro del ejemplo: aparece el enlace; con Enter, el foco pasa al cont
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--color-background-brand</code> · <code>--color-border-default</code> · <code>--color-content-inverse</code></td><td>Píldora, borde y texto.</td></tr>
@@ -65,7 +66,7 @@ Pulsa Tab dentro del ejemplo: aparece el enlace; con Enter, el foco pasa al cont
     <tr><td><code>--interaction-size-medium</code> · <code>--interaction-size-large</code></td><td>Texto: 16 px en small y 18 px en large.</td></tr>
     <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

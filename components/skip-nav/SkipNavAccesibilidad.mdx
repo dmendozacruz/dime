@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./skip-nav.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Skip nav/Accesibilidad" />
 
@@ -15,14 +16,14 @@ Es un enlace a una zona de la misma página (WCAG 2.4.1). Referencia: [técnica 
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd> (primera vez)</td><td>Llega al enlace, que aparece arriba a la izquierda.</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Salta al contenido principal, que recibe el foco.</td></tr>
     <tr><td><kbd>Tab</kbd> (después)</td><td>Sigue desde el contenido principal, no desde el header.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 <Canvas of={Stories.Keyboard} />
 

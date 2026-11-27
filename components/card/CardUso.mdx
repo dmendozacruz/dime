@@ -4,6 +4,7 @@ import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { DoDont } from "../../docs/blocks/DoDont.jsx";
 import { Overview, States } from "../shared/Demo.jsx";
 import { cardHTML } from "./card.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 export const c = (a) => cardHTML(a);
 
@@ -23,7 +24,7 @@ Default y con candado (Show lock).
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Imagen</strong></td><td>La imagen de la tarjeta; por defecto, un placeholder con un icono de imagen. Se descubre en Hover y en Focus. Es decorativa.</td><td>Placeholder o una imagen propia</td></tr>
@@ -33,7 +34,7 @@ Default y con candado (Show lock).
     <tr><td>5</td><td><strong>Candado (opcional)</strong></td><td>Avisa de que el contenido está protegido. En Hover y Focus pasa a blanco para verse sobre la imagen y muestra a su izquierda un Tooltip «Password protected», que entra con 400 ms de retraso.</td><td>Icons · lock · 20 px · Show lock</td></tr>
     <tr><td>6</td><td><strong>Enlace</strong></td><td>“Open case study”. Es el único enlace y su zona ocupa toda la tarjeta. El pie se oscurece en Hover y Focus.</td><td>Link small (inverted en Hover y Focus)</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Estados
 

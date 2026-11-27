@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { Overview } from "../shared/Demo.jsx";
 import { blockquoteHTML as q } from "./blockquote.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Blockquote/Uso" />
 
@@ -22,14 +23,14 @@ import { blockquoteHTML as q } from "./blockquote.stories.js";
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Comillas</strong></td><td>Comillas grandes que marcan que es una cita. Son decorativas.</td><td>.icon Quote · 80 px · <code>content/default</code></td></tr>
     <tr><td>2</td><td><strong>Texto</strong></td><td>La cita: corta o un párrafo largo.</td><td>Heading / Small / light · <code>content/default</code></td></tr>
     <tr><td>3</td><td><strong>Autor (opcional)</strong></td><td>Nombre, cargo y empresa de quien lo dijo. Se activa con Show author.</td><td>Body / Extra large / bold · <code>content/default</code> · <code>space/4</code> bajo la cita</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Cuándo usarlo
 

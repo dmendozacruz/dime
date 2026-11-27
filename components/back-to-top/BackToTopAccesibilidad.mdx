@@ -2,6 +2,7 @@ import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import * as Stories from "./back-to-top.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Back to top/Accesibilidad" />
 
@@ -15,13 +16,13 @@ Es un enlace con forma de botón: se ve y se usa como un botón, pero en código
 
 ## Teclado
 
-<table>
+<ScrollTable>
   <thead><tr><th>Tecla</th><th>Qué hace</th></tr></thead>
   <tbody>
     <tr><td><kbd>Tab</kbd></td><td>Llega al enlace cuando está visible. Dentro de `<dime-back-to-top>` con `threshold`, mientras está oculto no recibe el foco.</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Sube al principio y el foco pasa allí, no solo la vista.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 <Canvas of={Stories.Keyboard} />
 

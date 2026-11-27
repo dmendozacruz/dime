@@ -2,6 +2,7 @@ import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import * as Stories from "./link.stories.js";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 <Meta title="Componentes/Link/Código" />
 
@@ -55,7 +56,7 @@ En un contenedor estrecho, el texto baja de línea sin cortarse.
 
 ## Clases
 
-<table>
+<ScrollTable>
   <thead><tr><th>Clase</th><th>Figma</th><th>Uso</th></tr></thead>
   <tbody>
     <tr><td><code>.dime-link</code></td><td>Size small, Inverted false</td><td>El enlace. Va en el <code>&lt;a&gt;</code>.</td></tr>
@@ -65,11 +66,11 @@ En un contenedor estrecho, el texto baja de línea sin cortarse.
     <tr><td><code>.dime-link__icon</code></td><td>Show icon left / right</td><td>SVG en línea con <code>aria-hidden="true"</code>; toma el color del texto. Antes del texto si va a la izquierda, después si va a la derecha.</td></tr>
     <tr><td><code>[aria-disabled="true"]</code></td><td>State Disabled</td><td>Sin <code>href</code>. Los estados Hover, Active y Focus los pone el navegador (<code>:hover</code>, <code>:active</code>, <code>:focus-visible</code>).</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Tokens
 
-<table>
+<ScrollTable>
   <thead><tr><th>Variable CSS</th><th>Para qué</th></tr></thead>
   <tbody>
     <tr><td><code>--space-1</code> · <code>--space-2</code></td><td>Separación entre texto e icono (4 px) y relleno (8 px).</td></tr>
@@ -81,7 +82,7 @@ En un contenedor estrecho, el texto baja de línea sin cortarse.
     <tr><td><code>--color-border-default</code> · <code>--color-border-inverse</code> · <code>--color-border-disabled</code></td><td>Subrayado e icono de Disabled.</td></tr>
     <tr><td><code>--color-focus-ring-inner</code> · <code>--color-focus-ring</code></td><td>Doble anillo de foco.</td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## JavaScript
 

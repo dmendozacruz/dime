@@ -3,6 +3,7 @@ import { ComponentTabs } from "../../docs/blocks/ComponentTabs.jsx";
 import { ComponentHeader } from "../../docs/blocks/ComponentHeader.jsx";
 import { Overview, States } from "../shared/Demo.jsx";
 import { backToTopHTML } from "./back-to-top.stories.js";
+import { ScrollTable } from "../../docs/blocks/ScrollTable.jsx";
 
 export const b = () => backToTopHTML();
 
@@ -20,14 +21,14 @@ export const b = () => backToTopHTML();
 
 ## Anatomía
 
-<table>
+<ScrollTable>
   <thead><tr><th>Nº</th><th>Parte</th><th>Qué es</th><th>Estilo y token</th></tr></thead>
   <tbody>
     <tr><td>1</td><td><strong>Círculo</strong></td><td>Fondo oscuro de 44 × 44 px con borde de 1 px.</td><td><code>background/brand</code> · <code>border/default</code> · radio 100 · padding <code>space/2</code></td></tr>
     <tr><td>2</td><td><strong>Flecha</strong></td><td>Flecha hacia arriba. Es decorativa: el nombre lo da el enlace.</td><td>Icons · arrow up · 28 px · <code>content/inverse</code> (<code>content/default</code> en Hover)</td></tr>
     <tr><td>3</td><td><strong>Anillo de foco</strong></td><td>Doble anillo al llegar con el teclado.</td><td><code>focus/ring-inner</code> · <code>focus/ring</code></td></tr>
   </tbody>
-</table>
+</ScrollTable>
 
 ## Estados
 

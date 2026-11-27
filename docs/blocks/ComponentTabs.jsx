@@ -12,6 +12,8 @@ const TABS = [
 const idOf = (component, label) =>
   `componentes-${component}-${label}`.toLowerCase().replace(/[\s/]+/g, "-") + "--docs";
 
+// El enlace es relativo (./?path=): la documentación se publica en una subcarpeta (/dime/) y
+// una ruta que empiece por «/» saldría de ella y daría 404.
 export function ComponentTabs({ component, current }) {
   return (
     <nav className="dime-comp-tabs sb-unstyled" aria-label={`Documentación de ${component}`}>
@@ -19,7 +21,7 @@ export function ComponentTabs({ component, current }) {
         {TABS.map((t) => (
           <li key={t.key}>
             <a
-              href={`/?path=/docs/${idOf(component, t.label)}`}
+              href={`./?path=/docs/${idOf(component, t.label)}`}
               target="_top"
               aria-current={t.key === current ? "page" : undefined}
             >
