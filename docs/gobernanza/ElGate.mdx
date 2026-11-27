@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/addon-docs/blocks";
+import { ScrollTable } from "../blocks/ScrollTable.jsx";
 
 <Meta title="Gobernanza/El gate" />
 
@@ -12,12 +13,17 @@ npm run gate
 
 ## Qué comprueba y para qué
 
-| Comprobación | Qué afirma | Para qué |
-|---|---|---|
-| **Tokens** | Los archivos generados coinciden con el volcado de Figma. | Un archivo generado editado a mano se pierde la próxima vez que se regenera, o diverge sin que nadie lo vea. |
-| **Estructura** | Cada componente tiene sus páginas de Uso, Código y Accesibilidad, su nodo de Figma y stories con axe en modo error. | Que ningún componente se dé por terminado sin su página de accesibilidad o su enlace a Figma. |
-| **Stories** | Cada story se ejecuta en un navegador real: las pruebas de interacción (teclado, foco, roles, estados) y axe. | Una prueba que no se ejecuta sola no protege: la del teclado del Accordion llevaba fallando sin que nadie lo viera. |
-| **Build** | Storybook se construye sin errores. | Que una página rota se detecte antes de publicar. |
+<ScrollTable>
+  <thead>
+    <tr><th>Comprobación</th><th>Qué afirma</th><th>Para qué</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Tokens</strong></td><td>Los archivos generados coinciden con el volcado de Figma.</td><td>Un archivo generado editado a mano se pierde la próxima vez que se regenera, o diverge sin que nadie lo vea.</td></tr>
+    <tr><td><strong>Estructura</strong></td><td>Cada componente tiene sus páginas de Uso, Código y Accesibilidad, su nodo de Figma y stories con axe en modo error.</td><td>Que ningún componente se dé por terminado sin su página de accesibilidad o su enlace a Figma.</td></tr>
+    <tr><td><strong>Stories</strong></td><td>Cada story se ejecuta en un navegador real: las pruebas de interacción (teclado, foco, roles, estados) y axe.</td><td>Una prueba que no se ejecuta sola no protege: la del teclado del Accordion llevaba fallando sin que nadie lo viera.</td></tr>
+    <tr><td><strong>Build</strong></td><td>Storybook se construye sin errores.</td><td>Que una página rota se detecte antes de publicar.</td></tr>
+  </tbody>
+</ScrollTable>
 
 ## Qué no sustituye
 

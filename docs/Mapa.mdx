@@ -1,7 +1,8 @@
-import { Meta, Markdown } from "@storybook/addon-docs/blocks";
+import { Meta } from "@storybook/addon-docs/blocks";
+import { MarkdownScroll } from "./blocks/MarkdownScroll.jsx";
 import map from "./design-system-map.md?raw";
 
 <Meta title="Mapa del sistema" />
 
 {/* El contenido vive en docs/design-system-map.md: se edita allí, no aquí. */}
-<Markdown>{map}</Markdown>
+<MarkdownScroll>{map}</MarkdownScroll>

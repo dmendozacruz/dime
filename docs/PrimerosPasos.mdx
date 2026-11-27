@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/addon-docs/blocks";
+import { ScrollTable } from "./blocks/ScrollTable.jsx";
 
 <Meta title="Primeros pasos" />
 
@@ -66,10 +67,15 @@ npm install
 npm run storybook
 ```
 
-| Comando | Qué hace |
-|---|---|
-| `npm run tokens` | Regenera los tokens desde el volcado de Figma. |
-| `npm run storybook` | Storybook en `http://localhost:6006`. |
-| `npm run build-storybook` | Construye el sitio estático en `storybook-static/`. |
-| `npm run test` | Ejecuta cada story como una prueba: teclado, foco, roles y axe. |
-| `npm run gate` | La comprobación completa. Ver [El gate](?path=/docs/gobernanza-el-gate--docs). |
+<ScrollTable>
+  <thead>
+    <tr><th>Comando</th><th>Qué hace</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>npm run tokens</code></td><td>Regenera los tokens desde el volcado de Figma.</td></tr>
+    <tr><td><code>npm run storybook</code></td><td>Storybook en <code>http://localhost:6006</code>.</td></tr>
+    <tr><td><code>npm run build-storybook</code></td><td>Construye el sitio estático en <code>storybook-static/</code>.</td></tr>
+    <tr><td><code>npm run test</code></td><td>Ejecuta cada story como una prueba: teclado, foco, roles y axe.</td></tr>
+    <tr><td><code>npm run gate</code></td><td>La comprobación completa. Ver <a href="./?path=/docs/gobernanza-el-gate--docs" target="_top">El gate</a>.</td></tr>
+  </tbody>
+</ScrollTable>

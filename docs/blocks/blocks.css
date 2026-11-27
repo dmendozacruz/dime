@@ -1040,7 +1040,7 @@
    (tablas, vistas previas de componentes, ejemplos) se desplaza dentro de su caja en vez de
    ensanchar toda la página. */
 .dime-table-scroll,
-.sbdocs-content div:has(> table) {
+.sbdocs-content div:has(> table.docblock-argstable) {
   min-width: 0; /* hijo de un flex: sin esto no encoge y ensancha la página */
   max-width: 100%;
   overflow-x: auto;
@@ -1053,6 +1053,14 @@
 }
 
 /* Sin min-width: 0 un elemento de la rejilla no encoge por debajo de su contenido y se sale. */
+/* Una tabla ancha se dimensiona por su contenido, hasta un máximo, y desplaza dentro de su caja;
+   si no, se estrecha tanto que las celdas se parten en líneas de tres letras. */
+.sbdocs .dime-table-scroll > table {
+  width: max-content;
+  min-width: 100%;
+  max-width: 40rem;
+}
+
 .dime-dodont__item,
 .dime-dodont__example {
   min-width: 0;
