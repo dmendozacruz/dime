@@ -11,7 +11,10 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: true,
-      provider: playwright({}),
+      // Movimiento reducido: el CSS ya anula las transiciones, así que axe y los
+      // `play` miden estados finales y no a mitad de una animación (en CI, más lento,
+      // el enlace blanco de la Card se medía sobre el fondo aún claro).
+      provider: playwright({ contextOptions: { reducedMotion: "reduce" } }),
       instances: [{ browser: "chromium" }],
     },
     setupFiles: ["./.storybook/vitest.setup.js"],
