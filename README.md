@@ -144,20 +144,51 @@ names that appear in `.storybook/fonts.css`.
 
 ## Where things are
 
-| Folder | What it contains |
-|---|---|
-| `tokens/source/figma.json` | Dump of the variables, text styles and shadows from Figma. Not edited by hand. |
-| `tokens/tokens.css`, `typography.css`, `tokens.json` | Generated with `npm run tokens`. |
-| `tokens/descriptions.es.json` | Usage text of each semantic token, shown in Storybook. |
-| `scripts/` | The token generator and the gate checks. |
-| `components/` | The 16 components: CSS, web components (`*.js`), stories and the pages of each one. |
-| `docs/` | Storybook pages (MDX): introduction, system map and Foundations. |
-| `docs/blocks/` | Reusable blocks for those pages (colour swatches, copy button, component header…). |
-| `docs/decisions.md` | The numbered decision log (D-001…), with the reason for each. |
-| `docs/work/` | Working notes for each component: sources, decisions and what was checked. Start at its `README.md`. |
-| `CHANGELOG.md` | Every change, by version. |
-| `AGENTS.md`, `CONTEXT.md`, `.agents/` | How the AI assistant is expected to work in this repository, the shared vocabulary, and its skills. |
-| `.github/workflows/` | The gate on every pull request, and the Storybook deployment to GitHub Pages. |
+```
+dime/
+├── README.md                    You are here
+├── AGENTS.md                    Rules for AI assistants working in this repository
+├── CONTEXT.md                   The shared vocabulary of the system
+├── CLAUDE.md                    Imports AGENTS.md for Claude Code
+├── CHANGELOG.md                 What changed in each version
+├── package.json                 Scripts: tokens, storybook, test, gate
+├── vitest.config.js             Runs every story as a test, in a real browser
+├── tokens/
+│   ├── source/figma.json        Dump of the Figma variables, text styles and shadows; never edited by hand
+│   ├── descriptions.es.json     Usage text of each semantic token, shown in Storybook
+│   ├── tokens.css               Generated: CSS custom properties
+│   ├── typography.css           Generated: one class per Figma text style
+│   ├── tokens.json              Generated: the same tokens in the W3C DTCG format
+│   └── tokens.meta.json         Generated: token metadata for the docs
+├── components/                  The 16 components, one folder each
+│   ├── button/                  button.css, button.stories.js and its three pages
+│   │                            (Uso, Código, Accesibilidad), each a .mdx
+│   ├── tabs/                    A web component adds tabs.js and tabs.html.js
+│   ├── ...
+│   ├── shared/                  Helpers: define.js, icons.js, the demo block
+│   ├── index.css                Every component's CSS, in one import
+│   └── index.js                 Every web component, in one import
+├── docs/                        Storybook pages and working documentation
+│   ├── *.mdx                    Storybook pages: Introduction, Getting started, Identity,
+│   │                            system map and Changelog
+│   ├── foundations/             Color, Typography, Space and layout, Primitives, Icons, Logos, Grid
+│   ├── gobernanza/              Governance: Summary, The gate, How we work
+│   ├── blocks/                  Reusable blocks for those pages (swatches, do/don't, component header…)
+│   ├── decisions.md             The numbered decision log (D-001…), with the reason for each
+│   ├── design-system-map.md     The system map: what exists and in what state
+│   ├── deployment.md            How Storybook is published to GitHub Pages
+│   └── work/                    Working notes per component: sources, decisions, what was checked
+├── scripts/
+│   ├── build-tokens.mjs         Generates the token files from tokens/source/figma.json
+│   ├── check-tokens.mjs         Gate step 1: the generated files match Figma
+│   └── check-docs.mjs           Gate step 2: every component has its pages, its Figma node and axe on error
+├── evals/                       Test cases and results for the AI skills in .agents/
+├── .storybook/                  Storybook config: addons, theme, fonts, test setup
+├── .agents/skills/              Skills for AI assistants: accessible component docs,
+│                                Figma foundations sync, design review
+├── .github/workflows/           gate.yml (the gate on every push) and storybook.yml (GitHub Pages)
+└── public/                      Served as is: brand, icons and client logos
+```
 
 ## A note on language
 
