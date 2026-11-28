@@ -309,3 +309,24 @@ separación) y las guías de accesibilidad como la de Sara Soueidan lo recomiend
   Header) vale `--color-background-brand`.
 - Un componente nuevo copia las tres sombras de cualquiera de los existentes.
 
+## D-028 · El icono no lleva color propio: lo decide el componente que lo usa · 2026-11-28
+
+**Decisión:** los iconos de `public/icons/` son de un solo color y no tienen un token
+asociado. En código se inlinan y toman el color del texto que acompañan
+(`currentColor`); cada componente fija ese color con su token (`content/default`,
+`content/inverse`, el color del tipo en el Alert…). No hay tokens `icon-*`.
+**Motivo:** un icono no es nada por sí solo: su color depende del componente donde va,
+de su estado (hover, disabled, foco) y del fondo (claro u oscuro). Si el icono guardara
+su color, cada cambio de estado obligaría a repetir esa lógica en el icono, y el icono
+y su texto podrían acabar en colores distintos. Heredando, el icono siempre acompaña a
+su etiqueta y el estado se escribe una sola vez, en el componente.
+**Consecuencias:**
+- El SVG exportado de Figma lleva `#1A1A1A` dentro; `components/shared/icons.js` lo
+  cambia por `currentColor` al inlinarlo. Un icono nuevo se exporta igual y no hay que
+  tocar nada.
+- Un icono que va como imagen (`<img>`, fondo CSS) no hereda `currentColor`. Si además
+  tiene que cambiar de color, se pinta con una máscara (`mask` + `background-color` con
+  el token).
+- Los iconos de varios colores no entran en este criterio: llevan sus colores dentro y
+  no se tokenizan.
+

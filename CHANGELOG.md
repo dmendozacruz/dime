@@ -8,8 +8,14 @@ lo hecho hasta la 0.1.0, con los ids de Figma, está en
 
 ## [Sin publicar]
 
-Nada todavía. Lo que cambie a partir de ahora va aquí y, al publicarlo, pasa a una versión
+Lo que cambie a partir de ahora va aquí y, al publicarlo, pasa a una versión
 nueva y sube `version` en `package.json`: la cabecera de Storybook la muestra.
+
+### Corregido
+
+- **Iconos · Color:** la página explica cómo se colorean de verdad los iconos (en línea, heredando
+  el color del componente) y deja la máscara solo para el icono que va como imagen. Decisión
+  D-028.
 
 ## [0.1.0] - 2026-11-26
 

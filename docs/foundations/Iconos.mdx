@@ -30,9 +30,25 @@ Hay tres tamaños: 20, 24 y 28 px. El de 20 px es el de los botones. En Figma se
 
 ## Color
 
-Los iconos van en el color del texto que acompañan: `content/default` sobre fondo claro y `content/inverse` sobre fondo oscuro. Siempre con un token, nunca con un hex.
+El icono no lleva color propio: toma el del texto que acompaña. Sobre fondo claro es `content/default` y sobre fondo oscuro, `content/inverse`. Siempre con un token, nunca con un hex.
 
-Los SVG llevan `content/default` (#1a1a1a) dentro del archivo, y una imagen `<img>` no hereda `currentColor`. Si el icono tiene que cambiar de color, se pinta con una máscara:
+En código el icono va en línea (el SVG dentro del HTML) y hereda `color`. Quien decide el color es el componente, no el icono. En el Button, por ejemplo, el icono no tiene ninguna regla de color: sigue la del botón.
+
+```css
+.dime-button {
+  color: var(--color-content-inverse); /* texto e icono, sobre fondo oscuro */
+}
+
+.dime-button:hover {
+  color: var(--color-content-default); /* texto e icono cambian a la vez */
+}
+```
+
+Así el icono cambia con cada estado del componente (hover, disabled, foco) sin repetir reglas en él.
+
+### Si el icono va como imagen
+
+Un SVG dentro de un `<img>` o de un fondo CSS no hereda `currentColor`, y el archivo lleva `content/default` (#1a1a1a) por dentro. Si tiene que cambiar de color, se pinta con una máscara:
 
 ```css
 .icon {
